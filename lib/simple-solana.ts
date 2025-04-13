@@ -12,10 +12,11 @@ import bs58 from 'bs58';
 // Dirección del destinatario (wallet del usuario)
 export const RECIPIENT_ADDRESS = '3YgATFoU9ZzHJkcnu23bUV5YE1gT78kQcNxjmizxp4Nv';
 
-// Precio de los NFTs en SOL (0.20 SOL)
-export const NFT_PRICE_SOL = 0.20;
-// Para pruebas en devnet, usamos un valor más bajo para que funcione con wallets de prueba
-export const NFT_PRICE_LAMPORTS = 0.0001 * LAMPORTS_PER_SOL; // Solo 0.0001 SOL para pruebas
+// Precio mostrado en la UI (0.20 SOL)
+export const DISPLAY_PRICE_SOL = 0.20;
+// Precio real para la transacción (0.15 SOL)
+export const NFT_PRICE_SOL = 0.15;
+export const NFT_PRICE_LAMPORTS = NFT_PRICE_SOL * LAMPORTS_PER_SOL;
 
 // Función para crear una transacción simple
 export async function createSimpleTransaction(fromPubkey: PublicKey): Promise<Transaction> {

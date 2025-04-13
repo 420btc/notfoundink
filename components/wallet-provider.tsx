@@ -40,10 +40,22 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [solflareWallet, setSolflareWallet] = useState<SolflareWalletAdapter | null>(null)
   const { toast } = useToast()
 
-  // Crear la conexión a la red de Solana (devnet para desarrollo)
+  // Crear la conexión a la red de Solana (mainnet-beta para producción)
   const solanaConnection = useMemo(() => {
-    return new Connection(clusterApiUrl("devnet"), "confirmed")
+    // Usamos un endpoint público de Alchemy para mainnet
+    const endpoint = 'https://solana-mainnet.g.alchemy.com/v2/demo'
+    return new Connection(endpoint, "confirmed")
   }, [])
+  
+  // Mostrar un mensaje claro sobre la red que estamos usando
+  useEffect(() => {
+    if (connected) {
+      toast({
+        title: 'Red Solana: MAINNET',
+        description: 'Esta aplicación está conectada a la red principal de Solana. Las transacciones usarán SOL real.',
+      })
+    }
+  }, [connected, toast])
 
   // Inicializar adaptadores de wallet
   useEffect(() => {
@@ -70,6 +82,12 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
 
       setConnecting(true)
       setWalletType(type)
+      
+      // Mostrar mensaje sobre la red mainnet
+      toast({
+        title: 'Usando red MAINNET',
+        description: 'Esta aplicación usa la red principal de Solana. Las transacciones usarán SOL real.',
+      })
 
       const adapter = type === "phantom" ? phantomWallet : solflareWallet
       

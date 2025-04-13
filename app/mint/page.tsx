@@ -9,6 +9,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CandyMachineStatus } from "@/components/candy-machine-status"
 import { useCandyMachine } from "@/hooks/use-candy-machine"
 import { SimpleMintButton } from "@/components/simple-mint-button"
+import { GetDevnetSol } from "@/components/get-devnet-sol"
+import { SimpleTransaction } from "@/components/simple-transaction"
 
 // Componente para rotar NFTs cada 1.3 segundos
 function NFTRotation() {
@@ -178,7 +180,7 @@ export default function MintPage() {
                   <CandyMachineStatus />
                 </div>
                 
-                {/* Integración con Solana Web3.js */}
+                {/* Integración real con Solana Mainnet */}
                 <SimpleMintButton />
                 
                 {mintSuccess && txId && (
