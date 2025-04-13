@@ -1,9 +1,11 @@
 "use client"
 
 import type React from "react"
-
-import { createContext, useContext, useState, useEffect } from "react"
+import { createContext, useContext, useState, useEffect, useMemo } from "react"
 import { useToast } from "@/hooks/use-toast"
+import { Connection, PublicKey, clusterApiUrl } from "@solana/web3.js"
+import { PhantomWalletAdapter, SolflareWalletAdapter } from "@solana/wallet-adapter-wallets"
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base"
 
 type WalletType = "phantom" | "solflare" | null
 
@@ -14,6 +16,7 @@ type WalletContextType = {
   walletType: WalletType
   connect: (type: WalletType) => Promise<void>
   disconnect: () => void
+  solanaConnection: Connection | null
 }
 
 const WalletContext = createContext<WalletContextType>({
@@ -23,6 +26,7 @@ const WalletContext = createContext<WalletContextType>({
   walletType: null,
   connect: async () => {},
   disconnect: () => {},
+  solanaConnection: null,
 })
 
 export const useWallet = () => useContext(WalletContext)
@@ -32,9 +36,34 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [connecting, setConnecting] = useState(false)
   const [publicKey, setPublicKey] = useState<string | null>(null)
   const [walletType, setWalletType] = useState<WalletType>(null)
+  const [phantomWallet, setPhantomWallet] = useState<PhantomWalletAdapter | null>(null)
+  const [solflareWallet, setSolflareWallet] = useState<SolflareWalletAdapter | null>(null)
   const { toast } = useToast()
 
-  // Simulación de conexión a wallet
+  // Crear la conexión a la red de Solana (devnet para desarrollo)
+  const solanaConnection = useMemo(() => {
+    return new Connection(clusterApiUrl("devnet"), "confirmed")
+  }, [])
+
+  // Inicializar adaptadores de wallet
+  useEffect(() => {
+    // Inicializar adaptadores solo en el cliente
+    if (typeof window !== "undefined") {
+      const phantomAdapter = new PhantomWalletAdapter()
+      const solflareAdapter = new SolflareWalletAdapter({ network: WalletAdapterNetwork.Devnet })
+      
+      setPhantomWallet(phantomAdapter)
+      setSolflareWallet(solflareAdapter)
+
+      // Limpiar al desmontar
+      return () => {
+        if (phantomAdapter.connected) phantomAdapter.disconnect()
+        if (solflareAdapter.connected) solflareAdapter.disconnect()
+      }
+    }
+  }, [])
+
+  // Conexión real a la wallet
   const connect = async (type: WalletType) => {
     try {
       if (!type) return
@@ -42,68 +71,147 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
       setConnecting(true)
       setWalletType(type)
 
-      // Simulamos una conexión
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      const adapter = type === "phantom" ? phantomWallet : solflareWallet
+      
+      if (!adapter) {
+        throw new Error(`Adaptador de ${type} no disponible`)
+      }
 
-      // Generamos una clave pública aleatoria para simular
-      const mockPublicKey = Array.from(
-        { length: 44 },
-        () => "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"[Math.floor(Math.random() * 58)],
-      ).join("")
+      // Verificar si la wallet está instalada
+      try {
+        // En lugar de verificar .ready (que no existe en estos adaptadores),
+        // intentamos conectar y manejamos cualquier error
+        const walletUrl = type === "phantom" ? "https://phantom.app/" : "https://solflare.com/"
+        
+        // Intentar detectar si la wallet está instalada
+        const isInstalled = type === "phantom" 
+          ? window.hasOwnProperty('phantom')
+          : window.hasOwnProperty('solflare')
+          
+        if (!isInstalled) {
+          toast({
+            title: `${type === "phantom" ? "Phantom" : "Solflare"} no detectada`,
+            description: "Por favor instala la extensión o app y recarga la página.",
+            variant: "destructive",
+          })
+          
+          // Abrir la página de la wallet
+          window.open(walletUrl, "_blank")
+          setConnecting(false)
+          return
+        }
+        
+        // Asegurarnos de que el adaptador existe
+        if (!adapter) {
+          throw new Error(`Adaptador de ${type} no disponible`)
+        }
 
-      setPublicKey(mockPublicKey)
-      setConnected(true)
-
-      toast({
-        title: `${type === "phantom" ? "Phantom" : "Solflare"} conectada`,
-        description: "Tu wallet ha sido conectada exitosamente.",
-      })
-    } catch (error) {
-      toast({
-        title: "Error al conectar",
-        description: "No se pudo conectar a la wallet.",
-        variant: "destructive",
-      })
+        // Conectar a la wallet
+        await adapter.connect()
+        
+        // Verificar si la conexión fue exitosa
+        if (adapter.connected && adapter.publicKey) {
+          setPublicKey(adapter.publicKey.toString())
+          setConnected(true)
+          
+          toast({
+            title: `${type === "phantom" ? "Phantom" : "Solflare"} conectada`,
+            description: "Tu wallet ha sido conectada exitosamente.",
+          })
+        } else {
+          throw new Error("La conexión falló")
+        }
+      } catch (error: any) {
+        // Manejar errores de conexión
+        console.error("Error al conectar wallet:", error)
+        toast({
+          title: "Error al conectar",
+          description: error.message || "No se pudo conectar a la wallet",
+          variant: "destructive",
+        })
+        setConnecting(false)
+      }
+    } catch (error: any) {
+      console.error("Error al conectar wallet:", error)
+      
+      // Manejar diferentes tipos de errores
+      if (error.name === "WalletNotReadyError") {
+        toast({
+          title: "Wallet no disponible",
+          description: "Por favor instala la extensión o app y recarga la página.",
+          variant: "destructive",
+        })
+      } else if (error.name === "WalletConnectionError") {
+        toast({
+          title: "Conexión rechazada",
+          description: "Has rechazado la solicitud de conexión.",
+          variant: "destructive",
+        })
+      } else {
+        toast({
+          title: "Error al conectar",
+          description: error.message || "No se pudo conectar a la wallet.",
+          variant: "destructive",
+        })
+      }
+      
+      // Limpiar el estado en caso de error
+      setWalletType(null)
     } finally {
       setConnecting(false)
     }
   }
 
-  const disconnect = () => {
-    setConnected(false)
-    setPublicKey(null)
-    setWalletType(null)
-    toast({
-      title: "Wallet desconectada",
-      description: "Tu wallet ha sido desconectada.",
-    })
+  // Desconexión real de la wallet
+  const disconnect = async () => {
+    try {
+      const adapter = walletType === "phantom" ? phantomWallet : solflareWallet
+      
+      if (adapter && adapter.connected) {
+        await adapter.disconnect()
+      }
+      
+      setConnected(false)
+      setPublicKey(null)
+      setWalletType(null)
+      
+      toast({
+        title: "Wallet desconectada",
+        description: "Tu wallet ha sido desconectada exitosamente.",
+      })
+    } catch (error) {
+      console.error("Error al desconectar wallet:", error)
+      toast({
+        title: "Error al desconectar",
+        description: "Ocurrió un error al desconectar la wallet.",
+        variant: "destructive",
+      })
+    }
   }
 
-  // Verificar si hay una conexión guardada al cargar
+  // Verificar estado de conexión al iniciar
   useEffect(() => {
-    const savedConnection = localStorage.getItem("walletConnected")
-    const savedPublicKey = localStorage.getItem("walletPublicKey")
-    const savedWalletType = localStorage.getItem("walletType") as WalletType
-
-    if (savedConnection === "true" && savedPublicKey && savedWalletType) {
-      setConnected(true)
-      setPublicKey(savedPublicKey)
-      setWalletType(savedWalletType)
+    const checkWalletConnection = async () => {
+      try {
+        // Verificar si hay una wallet conectada
+        if (phantomWallet && phantomWallet.connected && phantomWallet.publicKey) {
+          setConnected(true)
+          setPublicKey(phantomWallet.publicKey.toString())
+          setWalletType("phantom")
+        } else if (solflareWallet && solflareWallet.connected && solflareWallet.publicKey) {
+          setConnected(true)
+          setPublicKey(solflareWallet.publicKey.toString())
+          setWalletType("solflare")
+        }
+      } catch (error) {
+        console.error("Error al verificar conexión de wallet:", error)
+      }
     }
-  }, [])
 
-  // Guardar estado de conexión
-  useEffect(() => {
-    if (connected && publicKey && walletType) {
-      localStorage.setItem("walletConnected", "true")
-      localStorage.setItem("walletPublicKey", publicKey)
-      localStorage.setItem("walletType", walletType)
-    } else {
-      localStorage.removeItem("walletConnected")
-      localStorage.removeItem("walletPublicKey")
-      localStorage.removeItem("walletType")
+    if (phantomWallet || solflareWallet) {
+      checkWalletConnection()
     }
-  }, [connected, publicKey, walletType])
+  }, [phantomWallet, solflareWallet])
 
   return (
     <WalletContext.Provider
@@ -114,6 +222,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         walletType,
         connect,
         disconnect,
+        solanaConnection,
       }}
     >
       {children}
