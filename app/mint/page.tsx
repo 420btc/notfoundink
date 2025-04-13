@@ -128,10 +128,12 @@ export default function MintPage() {
             </h2>
             <p className="text-muted-foreground">Mintea tu NFT de Not Found Ink ahora mismo</p>
             
-            {/* Añadimos un banner informativo */}
-            <div className="mt-6 p-3 bg-green-500/10 border border-green-500/20 rounded-lg max-w-lg mx-auto">
-              <p className="text-sm text-green-600 dark:text-green-400">
-                <span className="font-bold">Colección activa</span> - Consigue tu NFT por solo 0.20 SOL
+            {/* Añadimos un banner informativo con estilo mejorado */}
+            <div className="mt-6 p-4 bg-green-900 border-2 border-green-400 rounded-lg max-w-lg mx-auto shadow-lg shadow-green-900/50 animate-pulse-slow relative overflow-hidden">
+              {/* Efecto de brillo neón */}
+              <div className="absolute inset-0 bg-gradient-to-r from-green-500/0 via-green-400/30 to-green-500/0 animate-shimmer"></div>
+              <p className="text-lg font-medium text-green-300 drop-shadow-md relative z-10 text-center">
+                <span className="font-bold text-green-100">COLECCIÓN ACTIVA</span> - Consigue tu NFT por solo <span className="font-extrabold text-xl text-white drop-shadow-glow">0.20 SOL</span>
               </p>
             </div>
             
@@ -148,7 +150,7 @@ export default function MintPage() {
               <div className="bg-background/50 p-4 rounded-lg">
                 <p className="text-sm text-muted-foreground">Disponibles</p>
                 <p className="text-2xl font-bold">{itemsRemaining}</p>
-                <p className="text-xs text-green-600 dark:text-green-400 animate-pulse">Solo {price} SOL</p>
+                <p className="text-xs text-green-600 dark:text-green-400 animate-pulse">Solo 0.20 SOL</p>
               </div>
             </div>
           </div>
@@ -159,18 +161,20 @@ export default function MintPage() {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
               <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0 rounded-lg p-6">
-                <div className="aspect-square relative mb-6 bg-gray-100/80 dark:bg-gray-800/80 rounded-lg flex items-center justify-center overflow-hidden backdrop-blur-xl group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-nfi-yellow/5 via-nfi-pink/5 to-nfi-blue/5 group-hover:opacity-80 transition-opacity duration-500"></div>
+                <div className="aspect-square relative mb-6 rounded-lg flex items-center justify-center overflow-hidden group bg-white dark:bg-white">
+                  {/* Fondo blanco puro */}
+                  <div className="absolute inset-0 bg-white"></div>
                   <Image
                     src={nftImages[selectedNFTIndex]}
                     alt="NFT Preview"
                     width={300}
                     height={300}
-                    className="object-contain blur-[3px] transition-all duration-500 group-hover:blur-[2px] group-hover:scale-105"
+                    className="object-contain z-10 transition-all duration-500 group-hover:scale-105 blur-[3px] group-hover:blur-[1px]"
+                    style={{ objectFit: 'contain' }}
                   />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <p className="text-sm font-medium bg-black/40 px-3 py-1 rounded-full backdrop-blur-md">
-                      Precio: {price} SOL
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
+                    <p className="text-sm font-medium bg-black/60 px-4 py-2 rounded-full backdrop-blur-md shadow-lg">
+                      Precio: 0.20 SOL
                     </p>
                   </div>
                 </div>

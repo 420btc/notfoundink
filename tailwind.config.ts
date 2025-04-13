@@ -64,6 +64,9 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      dropShadow: {
+        glow: ["0 0 5px rgba(120, 255, 120, 0.7)", "0 0 10px rgba(120, 255, 120, 0.5)"],
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -101,6 +104,14 @@ const config: Config = {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.5" },
         },
+        "pulse-slow": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.85" },
+        },
+        shimmer: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -112,6 +123,8 @@ const config: Config = {
         "bounce-slow": "bounce-slow 2s ease-in-out infinite",
         shine: "shine 8s ease-in-out infinite",
         pulse: "pulse 3s ease-in-out infinite",
+        "pulse-slow": "pulse-slow 4s ease-in-out infinite",
+        shimmer: "shimmer 3s ease-in-out infinite",
       },
     },
   },
