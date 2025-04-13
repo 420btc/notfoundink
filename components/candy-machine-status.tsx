@@ -111,7 +111,7 @@ export function CandyMachineStatus() {
           {price > 0 && (
             <div className="text-center pt-2 border-t">
               <p className="text-sm font-medium">
-                Precio: <span className="text-primary font-bold">{price} SOL</span>
+                Precio: <span className="text-primary font-bold">0.20 SOL</span>
               </p>
               <p className="text-xs text-muted-foreground mt-1">
                 Pago único - Recibe tu NFT al instante
