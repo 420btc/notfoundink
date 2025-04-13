@@ -2,6 +2,12 @@
 
 ![Not Found Ink Logo](public/images/trust-me.png)
 
+## 🌐 Despliegue
+
+La aplicación está desplegada y disponible en: [https://notfoundink.vercel.app/](https://notfoundink.vercel.app/)
+
+Visita el sitio para explorar la colección completa y mintear tus NFTs favoritos.
+
 ## 🎨 Descripción
 
 "Not Found Ink" es una colección única de 100 NFTs creados por la talentosa ilustradora Ana María, que fusiona el estilo icónico de Los Simpson y Futurama con la irreverencia de Shin Chan y elementos de la cultura japonesa. Cada pieza es única y está disponible exclusivamente en la blockchain de Solana, utilizando un sistema de candy machine para garantizar una distribución justa.
@@ -22,6 +28,10 @@
 - **React 19**: Biblioteca para construir interfaces de usuario
 - **TypeScript**: Superset tipado de JavaScript
 - **Tailwind CSS**: Framework CSS utility-first para diseño rápido y responsivo
+
+### Despliegue
+- **Vercel**: Plataforma de despliegue optimizada para aplicaciones Next.js
+- **GitHub**: Control de versiones y CI/CD automático
 
 ### Componentes UI
 - **Radix UI**: Componentes accesibles y sin estilos para React
