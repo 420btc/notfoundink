@@ -89,6 +89,10 @@ const config: Config = {
           "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
           "50%": { transform: "translateY(-8px) rotate(10deg)" },
         },
+        "bounce-slow": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-4px)" },
+        },
         shine: {
           "0%": { backgroundPosition: "200% 0" },
           "100%": { backgroundPosition: "-200% 0" },
@@ -105,6 +109,7 @@ const config: Config = {
         "float-slow": "float-slow 8s ease-in-out infinite",
         "float-medium": "float-medium 6s ease-in-out infinite",
         "float-fast": "float-fast 4s ease-in-out infinite",
+        "bounce-slow": "bounce-slow 2s ease-in-out infinite",
         shine: "shine 8s ease-in-out infinite",
         pulse: "pulse 3s ease-in-out infinite",
       },

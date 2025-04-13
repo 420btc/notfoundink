@@ -1,14 +1,12 @@
 "use client"
 
-// Importar desde nuestras implementaciones simuladas en lugar de las dependencias reales
-import { 
-  createUmi, 
-  walletAdapterIdentity, 
-  mplCandyMachine,
-  Umi 
-} from '@/lib/mocks/metaplex-mocks'
+// Importar las dependencias reales de Metaplex
+import { createUmi } from '@metaplex-foundation/umi-bundle-defaults'
+import { walletAdapterIdentity } from '@metaplex-foundation/umi-signer-wallet-adapters'
+import { mplCandyMachine } from '@metaplex-foundation/mpl-candy-machine'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { useEffect, useState } from 'react'
+import { Umi } from '@metaplex-foundation/umi'
 import { PublicKey } from '@solana/web3.js'
 import { SOLANA_RPC_ENDPOINT, SOLANA_NETWORK } from './candy-machine-config'
 

@@ -44,8 +44,9 @@ export function MintButton({
       <Button
         onClick={handleClick}
         disabled={!wallet.connected || disabled || loading}
-        className="w-full h-12 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue hover:from-nfi-blue hover:via-nfi-pink hover:to-nfi-yellow transition-all duration-500"
+        className="w-full h-12 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue hover:from-nfi-blue hover:via-nfi-pink hover:to-nfi-yellow transition-all duration-500 relative overflow-hidden group"
       >
+        <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-nfi-yellow/10 via-nfi-pink/10 to-nfi-blue/10 group-hover:opacity-0 transition-opacity duration-300"></span>
         {loading ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -53,7 +54,7 @@ export function MintButton({
           </>
         ) : (
           <>
-            <Sparkles className="mr-2 h-4 w-4" />
+            <Sparkles className="mr-2 h-4 w-4 animate-bounce-slow" />
             Mintear NFT
           </>
         )}
@@ -66,8 +67,8 @@ export function MintButton({
       )}
       
       {wallet.connected && !isActive && (
-        <p className="text-sm text-center text-muted-foreground mt-2">
-          El minteo aún no está activo
+        <p className="text-sm text-center text-yellow-500 dark:text-yellow-400 mt-2 font-medium">
+          <span className="inline-block animate-pulse">✨</span> La colección estará disponible próximamente <span className="inline-block animate-pulse">✨</span>
         </p>
       )}
       

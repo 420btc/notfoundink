@@ -8,6 +8,7 @@ import { MintButton } from "@/components/mint-button"
 import { Card, CardContent } from "@/components/ui/card"
 import { CandyMachineStatus } from "@/components/candy-machine-status"
 import { useCandyMachine } from "@/hooks/use-candy-machine"
+import { SimpleMintButton } from "@/components/simple-mint-button"
 
 // Componente para rotar NFTs cada 1.3 segundos
 function NFTRotation() {
@@ -119,35 +120,35 @@ export default function MintPage() {
         {/* Contador de cuenta atrás o estado actual */}
         <div className="max-w-3xl mx-auto mb-10">
           <div className="text-center mb-4">
-            {!isActive ? (
-              <>
-                <h2 className="font-cartoon text-2xl md:text-3xl mb-2">
-                  El minteo comienza en <span className="text-nfi-pink">✨</span>
-                </h2>
-                <p className="text-muted-foreground">No te pierdas el lanzamiento de esta colección única</p>
-                <CountdownTimer targetDate={targetDate} />
-              </>
-            ) : (
-              <>
-                <h2 className="font-cartoon text-2xl md:text-3xl mb-2">
-                  ¡El minteo está <span className="text-nfi-pink">ACTIVO</span>! ✨
-                </h2>
-                <div className="grid grid-cols-3 gap-4 mt-6 max-w-lg mx-auto">
-                  <div className="bg-background/50 p-4 rounded-lg">
-                    <p className="text-sm text-muted-foreground">Disponibles</p>
-                    <p className="text-2xl font-bold">{itemsAvailable}</p>
-                  </div>
-                  <div className="bg-background/50 p-4 rounded-lg">
-                    <p className="text-sm text-muted-foreground">Minteados</p>
-                    <p className="text-2xl font-bold">{itemsRedeemed}</p>
-                  </div>
-                  <div className="bg-background/50 p-4 rounded-lg">
-                    <p className="text-sm text-muted-foreground">Restantes</p>
-                    <p className="text-2xl font-bold">{itemsRemaining}</p>
-                  </div>
-                </div>
-              </>
-            )}
+            {/* Mostramos que la colección está activa */}
+            <h2 className="font-cartoon text-2xl md:text-3xl mb-2">
+              ¡El minteo está <span className="text-nfi-pink animate-pulse">ACTIVO</span>! ✨
+            </h2>
+            <p className="text-muted-foreground">Mintea tu NFT de Not Found Ink ahora mismo</p>
+            
+            {/* Añadimos un banner informativo */}
+            <div className="mt-6 p-3 bg-green-500/10 border border-green-500/20 rounded-lg max-w-lg mx-auto">
+              <p className="text-sm text-green-600 dark:text-green-400">
+                <span className="font-bold">Colección activa</span> - Consigue tu NFT por solo 0.20 SOL
+              </p>
+            </div>
+            
+            {/* Estadísticas de la colección */}
+            <div className="grid grid-cols-3 gap-4 mt-6 max-w-lg mx-auto">
+              <div className="bg-background/50 p-4 rounded-lg">
+                <p className="text-sm text-muted-foreground">Total</p>
+                <p className="text-2xl font-bold">{itemsAvailable}</p>
+              </div>
+              <div className="bg-background/50 p-4 rounded-lg">
+                <p className="text-sm text-muted-foreground">Minteados</p>
+                <p className="text-2xl font-bold">{itemsRedeemed}</p>
+              </div>
+              <div className="bg-background/50 p-4 rounded-lg">
+                <p className="text-sm text-muted-foreground">Disponibles</p>
+                <p className="text-2xl font-bold">{itemsRemaining}</p>
+                <p className="text-xs text-green-600 dark:text-green-400 animate-pulse">Solo {price} SOL</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -156,14 +157,20 @@ export default function MintPage() {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
               <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0 rounded-lg p-6">
-                <div className="aspect-square relative mb-6 bg-gray-100/80 dark:bg-gray-800/80 rounded-lg flex items-center justify-center overflow-hidden backdrop-blur-xl">
+                <div className="aspect-square relative mb-6 bg-gray-100/80 dark:bg-gray-800/80 rounded-lg flex items-center justify-center overflow-hidden backdrop-blur-xl group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-nfi-yellow/5 via-nfi-pink/5 to-nfi-blue/5 group-hover:opacity-80 transition-opacity duration-500"></div>
                   <Image
                     src={nftImages[selectedNFTIndex]}
                     alt="NFT Preview"
                     width={300}
                     height={300}
-                    className="object-contain blur-[3px]"
+                    className="object-contain blur-[3px] transition-all duration-500 group-hover:blur-[2px] group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <p className="text-sm font-medium bg-black/40 px-3 py-1 rounded-full backdrop-blur-md">
+                      Precio: {price} SOL
+                    </p>
+                  </div>
                 </div>
                 
                 {/* Estado de la Candy Machine */}
@@ -171,20 +178,34 @@ export default function MintPage() {
                   <CandyMachineStatus />
                 </div>
                 
-                {/* Integración con Candy Machine v2 */}
-                <MintButton 
-                  onClick={mint}
-                  loading={isMinting}
-                  disabled={isMinting}
-                />
+                {/* Integración con Solana Web3.js */}
+                <SimpleMintButton />
                 
                 {mintSuccess && txId && (
                   <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
                     <p className="text-green-600 dark:text-green-400 font-medium mb-2">
                       ¡NFT minteado con éxito!
                     </p>
+                    <div className="flex flex-col items-center my-3">
+                      {mintSuccess && (
+                        <div className="relative w-32 h-32 mb-2 border-2 border-green-500 rounded-lg overflow-hidden">
+                          <Image 
+                            src={nftImages[selectedNFTIndex]} 
+                            alt="Tu NFT" 
+                            fill 
+                            className="object-contain"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 flex items-end justify-center p-2">
+                            <p className="text-xs text-white font-medium">Tu nuevo NFT</p>
+                          </div>
+                        </div>
+                      )}
+                      <p className="text-sm font-medium text-center mb-2">
+                        Transacción completada por {price} SOL
+                      </p>
+                    </div>
                     <p className="text-xs text-muted-foreground break-all">
-                      TX ID: {txId}
+                      TX ID: <a href={`https://explorer.solana.com/tx/${txId}?cluster=devnet`} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">{txId}</a>
                     </p>
                   </div>
                 )}
@@ -199,6 +220,12 @@ export default function MintPage() {
             <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-2xl animate-float-medium">
               ✨
             </span>
+            <span className="absolute -top-4 left-1/3 transform -translate-x-1/2 text-xl animate-float-slow">
+              ✨
+            </span>
+            <span className="absolute -top-8 right-1/3 transform -translate-x-1/2 text-xl animate-float-fast">
+              ✨
+            </span>
             <h2 className="font-cartoon text-2xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
               Sobre el Proceso de Mint
             </h2>
@@ -206,21 +233,21 @@ export default function MintPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
               {
-                title: "¿Qué es un Candy Machine? ✨",
+                title: "Colección Activa ✨",
                 description:
-                  "El Candy Machine es un programa en la blockchain de Solana que permite la distribución justa y eficiente de NFTs. Garantiza que cada NFT sea único y que el proceso de mint sea transparente.",
+                  "La colección Not Found Ink está activa y lista para mintear. Cada NFT cuesta solo 0.20 SOL y se asigna aleatoriamente de nuestra colección de arte único que mezcla Los Simpson, Futurama y Shin Chan con toques japoneses.",
                 color: "nfi-yellow",
               },
               {
-                title: "Rampa Crypto",
+                title: "Transacción Real en Solana",
                 description:
-                  "Nuestra aplicación incluye una rampa crypto que te permite comprar SOL directamente con tu tarjeta de crédito o débito, facilitando el proceso de adquisición de NFTs incluso si no tienes experiencia previa con criptomonedas.",
+                  "Al mintear un NFT, realizas una transacción real en la blockchain de Solana. El pago de 0.20 SOL se procesa de forma segura y transparente, y tu NFT se envía directamente a tu wallet conectada.",
                 color: "nfi-pink",
               },
               {
-                title: "Gastos de Red",
+                title: "Colección Limitada",
                 description:
-                  "Al mintear un NFT en Solana, pagarás una pequeña tarifa de red (gas fee) además del precio del NFT. Estas tarifas son significativamente más bajas en Solana comparado con otras blockchains.",
+                  "Not Found Ink es una colección limitada de 100 NFTs únicos. Cada pieza es un artículo de colección digital con un estilo artístico distintivo que combina elementos de la cultura pop y el arte japonés.",
                 color: "nfi-blue",
               },
             ].map((item, index) => (
