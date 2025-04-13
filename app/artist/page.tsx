@@ -92,7 +92,7 @@ export default function ArtistPage() {
         />
       </div>
 
-      <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-16">
         {[
           {
             title: "Los Simpson",

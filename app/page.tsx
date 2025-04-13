@@ -190,7 +190,7 @@ export default function Home() {
             <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-2xl animate-float-slow">✨</span>
             <h2 className="font-cartoon text-3xl md:text-4xl">Cómo Conseguir tu NFT</h2>
           </div>
-          <div className="grid grid-cols-3 gap-2 sm:gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow to-nfi-yellow/50 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
               <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0">
