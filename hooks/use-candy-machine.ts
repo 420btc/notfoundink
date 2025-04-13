@@ -113,7 +113,7 @@ export const useCandyMachine = () => {
       const itemsRedeemed = 0
       const itemsRemaining = itemsAvailable - itemsRedeemed
       
-      // Precio de 0.001 SOL para pruebas (para que puedas usar tus 0.00204 SOL)
+      // Precio de 0.20 SOL para la colección
       const price = NFT_PRICE_SOL
       
       // La colección está activa desde ahora

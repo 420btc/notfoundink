@@ -12,8 +12,8 @@ import { useWallet } from '@solana/wallet-adapter-react';
 // Esta es la wallet real del usuario para que pueda verificar la transacción
 const RECIPIENT_ADDRESS = '3YgATFoU9ZzHJkcnu23bUV5YE1gT78kQcNxjmizxp4Nv';
 
-// Precio de los NFTs en SOL (0.001 SOL para pruebas)
-export const NFT_PRICE_SOL = 0.001;
+// Precio de los NFTs en SOL (0.20 SOL)
+export const NFT_PRICE_SOL = 0.20;
 export const NFT_PRICE_LAMPORTS = NFT_PRICE_SOL * LAMPORTS_PER_SOL;
 
 // Función para crear y enviar una transacción

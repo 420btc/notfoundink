@@ -207,11 +207,11 @@ export default function MintPage() {
                         </div>
                       )}
                       <p className="text-sm font-medium text-center mb-2">
-                        Transacción completada por {price} SOL
+                        Transacción completada por 0.20 SOL
                       </p>
                     </div>
                     <p className="text-xs text-muted-foreground break-all">
-                      TX ID: <a href={`https://explorer.solana.com/tx/${txId}?cluster=devnet`} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">{txId}</a>
+                      TX ID: <a href={`https://explorer.solana.com/tx/${txId}?cluster=mainnet-beta`} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">{txId}</a>
                     </p>
                   </div>
                 )}
