@@ -112,6 +112,30 @@ const config: Config = {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(100%)" },
         },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        fadeOut: {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
+        scaleIn: {
+          "0%": { transform: "scale(0.8) translateY(20px)" },
+          "100%": { transform: "scale(1) translateY(0)" },
+        },
+        slideInLeft: {
+          "0%": { transform: "translateX(-20px)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        slideInRight: {
+          "0%": { transform: "translateX(20px)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        loadingBar: {
+          "0%": { width: "0%" },
+          "100%": { width: "100%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -125,6 +149,12 @@ const config: Config = {
         pulse: "pulse 3s ease-in-out infinite",
         "pulse-slow": "pulse-slow 4s ease-in-out infinite",
         shimmer: "shimmer 3s ease-in-out infinite",
+        fadeIn: "fadeIn 0.5s ease-in-out forwards",
+        fadeOut: "fadeOut 0.5s ease-in-out forwards",
+        scaleIn: "scaleIn 0.6s ease-out forwards",
+        slideInLeft: "slideInLeft 0.4s ease-out forwards",
+        slideInRight: "slideInRight 0.4s ease-out forwards",
+        loadingBar: "loadingBar 2.3s ease-in-out forwards",
       },
     },
   },

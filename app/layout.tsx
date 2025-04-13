@@ -7,6 +7,7 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { WalletContextProvider } from "@/components/wallet-provider-adapter"
 import { WalletModalProvider } from "@/hooks/use-wallet-modal"
+import { IntroScreen } from "@/components/intro-screen"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const bangers = Bangers({ weight: "400", subsets: ["latin"], variable: "--font-bangers" })
@@ -29,6 +30,7 @@ export default function RootLayout({
           <WalletContextProvider>
             <WalletModalProvider>
               <div className="flex min-h-screen flex-col">
+                <IntroScreen />
                 <Navbar />
                 <main className="flex-1">{children}</main>
                 <Footer />
@@ -41,5 +43,3 @@ export default function RootLayout({
   )
 }
 
-
-import './globals.css'
