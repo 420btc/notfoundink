@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Bangers } from "next/font/google"
+import Image from "next/image"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/navbar"
@@ -33,6 +34,24 @@ export default function RootLayout({
                 <IntroScreen />
                 <Navbar />
                 <main className="flex-1">{children}</main>
+                
+                {/* Banner con logo y línea divisoria */}
+                <div className="relative py-8">
+                  {/* Línea divisoria morada */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue"></div>
+                  
+                  {/* Logo centrado sobre la línea */}
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10">
+                    <Image
+                      src="/images/notfoundink.png"
+                      alt="Not Found Ink Logo"
+                      width={200}
+                      height={100}
+                      className="mb-1" /* Ajusta el margen para que encaje perfectamente con la línea */
+                    />
+                  </div>
+                </div>
+                
                 <Footer />
               </div>
             </WalletModalProvider>

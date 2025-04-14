@@ -7,10 +7,10 @@ export function IntroScreen() {
   const [show, setShow] = useState(true)
 
   useEffect(() => {
-    // Ocultar la pantalla de intro después de 2.5 segundos
+    // Ocultar la pantalla de intro después de 3 segundos
     const timer = setTimeout(() => {
       setShow(false)
-    }, 2500)
+    }, 3000)
 
     // Guardar en localStorage que ya se mostró la intro para no mostrarla de nuevo en la misma sesión
     if (!localStorage.getItem("introShown")) {
@@ -24,14 +24,23 @@ export function IntroScreen() {
     <>
       {show && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black overflow-hidden animate-fadeOut"
-          style={{ animationDelay: '2s', animationDuration: '0.5s', animationFillMode: 'forwards' }}
+          className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden animate-fadeOut"
+          style={{ animationDelay: '2.5s', animationDuration: '0.5s', animationFillMode: 'forwards' }}
         >
-          {/* Fondo con efectos */}
+          {/* GIF animado como fondo */}
           <div className="absolute inset-0 overflow-hidden">
-            {/* Círculos animados en el fondo */}
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-nfi-yellow/10 rounded-full filter blur-3xl animate-pulse-slow"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-nfi-pink/10 rounded-full filter blur-3xl animate-pulse-medium"></div>
+            <div className="absolute inset-0 w-full h-full">
+              <Image
+                src="/images/introgif.gif"
+                alt="Not Found Ink Animation"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            
+            {/* Capa de oscurecimiento para mejorar legibilidad */}
+            <div className="absolute inset-0 bg-black/40"></div>
             
             {/* Estrellas animadas */}
             <div className="absolute top-1/3 left-1/5 text-5xl animate-float-slow">✨</div>
@@ -39,9 +48,6 @@ export function IntroScreen() {
             <div className="absolute top-2/3 left-1/3 text-3xl animate-float-fast">✨</div>
             <div className="absolute bottom-1/4 left-1/4 text-4xl animate-float-slow">✨</div>
             <div className="absolute top-1/4 right-1/4 text-3xl animate-float-medium">✨</div>
-            
-            {/* Líneas de grid para efecto cyberpunk */}
-            <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
           </div>
           
           {/* Contenido central con animación */}
@@ -91,7 +97,7 @@ export function IntroScreen() {
               <div className="w-32 h-1 bg-gray-700 rounded-full overflow-hidden">
                 <div 
                   className="h-full bg-gradient-to-r from-nfi-yellow to-nfi-pink animate-loadingBar"
-                  style={{ animationDuration: '2.3s', animationFillMode: 'forwards' }}
+                  style={{ animationDuration: '2.8s', animationFillMode: 'forwards' }}
                 />
               </div>
             </div>
