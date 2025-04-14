@@ -6,6 +6,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { FooterLogo } from "@/components/footer-logo"
 import { WalletContextProvider } from "@/components/wallet-provider-adapter"
 import { WalletModalProvider } from "@/hooks/use-wallet-modal"
 import { IntroScreen } from "@/components/intro-screen"
@@ -35,22 +36,8 @@ export default function RootLayout({
                 <Navbar />
                 <main className="flex-1">{children}</main>
                 
-                {/* Banner con logo y línea divisoria */}
-                <div className="relative py-8">
-                  {/* Línea divisoria morada */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue"></div>
-                  
-                  {/* Logo centrado sobre la línea */}
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10">
-                    <Image
-                      src="/images/notfoundink.png"
-                      alt="Not Found Ink Logo"
-                      width={200}
-                      height={100}
-                      className="mb-1" /* Ajusta el margen para que encaje perfectamente con la línea */
-                    />
-                  </div>
-                </div>
+                {/* Componente FooterLogo que solo se muestra en la página principal */}
+                <FooterLogo />
                 
                 <Footer />
               </div>
