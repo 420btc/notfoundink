@@ -30,8 +30,7 @@ export default function CollectionPage() {
         </h1>
       </div>
       <p className="text-lg mb-8 max-w-3xl">
-        Explora la colección completa de 100 NFTs únicos creados por Ana María. Cada pieza combina el estilo de Los
-        Simpson, Futurama y Shin Chan con elementos japoneses. <span className="text-nfi-pink text-sm">✨</span>
+        Explora la colección completa de 100 NFTs únicos creados por Ana María. Cada obra es irrepetible y ha sido concebida para transmitir una identidad propia, fusionando creatividad, humor y un enfoque artístico contemporáneo. <span className="text-nfi-pink text-sm">✨</span>
       </p>
 
       {/* Filtros y búsqueda */}

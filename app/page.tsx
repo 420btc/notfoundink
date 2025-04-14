@@ -308,8 +308,8 @@ export default function Home() {
             <Image
               src="/images/shin-chan-standing.jpeg"
               alt="Shin Chan"
-              width={120}
-              height={160}
+              width={90}
+              height={120}
               className="animate-float-slow"
             />
             <span className="absolute top-0 right-0 text-xl animate-float-fast">✨</span>

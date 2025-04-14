@@ -31,8 +31,7 @@ export default function ArtistPage() {
             Ana María <span className="text-sm">✨</span>
           </h2>
           <p className="text-lg mb-4">
-            Ana María es una ilustradora con un estilo único que mezcla la estética de Los Simpson, Futurama y Shin Chan
-            con elementos de la cultura japonesa, creando piezas que son a la vez nostálgicas y contemporáneas.
+            Ana María es una ilustradora con una visión artística distintiva, capaz de crear obras que destacan por su originalidad y carácter propio. Su trabajo invita a explorar nuevas perspectivas a través de la creatividad, el color y el humor, logrando piezas que conectan con el público de manera auténtica y contemporánea.
           </p>
           <p className="text-lg mb-6">
             Su trabajo se caracteriza por líneas limpias, mensajes profundos y un sentido del humor que conecta con
