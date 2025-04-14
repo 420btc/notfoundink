@@ -16,6 +16,7 @@ const config: Config = {
         "2xl": "1400px",
       },
     },
+    // Restaurado a fuentes por defecto de Tailwind
     extend: {
       colors: {
         border: "hsl(var(--border))",

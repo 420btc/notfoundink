@@ -6,6 +6,47 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Estilos para párrafos destacados */
+.text-highlight {
+  background-image: linear-gradient(90deg, #FDD835 0%, #EC407A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+/* Variante con borde */
+.text-highlight-border {
+  background: linear-gradient(90deg, #FDD835 0%, #EC407A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+  text-shadow: 0px 0px 20px rgba(236, 64, 122, 0.3);
+  letter-spacing: 0.02em;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.text-highlight-border::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #FDD835 0%, #EC407A 100%);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+/* body {
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -91,4 +132,16 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Animaciones para bordes con gradiente */
+@keyframes border-shine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-border-shine {
+  background-size: 200% auto;
+  animation: border-shine 3s ease infinite;
 }

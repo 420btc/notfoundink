@@ -36,6 +36,76 @@ const nftsData = {
     owner: "Ana María",
     created: "2025-03-17",
   },
+  "4": {
+    id: 4,
+    title: "Mariposas ✨",
+    description:
+      "Una representación delicada de la belleza y la transformación, simbolizada por mariposas que rodean al personaje principal.",
+    image: "/images/butterflies.png",
+    price: 1.3,
+    owner: "Ana María",
+    created: "2025-03-18",
+  },
+  "5": {
+    id: 5,
+    title: "Corazón",
+    description:
+      "Una interpretación de Shin Chan que explora el tema del amor y la amistad con el estilo característico de Ana María.",
+    image: "/images/shin-chan.png",
+    price: 1.6,
+    owner: "Ana María",
+    created: "2025-03-19",
+  },
+  "6": {
+    id: 6,
+    title: "Empieza Ahora",
+    description:
+      "Un homenaje a Homer Simpson frente a la computadora, recordando que nunca es tarde para comenzar algo nuevo.",
+    image: "/images/homer-computer.png",
+    price: 1.4,
+    owner: "Ana María",
+    created: "2025-03-20",
+  },
+  "7": {
+    id: 7,
+    title: "Skull ✨",
+    description:
+      "Una calavera estilizada que combina elementos de la cultura pop con un mensaje sobre la fugacidad de la vida.",
+    image: "/images/skull.png",
+    price: 2.0,
+    owner: "Ana María",
+    created: "2025-03-21",
+  },
+  "8": {
+    id: 8,
+    title: "TV Off",
+    description:
+      "Lisa Simpson nos invita a apagar la televisión y explorar el mundo real, con un mensaje sobre la desconexión digital.",
+    image: "/images/lisa-tv.png",
+    price: 1.7,
+    owner: "Ana María",
+    created: "2025-03-22",
+  },
+  "9": {
+    id: 9,
+    title: "Figura",
+    description:
+      "Una silueta enigmática que invita al espectador a completar la historia con su propia interpretación.",
+    image: "/images/figure.png",
+    price: 1.9,
+    owner: "Ana María",
+    created: "2025-03-23",
+  },
+  "10": {
+    id: 10,
+    title: "Perrito ✨",
+    description:
+      "Un adorable perro con el estilo característico de Ana María, simbolizando la lealtad y la amistad incondicional.",
+    image: "/images/dog.png",
+    price: 1.5,
+    owner: "Ana María",
+    created: "2025-03-24",
+  },
   "11": {
     id: 11,
     title: "Hago que parezca fácil ✨",

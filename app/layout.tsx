@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={`${inter.variable} ${bangers.variable} font-sans`}>
+      <body className={`${inter.variable} ${bangers.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <WalletContextProvider>
             <WalletModalProvider>

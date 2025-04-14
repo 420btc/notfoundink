@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Twitter, Instagram, ExternalLink } from "lucide-react"
+import { Carousel } from "@/components/carousel"
 
 export default function ArtistPage() {
   return (
@@ -73,12 +74,39 @@ export default function ArtistPage() {
         </div>
       </div>
 
-      <div className="relative text-center mb-6">
-        <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-2xl animate-float-medium">✨</span>
-        <h2 className="font-cartoon text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
-          Inspiración
-        </h2>
-      </div>
+      {/* Sección: Obras Destacadas */}
+      <section className="py-16 bg-white relative overflow-hidden mb-16 rounded-xl">
+        <div className="absolute inset-0 rounded-xl p-[3px] bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-yellow animate-border-shine">
+          <div className="absolute inset-0 rounded-[calc(0.75rem-1px)] bg-white"></div>
+        </div>
+        <div className="absolute -z-10 inset-0 bg-cartoon-pattern opacity-5"></div>
+        <div className="absolute -z-10 inset-0 bg-gradient-to-br from-nfi-yellow/5 to-nfi-pink/5 rounded-xl"></div>
+        <div className="container relative z-10">
+          <div className="relative text-center mb-10">
+            <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-3xl animate-float-medium">
+              ✨
+            </span>
+            <h2 className="font-cartoon text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
+              Obras Destacadas
+            </h2>
+          </div>
+          <Carousel 
+            items={[
+              { src: "/images/profesclase.png", title: "Profesor de Clase", category: "Educación" },
+              { src: "/images/buenoluis.png", title: "Bueno Luis", category: "Amistad" },
+              { src: "/images/parejita.png", title: "Parejita", category: "Amor" },
+              { src: "/images/mihermano.png", title: "Mi Hermano", category: "Familia" },
+              { src: "/images/sandrita.png", title: "Sandrita", category: "Retrato" },
+              { src: "/images/claracuev.png", title: "Clara Cuev", category: "Personaje" },
+              { src: "/images/Screenshot (44).png", title: "You Got This Girl", category: "Motivacional" },
+              { src: "/images/Screenshot (45).png", title: "Nada Se Pierde", category: "Reflexión" },
+              { src: "/images/Screenshot (46).png", title: "No Time For Negativity", category: "Positivismo" },
+              { src: "/images/Screenshot (47).png", title: "Here Comes The Sun", category: "Inspiración" },
+            ]}
+            itemsPerView={4}
+          />
+        </div>
+      </section>
 
       {/* Sticker de encendedor y bolígrafo */}
       <div className="absolute top-[32rem] right-10 md:right-20 w-20 md:w-24 h-auto transform rotate-6 z-10 animate-float-medium">
@@ -89,6 +117,13 @@ export default function ArtistPage() {
           height={150}
           className="drop-shadow-lg"
         />
+      </div>
+
+      <div className="relative text-center mb-6 mt-16">
+        <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-2xl animate-float-medium">✨</span>
+        <h2 className="font-cartoon text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
+          Inspiración
+        </h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-16">

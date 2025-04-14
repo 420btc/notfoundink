@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { VideoPlayer } from "@/components/video-player"
+import { Carousel } from "@/components/carousel"
 
 export default function Home() {
   return (
@@ -38,8 +39,7 @@ export default function Home() {
 
           <div className="container mx-auto mt-6 sm:mt-8 md:mt-10 px-4 sm:px-6">
             <p className="text-xl md:text-2xl max-w-2xl mx-auto text-center mb-8">
-              Colección de 100 NFTs únicos con el estilo inconfundible de Ana María, mezclando Los Simpson, Futurama y
-              Shin Chan con toques japoneses. <span className="text-nfi-pink">✨</span>
+              Una <span className="text-nfi-yellow">serie</span> de 100 NFTs exclusivos con el distintivo estilo de Ana María, combinando <a href="https://www.instagram.com/thesimpsons/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-pink hover:underline">Los Simpson</a>, <a href="https://www.instagram.com/futuramaonhulu/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-blue hover:underline">Futurama</a> y <a href="https://www.instagram.com/shinchan_es_oficial/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-purple hover:underline">Shin Chan</a> con elementos japoneses. <span className="text-nfi-pink">✨</span>
             </p>
 
             <div className="flex flex-col items-center mt-12 mb-16">
@@ -180,6 +180,36 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Obras Destacadas */}
+      <section className="py-16 bg-gradient-to-b from-nfi-purple/5 to-background/80 relative overflow-hidden mb-16 rounded-xl">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-nfi-purple/10 via-transparent to-transparent"></div>
+        <div className="container relative z-10">
+          <div className="relative text-center mb-10">
+            <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-3xl animate-float-medium">
+              ✨
+            </span>
+            <h2 className="font-cartoon text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
+              Obras Destacadas
+            </h2>
+          </div>
+          <Carousel 
+            items={[
+              { src: "/images/profesclase.png", title: "Profesor de Clase", category: "Educación" },
+              { src: "/images/buenoluis.png", title: "Bueno Luis", category: "Amistad" },
+              { src: "/images/parejita.png", title: "Parejita", category: "Amor" },
+              { src: "/images/mihermano.png", title: "Mi Hermano", category: "Familia" },
+              { src: "/images/sandrita.png", title: "Sandrita", category: "Retrato" },
+              { src: "/images/claracuev.png", title: "Clara Cuev", category: "Personaje" },
+              { src: "/images/Screenshot (44).png", title: "You Got This Girl", category: "Motivacional" },
+              { src: "/images/Screenshot (45).png", title: "Nada Se Pierde", category: "Reflexión" },
+              { src: "/images/Screenshot (46).png", title: "No Time For Negativity", category: "Positivismo" },
+              { src: "/images/Screenshot (47).png", title: "Here Comes The Sun", category: "Inspiración" },
+            ]}
+            itemsPerView={4}
+          />
         </div>
       </section>
 

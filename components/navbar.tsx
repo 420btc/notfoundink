@@ -31,7 +31,7 @@ export function Navbar() {
             <Link
               key={route.href}
               href={route.href}
-              className={`text-lg font-medium transition-colors hover:text-nfi-blue ${
+              className={`text-lg font-semibold transition-colors hover:text-nfi-blue ${
                 pathname === route.href ? "text-nfi-pink" : "text-foreground"
               }`}
             >
@@ -52,7 +52,7 @@ export function Navbar() {
               <Link
                 key={route.href}
                 href={route.href}
-                className={`text-lg font-medium transition-colors hover:text-nfi-blue ${
+                className={`text-lg font-semibold transition-colors hover:text-nfi-blue ${
                   pathname === route.href ? "text-nfi-pink" : "text-foreground"
                 }`}
                 onClick={() => setIsOpen(false)}
