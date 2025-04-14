@@ -178,7 +178,7 @@ export default function NFTDetailPage({ params }: { params: { id: string } }) {
                     </div>
                     <CardContent className="p-4">
                       <div className="flex justify-between items-center">
-                        <h3 className="font-cartoon text-lg">{relatedNft.title}</h3>
+                        <h3 className="font-cartoon text-base md:text-lg">{relatedNft.title}</h3>
                         <p className="text-sm font-medium">{relatedNft.price} SOL</p>
                       </div>
                     </CardContent>

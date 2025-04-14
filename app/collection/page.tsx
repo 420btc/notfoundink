@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { ParallaxImage } from '@/components/EFFECTS/Parallax/ParallaxImage'
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -46,21 +47,21 @@ export default function CollectionPage() {
       </div>
 
       {/* Grid de NFTs */}
-      <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-5 lg:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
         {nfts.map((nft) => (
-          <Link href={`/nft/${nft.id}`} key={nft.id} className="transform transition-all duration-300 hover:scale-105">
-            <div className="relative group">
+          <Link href={`/nft/${nft.id}`} key={nft.id} className="block transform transition-all duration-300 hover:scale-105">
+            <div className="relative group w-full">
               <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0 overflow-hidden">
-                <div className="aspect-square relative overflow-hidden">
-                  <Image src={nft.image || "/placeholder.svg"} alt={nft.title} fill className="object-cover" />
+              <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0 overflow-hidden w-full h-full flex flex-col">
+                <div className="relative overflow-hidden aspect-square">
+                  <ParallaxImage src={nft.image || "/placeholder.svg"} alt={nft.title} className="object-contain rounded-xl" />
                   {nft.title.includes("✨") && (
                     <span className="absolute top-2 right-2 text-lg animate-float-fast">✨</span>
                   )}
                 </div>
-                <CardContent className="p-4">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-cartoon text-lg">{nft.title}</h3>
+                <CardContent className="p-4 bg-white dark:bg-gray-900">
+                  <div className="flex justify-between items-center h-full">
+                    <h3 className="font-cartoon text-base md:text-lg">{nft.title}</h3>
                     <p className="text-sm font-medium">{nft.price} SOL</p>
                   </div>
                 </CardContent>

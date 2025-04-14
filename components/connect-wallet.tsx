@@ -66,15 +66,16 @@ export function ConnectWallet() {
 
   // Obtener el icono de la wallet conectada
   const getWalletIcon = () => {
-    if (!wallet) return "/images/solana-icon.png"
-    
-    const walletName = wallet.adapter.name.toLowerCase()
+    if (!wallet) return "/images/solana-sol.png";
+    const walletName = wallet.adapter.name.toLowerCase();
     if (walletName.includes("phantom")) {
-      return "/images/phantom-icon.png"
+      return "/images/phantom3506.jpg";
     } else if (walletName.includes("solflare")) {
-      return "/images/solflare-icon.png"
+      return "/images/6323b698c42eaa7561f81542_public.png";
+    } else if (walletName.includes("brave")) {
+      return "/images/brave-logo-dark.png";
     } else {
-      return "/images/solana-icon.png"
+      return "/images/solana-sol.png";
     }
   }
 
@@ -145,10 +146,15 @@ export function ConnectWallet() {
       <DialogContent className="sm:max-w-md bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 border-nfi-yellow/30 dark:border-nfi-yellow/20 shadow-xl">
         <DialogHeader>
           <div className="flex flex-col items-center">
-            <div className="relative w-16 h-16 mb-2">
+            <div className="relative w-40 h-40 mb-4">
               <div className="absolute inset-0 bg-gradient-to-r from-nfi-yellow to-nfi-pink rounded-full animate-pulse-slow blur-md"></div>
-              <div className="relative w-full h-full flex items-center justify-center bg-white dark:bg-gray-900 rounded-full border-2 border-nfi-yellow">
-                <Image src="/images/solana-icon.png" alt="Solana" width={32} height={32} className="object-contain" />
+              <div className="relative w-full h-full flex items-center justify-center bg-black rounded-full border-2 border-nfi-yellow overflow-hidden p-0">
+                <Image 
+                  src="/images/solana-sol.png" 
+                  alt="Solana" 
+                  fill 
+                  className="object-cover" 
+                />
               </div>
             </div>
             <DialogTitle className="font-cartoon text-3xl text-center mb-2 bg-gradient-to-r from-nfi-yellow to-nfi-pink bg-clip-text text-transparent">Conecta tu Wallet</DialogTitle>
@@ -161,45 +167,54 @@ export function ConnectWallet() {
         {/* Wallets instaladas */}
         {installedWallets.length > 0 && (
           <div className="grid grid-cols-1 gap-4 py-4">
-            {installedWallets.map((wallet) => {
-              const isPhantom = wallet.adapter.name.toLowerCase().includes("phantom");
-              const isSolflare = wallet.adapter.name.toLowerCase().includes("solflare");
-              const walletIcon = isPhantom ? "/images/phantom-icon.png" : 
-                                isSolflare ? "/images/solflare-icon.png" : 
-                                "/images/solana-icon.png";
-              const gradientColors = isPhantom ? "from-[#AB9FF2] to-[#4C3EF7]" : 
-                                    isSolflare ? "from-[#FE8F1F] to-[#FE5F1F]" : 
-                                    "from-nfi-yellow to-nfi-pink";
-              
-              return (
-                <div key={wallet.adapter.name} className="relative group transition-all duration-300 transform hover:scale-[1.02]">
-                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${gradientColors} rounded-xl blur-sm opacity-75 group-hover:opacity-100 group-hover:blur-md transition duration-300`}></div>
-                  <Button
-                    variant="outline"
-                    className="relative w-full h-auto py-4 flex items-center gap-4 border-none bg-white dark:bg-gray-900 rounded-lg"
-                    onClick={() => handleWalletSelect(wallet.adapter.name)}
-                  >
-                    <div className="w-12 h-12 relative flex-shrink-0">
-                      <Image 
-                        src={walletIcon}
-                        alt={wallet.adapter.name} 
-                        fill 
-                        className="object-contain p-1" 
-                      />
-                    </div>
-                    <div className="flex flex-col items-start">
-                      <span className="font-bold text-lg">{wallet.adapter.name}</span>
-                      <span className="text-xs text-muted-foreground">
-                        Conectar ahora
-                      </span>
-                    </div>
-                    <div className="ml-auto bg-gradient-to-r from-green-400 to-green-500 text-white text-xs font-medium px-2 py-1 rounded-full">
-                      Instalado
-                    </div>
-                  </Button>
-                </div>
-              );
-            })}
+            {installedWallets
+              .filter(wallet => {
+                const name = wallet.adapter.name.toLowerCase();
+                return name.includes("phantom") || name.includes("solflare") || name.includes("brave");
+              })
+              .map((wallet) => {
+                const name = wallet.adapter.name.toLowerCase();
+                let walletIcon = "/images/solana-sol.png";
+                let gradientColors = "from-nfi-yellow to-nfi-pink";
+                if (name.includes("phantom")) {
+                  walletIcon = "/images/phantom3506.jpg";
+                  gradientColors = "from-[#AB9FF2] to-[#4C3EF7]";
+                } else if (name.includes("solflare")) {
+                  walletIcon = "/images/6323b698c42eaa7561f81542_public.png";
+                  gradientColors = "from-[#FE8F1F] to-[#FE5F1F]";
+                } else if (name.includes("brave")) {
+                  walletIcon = "/images/brave-logo-dark.png";
+                  gradientColors = "from-orange-400 to-orange-600";
+                }
+                return (
+                  <div key={wallet.adapter.name} className="relative group transition-all duration-300 transform hover:scale-[1.02]">
+                    <div className={`absolute -inset-0.5 bg-gradient-to-r ${gradientColors} rounded-xl blur-sm opacity-75 group-hover:opacity-100 group-hover:blur-md transition duration-300`}></div>
+                    <Button
+                      variant="outline"
+                      className="relative w-full h-auto py-5 flex items-center gap-5 border-none bg-white dark:bg-gray-900 rounded-lg shadow-sm"
+                      onClick={() => handleWalletSelect(wallet.adapter.name)}
+                    >
+                      <div className="w-14 h-14 relative flex-shrink-0 ml-1">
+                        <Image 
+                          src={walletIcon}
+                          alt={wallet.adapter.name} 
+                          fill 
+                          className="object-contain p-0.5" 
+                        />
+                      </div>
+                      <div className="flex flex-col items-start">
+                        <span className="font-bold text-xl">{wallet.adapter.name}</span>
+                        <span className="text-xs text-muted-foreground">
+                          Conectar ahora
+                        </span>
+                      </div>
+                      <div className="ml-auto bg-gradient-to-r from-green-400 to-green-500 text-white text-xs font-medium px-3 py-1.5 rounded-full mr-2">
+                        Instalado
+                      </div>
+                    </Button>
+                  </div>
+                );
+              })}
           </div>
         )}
         
@@ -207,39 +222,51 @@ export function ConnectWallet() {
         {notInstalledWallets.length > 0 && (
           <div className="grid grid-cols-1 gap-4 py-4">
             {notInstalledWallets
-              .filter(wallet => 
-                wallet.adapter.name.toLowerCase().includes("phantom") || 
-                wallet.adapter.name.toLowerCase().includes("solflare")
-              )
+              .filter(wallet => {
+                const name = wallet.adapter.name.toLowerCase();
+                return name.includes("phantom") || name.includes("solflare") || name.includes("brave");
+              })
               .map((wallet) => {
-                const isPhantom = wallet.adapter.name.toLowerCase().includes("phantom");
-                const walletIcon = isPhantom ? "/images/phantom-icon.png" : "/images/solflare-icon.png";
-                const walletUrl = isPhantom ? "https://phantom.app/" : "https://solflare.com/";
-                const gradientColors = isPhantom ? "from-[#AB9FF2] to-[#4C3EF7]" : "from-[#FE8F1F] to-[#FE5F1F]";
-                
+                const name = wallet.adapter.name.toLowerCase();
+                let walletIcon = "/images/solana-sol.png";
+                let walletUrl = "https://solana.com/";
+                let gradientColors = "from-nfi-yellow to-nfi-pink";
+                if (name.includes("phantom")) {
+                  walletIcon = "/images/phantom3506.jpg";
+                  walletUrl = "https://phantom.app/";
+                  gradientColors = "from-[#AB9FF2] to-[#4C3EF7]";
+                } else if (name.includes("solflare")) {
+                  walletIcon = "/images/6323b698c42eaa7561f81542_public.png";
+                  walletUrl = "https://solflare.com/";
+                  gradientColors = "from-[#FE8F1F] to-[#FE5F1F]";
+                } else if (name.includes("brave")) {
+                  walletIcon = "/images/brave-logo-dark.png";
+                  walletUrl = "https://brave.com/wallet/";
+                  gradientColors = "from-orange-400 to-orange-600";
+                }
                 return (
                   <div key={wallet.adapter.name} className="relative group transition-all duration-300 transform hover:scale-[1.02]">
                     <div className={`absolute -inset-0.5 bg-gradient-to-r ${gradientColors} rounded-xl blur-sm opacity-75 group-hover:opacity-100 group-hover:blur-md transition duration-300`}></div>
                     <Button
                       variant="outline"
-                      className="relative w-full h-auto py-4 flex items-center gap-4 border-none bg-white dark:bg-gray-900 rounded-lg"
+                      className="relative w-full h-auto py-5 flex items-center gap-5 border-none bg-white dark:bg-gray-900 rounded-lg shadow-sm"
                       onClick={() => handleExternalWalletClick(walletUrl)}
                     >
-                      <div className="w-12 h-12 relative flex-shrink-0">
+                      <div className="w-14 h-14 relative flex-shrink-0 ml-1">
                         <Image 
                           src={walletIcon}
                           alt={wallet.adapter.name} 
                           fill 
-                          className="object-contain p-1" 
+                          className="object-contain p-0.5" 
                         />
                       </div>
                       <div className="flex flex-col items-start">
-                        <span className="font-bold text-lg">{wallet.adapter.name}</span>
+                        <span className="font-bold text-xl">{wallet.adapter.name}</span>
                         <span className="text-xs text-muted-foreground flex items-center gap-1">
                           Visitar sitio web oficial
                         </span>
                       </div>
-                      <div className="ml-auto flex items-center gap-1 bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded-full">
+                      <div className="ml-auto flex items-center gap-1.5 bg-blue-500 text-white text-xs font-medium px-3 py-1.5 rounded-full mr-2">
                         <ExternalLink className="h-3 w-3" /> Instalar
                       </div>
                     </Button>
@@ -257,19 +284,19 @@ export function ConnectWallet() {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-[#AB9FF2] to-[#4C3EF7] rounded-xl blur-sm opacity-75 group-hover:opacity-100 group-hover:blur-md transition duration-300"></div>
               <Button
                 variant="outline"
-                className="relative w-full h-auto py-4 flex items-center gap-4 border-none bg-white dark:bg-gray-900 rounded-lg"
+                className="relative w-full h-auto py-5 flex items-center gap-5 border-none bg-white dark:bg-gray-900 rounded-lg shadow-sm"
                 onClick={() => handleExternalWalletClick("https://phantom.app/")}
               >
-                <div className="w-12 h-12 relative flex-shrink-0">
-                  <Image src="/images/phantom-icon.png" alt="Phantom" fill className="object-contain p-1" />
+                <div className="w-14 h-14 relative flex-shrink-0 ml-1">
+                  <Image src="/images/phantom3506.jpg" alt="Phantom" fill className="object-contain p-0.5" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <span className="font-bold text-lg">Phantom</span>
+                  <span className="font-bold text-xl">Phantom</span>
                   <span className="text-xs text-muted-foreground">
                     La wallet más popular para Solana
                   </span>
                 </div>
-                <div className="ml-auto flex items-center gap-1 bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded-full">
+                <div className="ml-auto flex items-center gap-1.5 bg-blue-500 text-white text-xs font-medium px-3 py-1.5 rounded-full mr-2">
                   <ExternalLink className="h-3 w-3" /> Instalar
                 </div>
               </Button>
@@ -280,42 +307,41 @@ export function ConnectWallet() {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FE8F1F] to-[#FE5F1F] rounded-xl blur-sm opacity-75 group-hover:opacity-100 group-hover:blur-md transition duration-300"></div>
               <Button
                 variant="outline"
-                className="relative w-full h-auto py-4 flex items-center gap-4 border-none bg-white dark:bg-gray-900 rounded-lg"
+                className="relative w-full h-auto py-5 flex items-center gap-5 border-none bg-white dark:bg-gray-900 rounded-lg shadow-sm"
                 onClick={() => handleExternalWalletClick("https://solflare.com/")}
               >
-                <div className="w-12 h-12 relative flex-shrink-0">
-                  <Image src="/images/solflare-icon.png" alt="Solflare" fill className="object-contain p-1" />
+                <div className="w-14 h-14 relative flex-shrink-0 ml-1">
+                  <Image src="/images/6323b698c42eaa7561f81542_public.png" alt="Solflare" fill className="object-contain p-0.5" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <span className="font-bold text-lg">Solflare</span>
+                  <span className="font-bold text-xl">Solflare</span>
                   <span className="text-xs text-muted-foreground">
                     Wallet segura y fácil de usar
                   </span>
                 </div>
-                <div className="ml-auto flex items-center gap-1 bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded-full">
+                <div className="ml-auto flex items-center gap-1.5 bg-blue-500 text-white text-xs font-medium px-3 py-1.5 rounded-full mr-2">
                   <ExternalLink className="h-3 w-3" /> Instalar
                 </div>
               </Button>
             </div>
-            
-            {/* Backpack */}
+            {/* Brave */}
             <div className="relative group transition-all duration-300 transform hover:scale-[1.02]">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#00FFAA] to-[#00BBFF] rounded-xl blur-sm opacity-75 group-hover:opacity-100 group-hover:blur-md transition duration-300"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-400 to-orange-600 rounded-xl blur-sm opacity-75 group-hover:opacity-100 group-hover:blur-md transition duration-300"></div>
               <Button
                 variant="outline"
-                className="relative w-full h-auto py-4 flex items-center gap-4 border-none bg-white dark:bg-gray-900 rounded-lg"
-                onClick={() => handleExternalWalletClick("https://www.backpack.app/")}
+                className="relative w-full h-auto py-5 flex items-center gap-5 border-none bg-white dark:bg-gray-900 rounded-lg shadow-sm"
+                onClick={() => handleExternalWalletClick("https://brave.com/wallet/")}
               >
-                <div className="w-12 h-12 relative flex-shrink-0 flex items-center justify-center">
-                  <Image src="/images/solana-icon.png" alt="Backpack" width={40} height={40} className="object-contain" />
+                <div className="w-14 h-14 relative flex-shrink-0 ml-1">
+                  <Image src="/images/brave-logo-dark.png" alt="Brave" fill className="object-contain p-0.5" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <span className="font-bold text-lg">Backpack</span>
+                  <span className="font-bold text-xl">Brave</span>
                   <span className="text-xs text-muted-foreground">
-                    Nueva wallet con funciones avanzadas
+                    Wallet integrada en el navegador Brave
                   </span>
                 </div>
-                <div className="ml-auto flex items-center gap-1 bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded-full">
+                <div className="ml-auto flex items-center gap-1.5 bg-blue-500 text-white text-xs font-medium px-3 py-1.5 rounded-full mr-2">
                   <ExternalLink className="h-3 w-3" /> Instalar
                 </div>
               </Button>
@@ -323,14 +349,14 @@ export function ConnectWallet() {
           </div>
         )}
         
-        <div className="mt-2 pt-4 border-t border-gray-200 dark:border-gray-800">
+        <div className="mt-4 pt-5 border-t border-gray-200 dark:border-gray-800">
           <p className="text-xs text-center text-muted-foreground">
             Al conectar tu wallet, aceptas los <span className="text-nfi-yellow hover:underline cursor-pointer">términos de servicio</span> y la <span className="text-nfi-pink hover:underline cursor-pointer">política de privacidad</span>.
           </p>
-          <div className="flex justify-center mt-3">
+          <div className="flex justify-center mt-4">
             <div className="flex items-center gap-2 bg-yellow-50 dark:bg-yellow-950/30 border border-yellow-200 dark:border-yellow-900/50 rounded-full px-3 py-1">
               <div className="w-4 h-4 relative flex-shrink-0">
-                <Image src="/images/solana-icon.png" alt="Solana" fill className="object-contain" />
+                <Image src="/images/solana-sol.png" alt="Solana" fill className="object-contain" />
               </div>
               <p className="text-xs font-medium text-yellow-800 dark:text-yellow-400">Conectado a Solana Mainnet</p>
             </div>

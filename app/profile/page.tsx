@@ -207,7 +207,7 @@ export default function ProfilePage() {
             <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow to-nfi-pink rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
             <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0">
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-4">Actividad Reciente</h3>
+                <h3 className="text-base md:text-xl font-bold mb-4">Actividad Reciente</h3>
                 {userNFTs.length > 0 ? (
                   <div className="space-y-4">
                     {userNFTs.map((nft, index) => (

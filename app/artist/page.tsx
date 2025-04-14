@@ -116,7 +116,7 @@ export default function ArtistPage() {
             <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
             <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0">
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <h3 className="text-base md:text-xl font-bold mb-2">{item.title}</h3>
                 <p className="text-muted-foreground mb-4">{item.description}</p>
                 <div className="aspect-video relative rounded-lg overflow-hidden">
                   <Image

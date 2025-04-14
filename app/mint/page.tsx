@@ -129,9 +129,9 @@ export default function MintPage() {
             <p className="text-muted-foreground">Mintea tu NFT de Not Found Ink ahora mismo</p>
             
             {/* Añadimos un banner informativo con estilo mejorado */}
-            <div className="mt-6 p-4 bg-green-900 border-2 border-green-400 rounded-lg max-w-lg mx-auto shadow-lg shadow-green-900/50 animate-pulse-slow relative overflow-hidden">
+            <div className="mt-6 p-4 bg-green-900/90 border-4 border-green-400 rounded-lg max-w-lg mx-auto shadow-xl shadow-green-900/70 animate-pulse-slow relative overflow-hidden ring-2 ring-nfi-pink/70 ring-offset-2 ring-offset-nfi-blue/60 before:content-[''] before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-r before:from-nfi-yellow/30 before:via-nfi-pink/20 before:to-nfi-blue/30 before:blur-xl before:opacity-70 before:pointer-events-none">
               {/* Efecto de brillo neón */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-500/0 via-green-400/30 to-green-500/0 animate-shimmer"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-500/0 via-green-400/30 to-green-500/0 animate-shimmer z-10"></div>
               <p className="text-lg font-medium text-green-300 drop-shadow-md relative z-10 text-center">
                 <span className="font-bold text-green-100">COLECCIÓN ACTIVA</span> - Consigue tu NFT por solo <span className="font-extrabold text-xl text-white drop-shadow-glow">0.20 SOL</span>
               </p>
@@ -263,7 +263,7 @@ export default function MintPage() {
                 ></div>
                 <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0">
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <h3 className="text-base md:text-xl font-bold mb-2">{item.title}</h3>
                     <p className="text-muted-foreground">{item.description}</p>
                     {index === 0 && <span className="absolute top-2 right-2 text-lg animate-float-fast">✨</span>}
                   </CardContent>
