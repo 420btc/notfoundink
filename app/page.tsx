@@ -37,10 +37,14 @@ export default function Home() {
           </div>
 
           <div className="container mx-auto mt-6 sm:mt-8 md:mt-10 px-4 sm:px-6">
-            <p className="text-xl md:text-2xl max-w-2xl mx-auto text-center mb-8">
-              Colección de 100 NFTs únicos con el estilo inconfundible de Ana María, mezclando Los Simpson, Futurama y
-              Shin Chan con toques japoneses. <span className="text-nfi-pink">✨</span>
-            </p>
+            <div className="text-xl md:text-2xl max-w-2xl mx-auto text-center mb-8">
+              <p className="mb-3">
+                Una <span className="text-nfi-yellow">serie</span> de 100 NFTs exclusivos con el distintivo estilo de Ana María, combinando <a href="https://www.instagram.com/thesimpsons/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-pink hover:underline">Los Simpson</a>, <a href="https://www.instagram.com/futuramaonhulu/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-blue hover:underline">Futurama</a> y <a href="https://www.instagram.com/shinchan_es_oficial/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-purple hover:underline">Shin Chan</a> ✨
+              </p>
+              <p className="text-nfi-pink font-semibold mb-3">
+                Repartiendo arte porque esa es mi cualidad ❤‍🔥
+              </p>
+            </div>
 
             <div className="flex flex-col items-center mt-12 mb-16">
               <div className="inline-flex flex-col sm:flex-row gap-4 sm:gap-8 p-4 bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl">
