@@ -11,6 +11,7 @@ import { useCandyMachine } from "@/hooks/use-candy-machine"
 import { SimpleMintButton } from "@/components/simple-mint-button"
 import { GetDevnetSol } from "@/components/get-devnet-sol"
 import { SimpleTransaction } from "@/components/simple-transaction"
+import { SolanaPriceBanner } from "@/components/solana-price-banner"
 
 // Componente para rotar NFTs cada 1.3 segundos
 function NFTRotation() {
@@ -137,24 +138,12 @@ export default function MintPage() {
               </p>
             </div>
             
-            {/* Estadísticas de la colección */}
-            <div className="grid grid-cols-3 gap-4 mt-6 max-w-lg mx-auto">
-              <div className="bg-background/50 p-4 rounded-lg">
-                <p className="text-sm text-muted-foreground">Total</p>
-                <p className="text-2xl font-bold">{itemsAvailable}</p>
-              </div>
-              <div className="bg-background/50 p-4 rounded-lg">
-                <p className="text-sm text-muted-foreground">Minteados</p>
-                <p className="text-2xl font-bold">{itemsRedeemed}</p>
-              </div>
-              <div className="bg-background/50 p-4 rounded-lg">
-                <p className="text-sm text-muted-foreground">Disponibles</p>
-                <p className="text-2xl font-bold">{itemsRemaining}</p>
-                <p className="text-xs text-green-600 dark:text-green-400 animate-pulse">Solo 0.20 SOL</p>
-              </div>
-            </div>
+            {/* Se eliminaron las estadísticas de la colección a petición del usuario */}
           </div>
         </div>
+        
+        {/* Banner del precio de Solana en tiempo real */}
+        <SolanaPriceBanner />
 
         <div className="flex justify-center items-center max-w-4xl mx-auto">
           <div className="w-full max-w-md">
