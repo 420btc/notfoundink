@@ -27,6 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <head>
+        <link rel="icon" type="image/png" href="/favicon.png" sizes="64x64" />
+      </head>
       <body className={`${inter.variable} ${bangers.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <WalletContextProvider>
