@@ -22,10 +22,10 @@ export default function Home() {
               priority
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <div className="bg-black/40 backdrop-blur-sm px-10 py-6 rounded-xl w-auto">
+              <div className="bg-black/40 backdrop-blur-sm px-4 py-3 sm:px-10 sm:py-6 rounded-xl w-auto">
                 <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
                 <span className="absolute -top-4 -right-8 text-3xl animate-float-medium">✨</span>
-                <h1 className="font-cartoon text-5xl md:text-7xl lg:text-8xl tracking-wide text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                <h1 className="font-cartoon text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-wide text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                   <span className="text-nfi-yellow font-bold">Not Found</span>{" "}
                   <span className="text-nfi-pink font-bold">Ink</span>
                 </h1>
