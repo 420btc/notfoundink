@@ -96,6 +96,7 @@ export default function ArtistPage() {
         </div>
         <div className="order-1 md:order-2 flex justify-center p-6">
   {/* Bloque de foto de perfil con efecto lupa */}
+  {/* Bloque de foto de perfil con efecto lupa */}
   {(() => {
     const [zoom, setZoom] = useState(false);
     const [offset, setOffset] = useState({ x: 50, y: 50 });
@@ -111,7 +112,7 @@ export default function ArtistPage() {
     return (
       <div
         ref={imgContainerRef}
-        className={`relative w-80 h-80 rounded-full overflow-hidden animate-float shadow-xl shadow-nfi-pink/30 cursor-zoom-in`}
+        className={`relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden animate-float shadow-xl shadow-nfi-pink/30 cursor-zoom-in mx-auto`}
         onMouseEnter={() => setZoom(true)}
         onMouseLeave={() => setZoom(false)}
         onMouseMove={handleMouseMove}
