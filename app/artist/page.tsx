@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import "../../styles/animate-vibrate.css";
 import "../../styles/animate-explode.css";
+import "../../styles/animate-rotate-slow.css";
 import { Twitter, Instagram, ExternalLink } from "lucide-react"
 import { Carousel } from "@/components/carousel"
 import { VideoPlayer } from "@/components/video-player"
@@ -53,7 +54,7 @@ export default function ArtistPage() {
               rel="noopener noreferrer"
               className="bg-gradient-to-r from-nfi-yellow to-nfi-pink text-white hover:from-nfi-pink hover:to-nfi-yellow transition-all rounded-md h-10 w-10 flex items-center justify-center shadow-md"
             >
-              <Instagram className="h-5 w-5" />
+              <Instagram className="h-5 w-5 animate-rotate-slow" />
               <span className="sr-only">Instagram</span>
             </a>
             {/* Portfolio: igual que conectar wallet */}
