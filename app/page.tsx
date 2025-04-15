@@ -6,6 +6,7 @@ import { ArrowRight, Sparkles } from "lucide-react"
 import { VideoPlayer } from "@/components/video-player"
 import { Carousel } from "@/components/carousel"
 import ClientTypewriterSection from "@/components/ClientTypewriterSection";
+import TypewriterOnView from "@/components/TypewriterOnView";
 
 export default function Home() {
   return (
@@ -117,15 +118,10 @@ export default function Home() {
                   Sobre la Colección
                 </h2>
               </div>
-              <p className="text-lg mb-4">
-                "Not Found Ink" es una colección única de 100 NFTs creados por la talentosa ilustradora Ana María, que
-                fusiona el estilo icónico de Los Simpson y Futurama con la irreverencia de Shin Chan y elementos de la
-                cultura japonesa. <span className="text-nfi-pink text-sm">✨</span>
-              </p>
-              <p className="text-lg mb-6">
-                Cada pieza es única y está disponible exclusivamente en la blockchain de Solana, utilizando un sistema
-                de candy machine para garantizar una distribución justa.
-              </p>
+              <TypewriterOnView text={'"Not Found Ink" es una colección única de 100 NFTs creados por la talentosa ilustradora Ana María, que fusiona el estilo icónico de Los Simpson y Futurama con la irreverencia de Shin Chan y elementos de la cultura japonesa.'} className="text-lg mb-4" as="p">
+  <span className="text-nfi-pink text-sm">✨</span>
+</TypewriterOnView>
+<TypewriterOnView text={'Cada pieza es única y está disponible exclusivamente en la blockchain de Solana, utilizando un sistema de candy machine para garantizar una distribución justa.'} className="text-lg mb-6" as="p" />
               <div className="relative inline-block group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-nfi-blue via-nfi-purple to-nfi-pink rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                 <Button
