@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { ParallaxImage } from '@/components/EFFECTS/Parallax/ParallaxImage'
+import { LupaMagnifier } from '@/components/LupaMagnifier'
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -59,7 +59,7 @@ export default function CollectionPage() {
               <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
               <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0 overflow-hidden w-full h-full flex flex-col">
                 <div className="relative overflow-hidden aspect-square">
-                  <ParallaxImage src={nft.image || "/placeholder.svg"} alt={nft.title} className="object-contain rounded-xl" />
+                  <LupaMagnifier src={nft.image || "/placeholder.svg"} alt={nft.title} className="object-contain rounded-xl" />
                   {nft.title.includes("✨") && (
                     <span className="absolute top-2 right-2 text-lg animate-float-fast">✨</span>
                   )}
