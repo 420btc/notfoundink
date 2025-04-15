@@ -38,7 +38,6 @@ export default function RootLayout({
           <WalletContextProvider>
             <WalletModalProvider>
               <div className="flex min-h-screen flex-col">
-                <IntroScreen />
                 <Navbar />
                 <main className="flex-1">{children}</main>
                 

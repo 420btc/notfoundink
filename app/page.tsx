@@ -8,10 +8,14 @@ import { Carousel } from "@/components/carousel"
 import ClientTypewriterSection from "@/components/ClientTypewriterSection";
 import TypewriterOnView from "@/components/TypewriterOnView";
 
+import { IntroScreen } from "@/components/intro-screen";
+
 export default function Home() {
   return (
-    <div className="flex flex-col bg-gradient-to-b from-nfi-purple/5 to-background">
-      {/* Hero Section */}
+    <>
+      <IntroScreen />
+      <div className="flex flex-col bg-gradient-to-b from-nfi-purple/5 to-background">
+        {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="container-fluid p-0 relative z-10">
           <div className="relative w-full">
@@ -344,5 +348,6 @@ export default function Home() {
         </div>
       </div>
     </div>
+    </>
   );
 }
