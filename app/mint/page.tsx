@@ -233,6 +233,7 @@ export default function MintPage() {
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+  {/* Forzar altura igual en todos los cuadrados */}
             {[
               {
                 title: "Colección Activa ✨",
@@ -257,8 +258,8 @@ export default function MintPage() {
                 <div
                   className={`absolute -inset-1 bg-gradient-to-r from-${item.color} to-${item.color}/50 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200`}
                 ></div>
-                <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0">
-                  <CardContent className="p-6">
+                <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0 h-full">
+                  <CardContent className="p-6 h-full min-h-[200px] flex flex-col justify-between">
                     <h3 className="text-base md:text-xl font-bold mb-2">{item.title}</h3>
                     <p className="text-muted-foreground">{item.description}</p>
                     {index === 0 && <span className="absolute top-2 right-2 text-lg animate-float-fast">✨</span>}

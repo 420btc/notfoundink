@@ -9,6 +9,28 @@ export function SolanaPriceBanner() {
   const [error, setError] = useState<string | null>(null)
   const [lastUpdate, setLastUpdate] = useState<string>("")
 
+  // Permitir actualización manual
+  const fetchSolanaPrice = async () => {
+    try {
+      setLoading(true)
+      const response = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT')
+      if (!response.ok) {
+        throw new Error('Error al obtener el precio de Solana')
+      }
+      const data = await response.json()
+      const formattedPrice = parseFloat(data.price).toFixed(2)
+      setPrice(formattedPrice)
+      setError(null)
+      setLastUpdate(new Date().toLocaleTimeString())
+    } catch (err) {
+      console.error('Error fetching Solana price:', err)
+      setError('No se pudo obtener el precio actual')
+      setPrice(null)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   useEffect(() => {
     const fetchSolanaPrice = async () => {
       try {
@@ -48,7 +70,7 @@ export function SolanaPriceBanner() {
       <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-nfi-blue/10 via-nfi-purple/20 to-nfi-blue/10 p-6 shadow-xl border border-nfi-purple/30">
         {/* Efecto de brillo */}
         <div className="absolute inset-0 bg-gradient-to-r from-nfi-blue/0 via-nfi-purple/20 to-nfi-blue/0 animate-shimmer"></div>
-        
+
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="relative w-12 h-12 md:w-16 md:h-16">
@@ -68,8 +90,7 @@ export function SolanaPriceBanner() {
               </p>
             </div>
           </div>
-          
-          <div className="text-center md:text-right">
+          <div className="flex flex-col items-center md:items-end">
             {loading ? (
               <div className="animate-pulse">
                 <div className="h-8 w-32 bg-nfi-purple/20 rounded"></div>
@@ -78,18 +99,26 @@ export function SolanaPriceBanner() {
             ) : error ? (
               <p className="text-red-500">{error}</p>
             ) : (
-              <>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={fetchSolanaPrice}
+                  disabled={loading}
+                  aria-label="Actualizar precio"
+                  className="bg-nfi-yellow hover:bg-nfi-pink text-nfi-blue font-bold rounded-full p-2 shadow transition-all disabled:opacity-60 disabled:pointer-events-none flex items-center justify-center"
+                  style={{ width: 36, height: 36 }}
+                >
+                  <span className={`text-xl ${loading ? 'animate-spin' : ''}`} role="img" aria-label="Actualizar">🔄</span>
+                </button>
                 <p className="font-cartoon text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
                   ${price} USD
                 </p>
-                <p className="text-sm text-muted-foreground">
-                  {lastUpdate}
-                </p>
-              </>
+              </div>
             )}
+            <p className="text-sm text-muted-foreground">
+              {lastUpdate}
+            </p>
           </div>
         </div>
-        
         {/* Estrellas decorativas */}
         <span className="absolute top-2 right-2 text-xl animate-float-slow">✨</span>
         <span className="absolute bottom-2 left-2 text-lg animate-float-medium">✨</span>
