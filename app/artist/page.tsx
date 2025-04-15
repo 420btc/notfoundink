@@ -41,29 +41,36 @@ export default function ArtistPage() {
             artística en 100 piezas únicas.
           </p>
           <div className="flex gap-4">
-            <Button asChild variant="outline" size="icon">
-              <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="icon">
-              <Link href="https://www.instagram.com/notfoundink/" target="_blank" rel="noopener noreferrer">
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link
-                href="https://www.instagram.com/notfoundink/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                <ExternalLink className="h-4 w-4" />
-                Portfolio
-              </Link>
-            </Button>
+            {/* Twitter: azul */}
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#1DA1F2] text-white hover:bg-[#1A8CD8] transition-all rounded-md h-10 w-10 flex items-center justify-center shadow-md"
+            >
+              <Twitter className="h-5 w-5" />
+              <span className="sr-only">Twitter</span>
+            </a>
+            {/* Instagram: degradado amarillo-rosa */}
+            <a
+              href="https://www.instagram.com/notfoundink/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-nfi-yellow to-nfi-pink text-white hover:from-nfi-pink hover:to-nfi-yellow transition-all rounded-md h-10 w-10 flex items-center justify-center shadow-md"
+            >
+              <Instagram className="h-5 w-5" />
+              <span className="sr-only">Instagram</span>
+            </a>
+            {/* Portfolio: igual que conectar wallet */}
+            <a
+              href="https://portfolio.notfoundink.com" // Cambia por tu URL real
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-nfi-yellow to-nfi-pink text-white hover:from-nfi-pink hover:to-nfi-yellow transition-all rounded-md h-10 w-28 flex items-center justify-center shadow-md font-bold text-sm gap-2"
+            >
+              <ExternalLink className="h-4 w-4" />
+              Portfolio
+            </a>
           </div>
         </div>
         <div className="order-1 md:order-2 flex justify-center p-6">
