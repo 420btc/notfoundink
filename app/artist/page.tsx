@@ -14,16 +14,6 @@ export default function ArtistPage() {
         <h1 className="font-cartoon text-4xl md:text-5xl">La Artista</h1>
       </div>
 
-      {/* Sticker de encendedor rosa */}
-      <div className="absolute top-24 right-8 md:right-16 w-16 md:w-20 h-auto transform rotate-12 z-10 animate-float-medium">
-        <Image
-          src="/images/pink-lighter.jpeg"
-          alt="Sticker encendedor"
-          width={100}
-          height={200}
-          className="drop-shadow-lg"
-        />
-      </div>
 
       <div className="grid md:grid-cols-2 gap-10 items-center mb-16 relative">
         <div className="absolute -z-10 inset-0 bg-gradient-to-br from-nfi-yellow/10 to-nfi-pink/10 rounded-xl"></div>
@@ -62,15 +52,13 @@ export default function ArtistPage() {
               <span className="sr-only">Instagram</span>
             </a>
             {/* Portfolio: igual que conectar wallet */}
-            <a
-              href="https://portfolio.notfoundink.com" // Cambia por tu URL real
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/portfolio"
               className="bg-gradient-to-r from-nfi-yellow to-nfi-pink text-white hover:from-nfi-pink hover:to-nfi-yellow transition-all rounded-md h-10 w-28 flex items-center justify-center shadow-md font-bold text-sm gap-2"
             >
               <ExternalLink className="h-4 w-4" />
               Portfolio
-            </a>
+            </Link>
           </div>
         </div>
         <div className="order-1 md:order-2 flex justify-center p-6">
@@ -116,16 +104,6 @@ export default function ArtistPage() {
         </div>
       </section>
 
-      {/* Sticker de encendedor y bolígrafo */}
-      <div className="absolute top-[32rem] right-10 md:right-20 w-20 md:w-24 h-auto transform rotate-6 z-10 animate-float-medium">
-        <Image
-          src="/images/lighter-pen.jpeg"
-          alt="Sticker encendedor y bolígrafo"
-          width={120}
-          height={150}
-          className="drop-shadow-lg"
-        />
-      </div>
 
       <div className="relative text-center mb-6 mt-16">
         <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-2xl animate-float-medium">✨</span>
@@ -176,16 +154,6 @@ export default function ArtistPage() {
         ))}
       </div>
 
-      {/* Sticker de lata Slurm */}
-      <div className="absolute bottom-[32rem] left-6 md:left-12 w-20 md:w-24 h-auto transform -rotate-12 z-10 animate-float-slow">
-        <Image
-          src="/images/slurm-can.jpeg"
-          alt="Sticker lata Slurm"
-          width={120}
-          height={150}
-          className="drop-shadow-lg"
-        />
-      </div>
 
       <section className="py-16 bg-gradient-to-b from-background/80 to-nfi-purple/10 relative overflow-hidden mb-16 rounded-xl">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-nfi-purple/10 via-transparent to-transparent"></div>

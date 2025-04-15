@@ -18,7 +18,7 @@ export function Footer() {
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-nfi-blue transition-colors"
+            className="bg-[#1DA1F2] text-white hover:bg-[#1A8CD8] transition-all rounded-md h-10 w-10 flex items-center justify-center shadow-md"
           >
             <Twitter className="h-5 w-5" />
             <span className="sr-only">Twitter</span>
@@ -27,19 +27,16 @@ export function Footer() {
             href="https://www.instagram.com/notfoundink/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-nfi-pink transition-colors"
+            className="bg-gradient-to-r from-nfi-yellow to-nfi-pink text-white hover:from-nfi-pink hover:to-nfi-yellow transition-all rounded-md h-10 w-10 flex items-center justify-center shadow-md"
           >
             <Instagram className="h-5 w-5" />
             <span className="sr-only">Instagram</span>
           </Link>
           <Link
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
+            href="/portfolio"
+            className="bg-gradient-to-r from-nfi-yellow to-nfi-pink text-white hover:from-nfi-pink hover:to-nfi-yellow transition-all rounded-md h-10 w-28 flex items-center justify-center shadow-md font-bold text-sm"
           >
-            <Github className="h-5 w-5" />
-            <span className="sr-only">GitHub</span>
+            Portfolio
           </Link>
         </div>
       </div>
