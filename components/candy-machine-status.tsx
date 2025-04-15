@@ -91,22 +91,17 @@ export function CandyMachineStatus() {
             </div>
           </div>
           
-          {goLiveDate && (
-            <div className="text-center pt-2 border-t">
-              <p className="text-xs text-muted-foreground">
-                Fecha de lanzamiento: {goLiveDate.toLocaleString('es-ES', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric',
-                  hour: '2-digit',
-                  minute: '2-digit'
-                })}
-              </p>
-              <p className="text-xs text-muted-foreground mt-1">
-                {formatDistanceToNow(goLiveDate, { addSuffix: true, locale: es })}
-              </p>
-            </div>
-          )}
+          <div className="text-center pt-4 border-t animate-fade-in">
+  <div className="flex flex-col items-center justify-center gap-1">
+    <span className="text-nfi-pink text-3xl md:text-4xl animate-float-medium">📅</span>
+    <span className="font-cartoon text-xl md:text-2xl text-nfi-yellow drop-shadow-glow">
+      ¡Lanzamiento oficial!
+    </span>
+    <span className="font-cartoon text-lg md:text-xl bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue text-transparent bg-clip-text py-1 px-3 rounded-lg shadow-md mt-1">
+      01 de enero de 2026, 00:00
+    </span>
+  </div>
+</div>
 
           {price > 0 && (
             <div className="text-center pt-2 border-t">
