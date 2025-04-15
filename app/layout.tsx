@@ -4,6 +4,7 @@ import { Inter, Bangers } from "next/font/google"
 import Image from "next/image"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from "@vercel/analytics/next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { FooterLogo } from "@/components/footer-logo"
@@ -47,6 +48,7 @@ export default function RootLayout({
             </WalletModalProvider>
           </WalletContextProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
