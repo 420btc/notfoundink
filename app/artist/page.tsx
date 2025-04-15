@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -5,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Twitter, Instagram, ExternalLink } from "lucide-react"
 import { Carousel } from "@/components/carousel"
 import { VideoPlayer } from "@/components/video-player"
+
+import React, { useRef, useState } from "react"
 
 export default function ArtistPage() {
   return (
@@ -62,14 +65,45 @@ export default function ArtistPage() {
           </div>
         </div>
         <div className="order-1 md:order-2 flex justify-center p-6">
-          <div className="relative w-80 h-80 rounded-full overflow-hidden animate-float shadow-xl shadow-nfi-pink/30">
-  <div className="absolute inset-0 rounded-full p-[4px] bg-gradient-to-tr from-nfi-yellow via-nfi-pink to-nfi-blue"></div>
-  <div className="absolute inset-0 rounded-full ring-2 ring-nfi-yellow/40 ring-offset-2"></div>
-            <div className="absolute inset-0 shine-effect"></div>
-            <Image src="/images/image (2).jpg" alt="Ana María" fill className="object-cover" />
-            <span className="absolute top-4 right-4 text-2xl animate-float-fast">✨</span>
-          </div>
-        </div>
+  {/* Bloque de foto de perfil con efecto lupa */}
+  {(() => {
+    const [zoom, setZoom] = useState(false);
+    const [offset, setOffset] = useState({ x: 50, y: 50 });
+    const imgContainerRef = useRef<HTMLDivElement>(null);
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+      if (!zoom || !imgContainerRef.current) return;
+      const rect = imgContainerRef.current.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      setOffset({ x, y });
+    };
+    return (
+      <div
+        ref={imgContainerRef}
+        className={`relative w-80 h-80 rounded-full overflow-hidden animate-float shadow-xl shadow-nfi-pink/30 cursor-zoom-in`}
+        onMouseEnter={() => setZoom(true)}
+        onMouseLeave={() => setZoom(false)}
+        onMouseMove={handleMouseMove}
+      >
+        <div className="absolute inset-0 rounded-full p-[4px] bg-gradient-to-tr from-nfi-yellow via-nfi-pink to-nfi-blue"></div>
+        <div className="absolute inset-0 rounded-full ring-2 ring-nfi-yellow/40 ring-offset-2"></div>
+        <div className="absolute inset-0 shine-effect"></div>
+        <Image
+          src="/images/image (2).jpg"
+          alt="Ana María"
+          fill
+          className={`object-cover transition-transform duration-200 ${zoom ? 'scale-150' : 'scale-100'}`}
+          style={zoom ? { objectPosition: `${offset.x}% ${offset.y}%` } : {}}
+        />
+        {zoom && (
+          <div className="absolute inset-0 border-4 border-nfi-yellow/70 rounded-full pointer-events-none animate-pulse"></div>
+        )}
+        <span className="absolute top-4 right-4 text-2xl animate-float-fast">✨</span>
+      </div>
+    );
+  })()}
+</div>
       </div>
 
       {/* Sección: Obras Destacadas */}
