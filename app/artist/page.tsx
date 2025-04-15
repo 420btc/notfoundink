@@ -3,6 +3,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import "../../styles/animate-vibrate.css";
+import "../../styles/animate-explode.css";
 import { Twitter, Instagram, ExternalLink } from "lucide-react"
 import { Carousel } from "@/components/carousel"
 import { VideoPlayer } from "@/components/video-player"
@@ -55,13 +57,40 @@ export default function ArtistPage() {
               <span className="sr-only">Instagram</span>
             </a>
             {/* Portfolio: igual que conectar wallet */}
-            <Link
-              href="/portfolio"
-              className="bg-gradient-to-r from-nfi-yellow to-nfi-pink text-white hover:from-nfi-pink hover:to-nfi-yellow transition-all rounded-md h-10 w-28 flex items-center justify-center shadow-md font-bold text-sm gap-2"
-            >
-              <ExternalLink className="h-4 w-4" />
-              Portfolio
-            </Link>
+            {/* Botón Portfolio con animación de vibración/explosión controlada por localStorage */}
+{(() => {
+  const [exploded, setExploded] = React.useState(false);
+  const [visited, setVisited] = React.useState(false);
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setVisited(localStorage.getItem("portfolioVisited") === "true");
+    }
+  }, []);
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (visited) return; // Si ya visitó, navega normal
+    e.preventDefault();
+    setExploded(true);
+    setTimeout(() => {
+      localStorage.setItem("portfolioVisited", "true");
+      window.location.href = "/portfolio";
+    }, 480); // Espera la animación
+  };
+
+  return (
+    <a
+      href="/portfolio"
+      onClick={handleClick}
+      className={`bg-gradient-to-r from-nfi-yellow to-nfi-pink text-white hover:from-nfi-pink hover:to-nfi-yellow transition-all rounded-md h-10 w-28 flex items-center justify-center shadow-md font-bold text-sm gap-2 ${visited ? '' : exploded ? 'animate-explode' : 'animate-vibrate'}`}
+      style={{ pointerEvents: exploded ? "none" : undefined }}
+    >
+      <ExternalLink className="h-4 w-4" />
+      Portfolio
+    </a>
+  );
+})()}
+
           </div>
         </div>
         <div className="order-1 md:order-2 flex justify-center p-6">

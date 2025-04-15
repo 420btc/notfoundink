@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import "../../styles/animate-bounce-slow.css";
 
 // Instrucciones: configura tus claves en el dashboard de emailjs.com y reemplaza los valores abajo
 const SERVICE_ID = "TU_SERVICE_ID";
@@ -151,7 +152,7 @@ export default function PedidosPage() {
             <button
               type="submit"
               disabled={sending}
-              className="w-full py-3 rounded-lg bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue text-white font-bold text-lg shadow-lg hover:scale-105 transition-transform disabled:opacity-60"
+              className="w-full py-3 rounded-lg bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue text-white font-bold text-lg shadow-lg hover:scale-105 transition-transform disabled:opacity-60 animate-bounce-slow"
             >
               {sending ? "Enviando..." : "Enviar Pedido"}
             </button>

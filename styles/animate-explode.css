@@ -1,0 +1,25 @@
+.animate-explode {
+  animation: explode 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes explode {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+  60% {
+    opacity: 0.8;
+    transform: scale(1.3) rotate(10deg);
+    filter: blur(2px);
+  }
+  80% {
+    opacity: 0.5;
+    transform: scale(1.7) rotate(-10deg);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.2) rotate(12deg);
+    filter: blur(12px);
+  }
+}
