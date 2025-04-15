@@ -132,13 +132,7 @@ export default function MintPage() {
             <p className="text-muted-foreground">Mintea tu NFT de Not Found Ink ahora mismo</p>
             
             {/* Añadimos un banner informativo con estilo mejorado */}
-            <div className="mt-6 p-4 bg-green-900/90 border-4 border-green-400 rounded-lg max-w-lg mx-auto shadow-xl shadow-green-900/70 animate-pulse-slow relative overflow-hidden ring-2 ring-nfi-pink/70 ring-offset-2 ring-offset-nfi-blue/60 before:content-[''] before:absolute before:inset-0 before:rounded-lg before:bg-gradient-to-r before:from-nfi-yellow/30 before:via-nfi-pink/20 before:to-nfi-blue/30 before:blur-xl before:opacity-70 before:pointer-events-none">
-              {/* Efecto de brillo neón */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-500/0 via-green-400/30 to-green-500/0 animate-shimmer z-10"></div>
-              <p className="text-lg font-medium text-green-300 drop-shadow-md relative z-10 text-center">
-                <span className="font-bold text-green-100">COLECCIÓN ACTIVA</span> - Consigue tu NFT por solo <span className="font-extrabold text-xl text-white drop-shadow-glow">0.20 SOL</span>
-              </p>
-            </div>
+            
             
             {/* Se eliminaron las estadísticas de la colección a petición del usuario */}
           </div>
@@ -209,8 +203,17 @@ export default function MintPage() {
         </div>
 
         {/* Banner del precio de Solana */}
-        <div className="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div className="max-w-4xl mx-auto px-4 mt-8 mb-4">
           <SolanaPriceBanner />
+        </div>
+
+        {/* Banner colección activa + precio NFT */}
+        <div className="max-w-4xl mx-auto px-4 mb-10">
+          <div className="py-1 px-3 bg-green-900/90 border border-green-400 rounded-md flex items-center justify-center gap-2 shadow-green-900/30 animate-pulse-slow relative overflow-hidden">
+            <span className="font-bold text-green-100 text-xs md:text-sm">COLECCIÓN ACTIVA</span>
+            <span className="text-green-300 text-xs md:text-sm">- Consigue tu NFT por solo</span>
+            <span className="font-extrabold text-white text-base md:text-lg drop-shadow-glow">0.20 SOL</span>
+          </div>
         </div>
 
         {/* Información sobre el proceso de mint */}
