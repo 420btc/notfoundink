@@ -5,9 +5,10 @@ interface TypewriterTextProps {
   text: string;
   speed?: number; // ms per character
   className?: string;
+  onDone?: () => void;
 }
 
-const TypewriterText: React.FC<TypewriterTextProps> = ({ text, speed = 40, className }) => {
+const TypewriterText: React.FC<TypewriterTextProps> = ({ text, speed = 40, className, onDone }) => {
   const [displayed, setDisplayed] = useState("");
   const [done, setDone] = useState(false);
 
@@ -20,8 +21,11 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, speed = 40, class
       return () => clearTimeout(timeout);
     } else {
       setDone(true);
+      if (typeof onDone === 'function') {
+        onDone();
+      }
     }
-  }, [displayed, text, speed, done]);
+  }, [displayed, text, speed, done, onDone]);
 
   return (
     <span className={className}>

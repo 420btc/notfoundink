@@ -11,6 +11,7 @@ import { Carousel } from "@/components/carousel"
 import { VideoPlayer } from "@/components/video-player"
 
 import React, { useRef, useState } from "react"
+import TypewriterText from "@/components/TypewriterText"
 
 export default function ArtistPage() {
   return (
@@ -25,17 +26,28 @@ export default function ArtistPage() {
         <div className="absolute -z-10 inset-0 bg-gradient-to-br from-nfi-yellow/10 to-nfi-pink/10 rounded-xl"></div>
         <div className="absolute -z-10 inset-0 bg-cartoon-pattern opacity-10"></div>
         <div className="order-2 md:order-1 p-6">
-          <h2 className="font-cartoon text-3xl mb-4">
-            Ana María De Carvalho <span className="text-sm">✨</span>
-          </h2>
-          <p className="text-lg mb-4">
-            Ana María De Carvalho es una ilustradora con una visión artística distintiva, capaz de crear obras que destacan por su originalidad y carácter propio. Su trabajo invita a explorar nuevas perspectivas a través de la creatividad, el color y el humor, logrando piezas que conectan con el público de manera auténtica y contemporánea.
-          </p>
-          <p className="text-lg mb-6">
-            Su trabajo se caracteriza por líneas limpias, mensajes profundos y un sentido del humor que conecta con
-            audiencias de todas las edades. "Not Found Ink" es su primera colección de NFTs, donde plasma su visión
-            artística en 100 piezas únicas.
-          </p>
+  <h2 className="font-cartoon text-3xl mb-4">
+    Ana María De Carvalho <span className="text-sm">✨</span>
+  </h2>
+  {(() => {
+    const [firstDone, setFirstDone] = useState(false);
+    return <>
+      <TypewriterText
+        text="Ana María De Carvalho es una ilustradora con una visión artística distintiva, capaz de crear obras que destacan por su originalidad y carácter propio. Su trabajo invita a explorar nuevas perspectivas a través de la creatividad, el color y el humor, logrando piezas que conectan con el público de manera auténtica y contemporánea."
+        speed={18}
+        className="block text-lg mb-4"
+        onDone={() => setFirstDone(true)}
+      />
+      {firstDone && (
+        <TypewriterText
+          text="Su trabajo se caracteriza por líneas limpias, mensajes profundos y un sentido del humor que conecta con audiencias de todas las edades. 'Not Found Ink' es su primera colección de NFTs, donde plasma su visión artística en 100 piezas únicas."
+          speed={18}
+          className="block text-lg mb-6"
+        />
+      )}
+    </>
+  })()}
+
           <div className="flex gap-4">
             {/* Twitter: azul */}
             <a
