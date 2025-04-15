@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Search, Filter } from "lucide-react"
+import TypewriterOnView from "@/components/TypewriterOnView";
 
 // Datos de ejemplo para la colección
 const nfts = [
@@ -30,9 +31,13 @@ export default function CollectionPage() {
           Colección NFT
         </h1>
       </div>
-      <p className="text-lg mb-8 max-w-3xl">
-        Explora la colección completa de 100 NFTs únicos creados por Ana María. Cada obra es irrepetible y ha sido concebida para transmitir una identidad propia, fusionando creatividad, humor y un enfoque artístico contemporáneo. <span className="text-nfi-pink text-sm">✨</span>
-      </p>
+      <TypewriterOnView
+  text={"Explora la colección completa de 100 NFTs únicos creados por Ana María. Cada obra es irrepetible y ha sido concebida para transmitir una identidad propia, fusionando creatividad, humor y un enfoque artístico contemporáneo."}
+  className="text-lg mb-8 max-w-3xl"
+  as="p"
+>
+  <span className="text-nfi-pink text-sm">✨</span>
+</TypewriterOnView>
 
       {/* Filtros y búsqueda */}
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
