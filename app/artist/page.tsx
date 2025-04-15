@@ -62,9 +62,11 @@ export default function ArtistPage() {
           </div>
         </div>
         <div className="order-1 md:order-2 flex justify-center p-6">
-          <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-nfi-pink animate-float">
+          <div className="relative w-64 h-64 rounded-full overflow-hidden animate-float shadow-xl shadow-nfi-pink/30">
+  <div className="absolute inset-0 rounded-full p-[4px] bg-gradient-to-tr from-nfi-yellow via-nfi-pink to-nfi-blue"></div>
+  <div className="absolute inset-0 rounded-full ring-2 ring-nfi-yellow/40 ring-offset-2"></div>
             <div className="absolute inset-0 shine-effect"></div>
-            <Image src="/images/mabel-pines.jpeg" alt="Ana María" fill className="object-cover" />
+            <Image src="/images/image (2).jpg" alt="Ana María" fill className="object-cover" />
             <span className="absolute top-4 right-4 text-2xl animate-float-fast">✨</span>
           </div>
         </div>
