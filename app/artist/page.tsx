@@ -112,7 +112,7 @@ export default function ArtistPage() {
     return (
       <div
         ref={imgContainerRef}
-        className={`relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden animate-float shadow-xl shadow-nfi-pink/30 cursor-zoom-in mx-auto`}
+        className={`relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden animate-float shadow-xl shadow-nfi-pink/30 cursor-zoom-in mx-auto mt-8 md:mt-0`}
         onMouseEnter={() => setZoom(true)}
         onMouseLeave={() => setZoom(false)}
         onMouseMove={handleMouseMove}
