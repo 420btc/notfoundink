@@ -84,11 +84,75 @@ export default function PedidosPage() {
           Solicita tu Dibujo Personalizado
         </h1>
         <div className="flex justify-center mb-6">
-          <img
-            src="/images/collage.png"
-            alt="Collage Not Found Ink"
-            className="rounded-lg shadow-lg max-h-80 w-auto object-contain"
-          />
+          {/* Imagen con lupa */}
+          {(() => {
+            const [zoom, setZoom] = useState(false);
+            // offset: porcentaje. mouse: coordenadas para la lupa
+            const [offset, setOffset] = useState({ x: 50, y: 50 });
+            const [mouse, setMouse] = useState({ lensLeft: 0, lensTop: 0, bgX: 0, bgY: 0 });
+            const imgContainerRef = useRef<HTMLDivElement>(null);
+
+            const handleMouseMove = (e: React.MouseEvent) => {
+              if (!zoom || !imgContainerRef.current) return;
+              const rect = imgContainerRef.current.getBoundingClientRect();
+              // Coordenadas relativas al contenedor
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              const percentX = (x / rect.width) * 100;
+              const percentY = (y / rect.height) * 100;
+              setOffset({ x: percentX, y: percentY });
+
+              // Lupa de 120px, zoom 2x
+              const lensSize = 120;
+              const zoomLevel = 2;
+              // Posición de la lupa (centrada en el cursor)
+              const lensLeft = x - lensSize / 2;
+              const lensTop = y - lensSize / 2;
+              // Posición del fondo de la lupa
+              const bgX = x * zoomLevel - lensSize / 2;
+              const bgY = y * zoomLevel - lensSize / 2;
+              setMouse({ lensLeft, lensTop, bgX, bgY });
+            };
+
+            return (
+              <div
+                ref={imgContainerRef}
+                className="relative max-h-80 w-auto rounded-lg shadow-lg overflow-hidden"
+                style={{ display: 'inline-block' }}
+                onMouseEnter={() => setZoom(true)}
+                onMouseLeave={() => setZoom(false)}
+                onMouseMove={handleMouseMove}
+              >
+                <img
+                  src="/images/collage.png"
+                  alt="Collage Not Found Ink"
+                  className="object-contain max-h-80 w-auto"
+                  style={{ display: 'block' }}
+                />
+                {/* Lupa real usando background-image */}
+                {zoom && imgContainerRef.current && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      left: `${mouse.lensLeft}px`,
+                      top: `${mouse.lensTop}px`,
+                      width: 120,
+                      height: 120,
+                      borderRadius: '50%',
+                      pointerEvents: 'none',
+                      zIndex: 10,
+                      border: '4px solid #ec407a99',
+                      boxShadow: '0 0 0 2px #fff, 0 0 16px 4px #ec407a55',
+                      backgroundImage: `url(/images/collage.png)`,
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: `${imgContainerRef.current.offsetWidth * 2}px ${imgContainerRef.current.offsetHeight * 2}px`,
+                      backgroundPosition: `-${mouse.bgX}px -${mouse.bgY}px`,
+                    }}
+                  />
+                )}
+              </div>
+            );
+          })()}
         </div>
         <p className="text-center text-muted-foreground mb-8">
           Completa el formulario para pedir un dibujo único hecho por Ana María. ¡Describe tu idea y nos pondremos en contacto contigo!
