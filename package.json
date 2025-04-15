@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@hookform/resolvers": "^3.9.1",
     "@metaplex-foundation/mpl-candy-machine": "^6.0.0",
     "@metaplex-foundation/umi": "^0.9.1",

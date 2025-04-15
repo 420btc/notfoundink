@@ -16,6 +16,7 @@ export function Navbar() {
     { href: "/collection", label: "Colección" },
     { href: "/mint", label: "Mint" },
     { href: "/artist", label: "Artista" },
+    { href: "/pedidos", label: "Pedidos" },
   ]
 
   // Sección visual de Obras Destacadas para el menú principal
