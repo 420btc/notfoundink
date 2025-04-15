@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Search, Filter } from "lucide-react"
 import TypewriterOnView from "@/components/TypewriterOnView";
 
+
 // Datos de ejemplo para la colección
 const nfts = [
   { id: 1, image: "/images/trust-me.png", title: "Trust Me ✨", price: 1.5 },

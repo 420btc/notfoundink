@@ -8,6 +8,7 @@ import "../../styles/animate-explode.css";
 import "../../styles/animate-rotate-slow.css";
 import { Twitter, Instagram, ExternalLink } from "lucide-react"
 import { Carousel } from "@/components/carousel"
+import { InspiracionCarrusel, inspiracionesExtra } from "@/components/InspiracionCarrusel"
 import { VideoPlayer } from "@/components/video-player"
 
 import React, { useRef, useState } from "react"
@@ -205,47 +206,47 @@ export default function ArtistPage() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mb-16">
-        {[
+      {/* Carrusel de inspiración único con todas las tarjetas */}
+      <InspiracionCarrusel
+        items={[
           {
-            title: "Los Simpson",
-            description:
-              "La icónica serie animada creada por Matt Groening ha sido una gran influencia en el estilo de Ana María, especialmente en la forma de los personajes y el uso del color.",
-            image: "/images/bart-smoking.jpeg",
+            nombre: "Los Simpson",
+            info: "La icónica serie animada creada por Matt Groening ha sido una gran influencia en el estilo de Ana María, especialmente en la forma de los personajes y el uso del color.",
+            imagen: "/images/bart-smoking.jpeg",
+            alt: "Inspiración Los Simpson",
           },
           {
-            title: "Futurama ✨",
-            description:
-              "Otra creación de Matt Groening que ha influido en el trabajo de Ana María, aportando elementos futuristas y un sentido del humor más adulto a sus ilustraciones.",
-            image: "/images/bender-sketch.jpeg",
+            nombre: "Futurama ✨",
+            info: "Otra creación de Matt Groening que ha influido en el trabajo de Ana María, aportando elementos futuristas y un sentido del humor más adulto a sus ilustraciones.",
+            imagen: "/images/bender-sketch.jpeg",
+            alt: "Inspiración Futurama",
           },
           {
-            title: "Shin Chan",
-            description:
-              "El popular anime japonés aporta irreverencia y un toque de cultura japonesa a las ilustraciones de Ana María, creando una fusión única de estilos occidentales y orientales.",
-            image: "/images/shin-chan-heart.jpeg",
+            nombre: "Shin Chan",
+            info: "El popular anime japonés aporta irreverencia y un toque de cultura japonesa a las ilustraciones de Ana María, creando una fusión única de estilos occidentales y orientales.",
+            imagen: "/images/shin-chan-heart.jpeg",
+            alt: "Inspiración Shin Chan",
           },
-        ].map((item, index) => (
-          <div key={index} className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-            <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0">
-              <CardContent className="p-6">
-                <h3 className="text-base md:text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-muted-foreground mb-4">{item.description}</p>
-                <div className="aspect-video relative rounded-lg overflow-hidden">
-                  <Image
-                    src={item.image || "/placeholder.svg"}
-                    alt={`Inspiración ${item.title}`}
-                    fill
-                    className="object-contain bg-white"
-                  />
-                  {index === 1 && <span className="absolute top-2 right-2 text-xl animate-float-fast">✨</span>}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        ))}
-      </div>
+          {
+            nombre: "Pokémon",
+            info: "La franquicia de Pokémon, creada por Satoshi Tajiri, es un fenómeno mundial que mezcla aventura, criaturas coleccionables y valores de amistad. Su universo colorido y personajes icónicos han inspirado a generaciones.",
+            imagen: "/images/piakchu.jpg",
+            alt: "Inspiración Pokémon",
+          },
+          {
+            nombre: "Supernenas",
+            info: "Las Supernenas (The Powerpuff Girls) son una serie animada estadounidense creada por Craig McCracken. Sus protagonistas, tres niñas con superpoderes, combinan ternura y acción, y han dejado huella en la cultura pop.",
+            imagen: "/images/supernenas.png",
+            alt: "Inspiración Supernenas",
+          },
+          {
+            nombre: "Mabel Pines",
+            info: "Mabel Pines es uno de los personajes principales de Gravity Falls. Su personalidad optimista, creativa y extravagante la han convertido en un icono entrañable de la animación contemporánea.",
+            imagen: "/images/mabelpines.jpg",
+            alt: "Inspiración Mabel Pines",
+          },
+        ]}
+      />
 
 
       <section className="py-16 bg-gradient-to-b from-background/80 to-nfi-purple/10 relative overflow-hidden mb-16 rounded-xl">
