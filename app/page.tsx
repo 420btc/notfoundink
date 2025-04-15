@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { VideoPlayer } from "@/components/video-player"
 import { Carousel } from "@/components/carousel"
+import ClientTypewriterSection from "@/components/ClientTypewriterSection";
 
 export default function Home() {
   return (
@@ -38,9 +39,7 @@ export default function Home() {
               <p className="mb-3">
                 Una <span className="text-nfi-yellow">serie</span> de 100 NFTs exclusivos con el distintivo estilo de Ana María, combinando <a href="https://www.instagram.com/thesimpsons/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-pink hover:underline">Los Simpson</a>, <a href="https://www.instagram.com/futuramaonhulu/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-blue hover:underline">Futurama</a> y <a href="https://www.instagram.com/shinchan_es_oficial/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-purple hover:underline">Shin Chan</a> ✨
               </p>
-              <p className="text-nfi-pink font-semibold mb-3">
-                Repartiendo arte porque esa es mi cualidad ❤‍🔥
-              </p>
+              <ClientTypewriterSection />
             </div>
 
             <div className="flex flex-col items-center mt-12 mb-16">
