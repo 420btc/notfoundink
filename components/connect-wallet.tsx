@@ -362,6 +362,14 @@ export function ConnectWallet() {
             </div>
           </div>
         </div>
+        <div className="flex justify-center mt-6">
+          <Button
+            className="bg-nfi-pink text-white font-bold rounded-full px-8 py-2 text-base shadow-lg hover:bg-nfi-yellow hover:text-nfi-blue transition-all"
+            onClick={() => setIsDialogOpen(false)}
+          >
+            Cerrar
+          </Button>
+        </div>
       </DialogContent>
     </Dialog>
   )
