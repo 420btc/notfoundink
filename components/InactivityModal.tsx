@@ -4,7 +4,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-const INACTIVITY_TIMEOUT = 213000; // 3min 33s in ms
+const INACTIVITY_TIMEOUT = 93000; // 1min 33s en ms
 
 export default function InactivityModal() {
   const [open, setOpen] = useState(false);
