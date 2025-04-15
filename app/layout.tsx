@@ -12,6 +12,7 @@ import { FooterLogo } from "@/components/footer-logo"
 import { WalletContextProvider } from "@/components/wallet-provider-adapter"
 import { WalletModalProvider } from "@/hooks/use-wallet-modal"
 import { IntroScreen } from "@/components/intro-screen"
+import InactivityModal from "@/components/InactivityModal";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const bangers = Bangers({ weight: "400", subsets: ["latin"], variable: "--font-bangers" })
@@ -51,6 +52,7 @@ export default function RootLayout({
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
+        <InactivityModal />
       </body>
     </html>
   )
