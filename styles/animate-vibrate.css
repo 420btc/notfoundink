@@ -2,6 +2,10 @@
   animation: vibrate-move 0.7s linear infinite;
 }
 
+.animate-vibrate-slow {
+  animation: vibrate-move 0.875s linear infinite;
+}
+
 @keyframes vibrate-move {
   0% { transform: translate(0, 0); }
   10% { transform: translate(-2px, 2px); }

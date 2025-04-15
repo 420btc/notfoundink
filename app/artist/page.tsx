@@ -74,8 +74,11 @@ export default function ArtistPage() {
 {(() => {
   const [exploded, setExploded] = React.useState(false);
   const [visited, setVisited] = React.useState(false);
+  const [clickCount, setClickCount] = React.useState(0);
+  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
+    setMounted(true);
     if (typeof window !== "undefined") {
       setVisited(localStorage.getItem("portfolioVisited") === "true");
     }
@@ -85,17 +88,28 @@ export default function ArtistPage() {
     if (visited) return; // Si ya visitó, navega normal
     e.preventDefault();
     setExploded(true);
+    setClickCount((prev) => prev + 1);
     setTimeout(() => {
       localStorage.setItem("portfolioVisited", "true");
       window.location.href = "/portfolio";
     }, 480); // Espera la animación
   };
 
+  // Nueva lógica: vibración normal la primera vez, vibración lenta después, pero siempre vibrando
+  let vibrationClass = '';
+  if (!exploded) {
+    vibrationClass = visited ? 'animate-vibrate-slow' : 'animate-vibrate';
+  } else {
+    vibrationClass = 'animate-explode';
+  }
+
+  if (!mounted) return null; // Evita el hydration mismatch
+
   return (
     <a
       href="/portfolio"
       onClick={handleClick}
-      className={`bg-gradient-to-r from-nfi-yellow to-nfi-pink text-white hover:from-nfi-pink hover:to-nfi-yellow transition-all rounded-md h-10 w-28 flex items-center justify-center shadow-md font-bold text-sm gap-2 ${visited ? '' : exploded ? 'animate-explode' : 'animate-vibrate'}`}
+      className={`bg-gradient-to-r from-nfi-yellow to-nfi-pink text-white hover:from-nfi-pink hover:to-nfi-yellow transition-all rounded-md h-10 w-28 flex items-center justify-center shadow-md font-bold text-sm gap-2 ${vibrationClass}`}
       style={{ pointerEvents: exploded ? "none" : undefined }}
     >
       <ExternalLink className="h-4 w-4" />
