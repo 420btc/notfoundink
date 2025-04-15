@@ -68,11 +68,27 @@ export default function PedidosPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center py-16 px-4 bg-gradient-to-br from-nfi-blue/5 via-nfi-pink/10 to-nfi-yellow/5">
+    <div className="relative min-h-screen flex flex-col items-center justify-center py-16 px-4 bg-gradient-to-br from-nfi-blue/5 via-nfi-pink/10 to-nfi-yellow/5 overflow-hidden">
+      {/* Fondo decorativo: pikachuu.png */}
+      <div className="absolute inset-0 -z-10 w-full h-full overflow-hidden pointer-events-none select-none">
+        <img
+          src="/images/pikachuu.png"
+          alt="Fondo Pedidos Pikachuu"
+          className="w-full h-full object-cover"
+          aria-hidden="true"
+        />
+      </div>
       <div className="bg-white/90 dark:bg-gray-900/90 rounded-xl shadow-xl max-w-lg w-full p-8 border border-nfi-purple/30">
         <h1 className="text-3xl md:text-4xl font-cartoon text-center mb-6 bg-clip-text text-transparent bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
           Solicita tu Dibujo Personalizado
         </h1>
+        <div className="flex justify-center mb-6">
+          <img
+            src="/images/collage.png"
+            alt="Collage Not Found Ink"
+            className="rounded-lg shadow-lg max-h-80 w-auto object-contain"
+          />
+        </div>
         <p className="text-center text-muted-foreground mb-8">
           Completa el formulario para pedir un dibujo único hecho por Ana María. ¡Describe tu idea y nos pondremos en contacto contigo!
         </p>
