@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { VideoPlayer } from "@/components/video-player"
+import { Carousel } from "@/components/carousel"
 
 export default function Home() {
   return (
@@ -11,7 +12,6 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="container-fluid p-0 relative z-10">
-          {/* Imagen de collage como fondo */}
           <div className="relative w-full">
             <Image
               src="/images/nfi-collage.png"
@@ -21,8 +21,6 @@ export default function Home() {
               className="w-full h-auto"
               priority
             />
-
-            {/* Título superpuesto sobre la imagen */}
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <div className="bg-black/40 backdrop-blur-sm px-10 py-6 rounded-xl w-auto">
                 <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
@@ -35,7 +33,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
           <div className="container mx-auto mt-6 sm:mt-8 md:mt-10 px-4 sm:px-6">
             <div className="text-xl md:text-2xl max-w-2xl mx-auto text-center mb-8">
               <p className="mb-3">
@@ -81,57 +78,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured NFTs - Destacados */}
-      <section className="py-20 bg-gradient-to-b from-nfi-purple/10 to-background/80 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-nfi-purple/10 via-transparent to-transparent"></div>
+      {/* About the Collection */}
+      <section className="py-16 bg-white relative overflow-hidden mb-16 rounded-xl">
+        <div className="absolute inset-0 rounded-xl p-[3px] bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-yellow animate-border-shine">
+          <div className="absolute inset-0 rounded-[calc(0.75rem-1px)] bg-white"></div>
+        </div>
+        <div className="absolute -z-10 inset-0 bg-cartoon-pattern opacity-5"></div>
+        <div className="absolute -z-10 inset-0 bg-gradient-to-br from-nfi-yellow/5 to-nfi-pink/5 rounded-xl"></div>
         <div className="container relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-12">
-            <div className="relative">
-              <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
-              <h2 className="font-cartoon text-4xl md:text-6xl mb-4 md:mb-0 relative">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue animate-shine px-2 pb-2 inline-block bg-[length:200%_100%] mr-1">
-                  NFTs Destacados
-                </span>
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue"></div>
-              </h2>
-            </div>
-            <Button asChild variant="outline" className="gap-2 border-nfi-pink text-nfi-pink hover:bg-nfi-pink/20">
-              <Link href="/collection">
-                Ver todos <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
+          <div className="relative text-center mb-10">
+            <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-3xl animate-float-medium">✨</span>
+            <h2 className="font-cartoon text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">Obras Destacadas</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { id: 1, image: "/images/trust-me.png", title: "Trust Me ✨" },
-              { id: 11, image: "/images/skater-easy.png", title: "Hago que parezca fácil ✨" },
-              { id: 3, image: "/images/shin-chan.png", title: "Corazón ✨" },
-            ].map((nft) => (
-              <Link
-                href={`/nft/${nft.id}`}
-                key={nft.id}
-                className="transform transition-all duration-300 hover:scale-105"
-              >
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-                  <div className="relative bg-white/90 dark:bg-gray-900/90 rounded-lg overflow-hidden">
-                    <div className="aspect-square relative overflow-hidden">
-                      <Image src={nft.image || "/placeholder.svg"} alt={nft.title} fill className="object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                        <p className="text-white font-cartoon text-2xl">{nft.title}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <Carousel 
+            items={[
+              { src: "/images/profesclase.png", title: "Profesor de Clase", category: "Educación" },
+              { src: "/images/buenoluis.png", title: "Bueno Luis", category: "Amistad" },
+              { src: "/images/parejita.png", title: "Parejita", category: "Amor" },
+              { src: "/images/mihermano.png", title: "Mi Hermano", category: "Familia" },
+              { src: "/images/sandrita.png", title: "Sandrita", category: "Retrato" },
+              { src: "/images/claracuev.png", title: "Clara Cuev", category: "Personaje" },
+              { src: "/images/Screenshot (44).png", title: "You Got This Girl", category: "Motivacional" },
+              { src: "/images/Screenshot (45).png", title: "Nada Se Pierde", category: "Reflexión" },
+              { src: "/images/Screenshot (46).png", title: "No Time For Negativity", category: "Positivismo" },
+              { src: "/images/Screenshot (47).png", title: "Here Comes The Sun", category: "Inspiración" },
+            ]}
+            itemsPerView={4}
+          />
         </div>
       </section>
 
-      {/* About the Collection */}
-      <section className="py-20 bg-gradient-to-b from-background to-nfi-purple/5">
-        <div className="container px-4 sm:px-6">
+      <section className="py-20 bg-gradient-to-b from-nfi-purple/5 to-background/80 relative overflow-hidden">
+        <div className="container relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
             <div>
               <div className="relative">
@@ -150,10 +128,10 @@ export default function Home() {
                 de candy machine para garantizar una distribución justa.
               </p>
               <div className="relative inline-block group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow to-nfi-pink rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-nfi-blue via-nfi-purple to-nfi-pink rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                 <Button
                   asChild
-                  className="relative gap-2 bg-gradient-to-r from-nfi-yellow to-nfi-pink hover:from-nfi-pink hover:to-nfi-yellow transition-all duration-500"
+                  className="relative gap-2 bg-gradient-to-r from-nfi-blue via-nfi-purple to-nfi-pink hover:from-nfi-pink hover:via-nfi-purple hover:to-nfi-blue transition-all duration-500"
                 >
                   <Link href="/artist">
                     Conoce a la artista <ArrowRight className="h-4 w-4" />
@@ -186,6 +164,56 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Featured NFTs - Destacados */}
+      <div className="container relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+          <div className="relative">
+            <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
+            <h2 className="font-cartoon text-4xl md:text-6xl mb-4 md:mb-0 relative">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue animate-shine px-2 pb-2 inline-block bg-[length:200%_100%] mr-1">
+                NFTs Destacados
+              </span>
+              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue"></div>
+            </h2>
+          </div>
+          <Button asChild variant="outline" className="gap-2 border-nfi-pink text-nfi-pink hover:bg-nfi-pink/20">
+            <Link href="/collection">
+              Ver todos <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            { id: 1, image: "/images/trust-me.png", title: "Trust Me ✨" },
+            { id: 11, image: "/images/skater-easy.png", title: "Hago que parezca fácil ✨" },
+            { id: 3, image: "/images/shin-chan.png", title: "Corazón ✨" },
+          ].map((nft) => (
+            <Link
+              href={`/nft/${nft.id}`}
+              key={nft.id}
+              className="transform transition-all duration-300 hover:scale-105"
+            >
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                <div className="relative bg-white/90 dark:bg-gray-900/90 rounded-lg overflow-hidden">
+                  <div className="aspect-square relative overflow-hidden">
+                    <Image src={nft.image || "/placeholder.svg"} alt={nft.title} fill className="object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                      <p className="text-white font-cartoon text-2xl">{nft.title}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Sección MintPage */}
+      <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0 rounded-lg p-6 mb-8">
+        {/* Contenido existente de MintPage */}
+      </div>
 
       {/* How to Mint */}
       <section className="py-10 sm:py-16 md:py-20 bg-gradient-to-b from-nfi-purple/5 to-background/80 relative overflow-hidden">
@@ -266,7 +294,6 @@ export default function Home() {
 
       {/* Videos Section */}
       <section className="py-20 bg-gradient-to-b from-background/80 to-nfi-purple/10 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-nfi-purple/10 via-transparent to-transparent"></div>
         <div className="container relative z-10">
           <div className="relative text-center mb-12">
             <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-3xl animate-float-medium">
@@ -303,10 +330,6 @@ export default function Home() {
 
       {/* Footer with Shin Chan */}
       <div className="relative mt-10 pb-20">
-
-
-
-        {/* Shin Chan parado sobre la línea */}
         <div className="absolute bottom-0 left-1/4 transform -translate-x-1/2 z-10">
           <div className="relative w-32 md:w-40 h-auto">
             <Image
@@ -319,8 +342,6 @@ export default function Home() {
             <span className="absolute top-0 right-0 text-xl animate-float-fast">✨</span>
           </div>
         </div>
-
-        {/* Mensaje adicional */}
         <div className="container text-center mb-16">
           <p className="text-lg font-cartoon text-nfi-pink">
             ¡Gracias por visitar Not Found Ink! <span className="text-sm">✨</span>
@@ -328,5 +349,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }

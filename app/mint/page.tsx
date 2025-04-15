@@ -109,6 +109,7 @@ export default function MintPage() {
       </div>
 
       <div className="container py-10 relative z-10">
+        
         <div className="relative text-center mb-6">
           <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-3xl animate-float-slow">✨</span>
           <h1 className="font-cartoon text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
@@ -120,7 +121,8 @@ export default function MintPage() {
           aleatoriamente de la colección. <span className="text-nfi-pink text-sm">✨</span>
         </p>
 
-        {/* Contador de cuenta atrás o estado actual */}
+
+{/* Contador de cuenta atrás o estado actual */}
         <div className="max-w-3xl mx-auto mb-10">
           <div className="text-center mb-4">
             {/* Mostramos que la colección está activa */}
@@ -142,9 +144,6 @@ export default function MintPage() {
           </div>
         </div>
         
-        {/* Banner del precio de Solana en tiempo real */}
-        <SolanaPriceBanner />
-
         <div className="flex justify-center items-center max-w-4xl mx-auto">
           <div className="w-full max-w-md">
             <div className="relative group">
@@ -207,6 +206,11 @@ export default function MintPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Banner del precio de Solana */}
+        <div className="max-w-4xl mx-auto px-4 mt-8 mb-10">
+          <SolanaPriceBanner />
         </div>
 
         {/* Información sobre el proceso de mint */}

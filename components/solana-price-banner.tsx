@@ -7,6 +7,7 @@ export function SolanaPriceBanner() {
   const [price, setPrice] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [lastUpdate, setLastUpdate] = useState<string>("")
 
   useEffect(() => {
     const fetchSolanaPrice = async () => {
@@ -23,6 +24,7 @@ export function SolanaPriceBanner() {
         const formattedPrice = parseFloat(data.price).toFixed(2)
         setPrice(formattedPrice)
         setError(null)
+        setLastUpdate(new Date().toLocaleTimeString())
       } catch (err) {
         console.error('Error fetching Solana price:', err)
         setError('No se pudo obtener el precio actual')
@@ -35,8 +37,8 @@ export function SolanaPriceBanner() {
     // Obtener el precio inicialmente
     fetchSolanaPrice()
     
-    // Actualizar el precio cada segundo
-    const interval = setInterval(fetchSolanaPrice, 1000)
+    // Actualizar el precio cada 30 segundos
+    const interval = setInterval(fetchSolanaPrice, 30000)
     
     return () => clearInterval(interval)
   }, [])
@@ -81,7 +83,7 @@ export function SolanaPriceBanner() {
                   ${price} USD
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  {new Date().toLocaleTimeString()}
+                  {lastUpdate}
                 </p>
               </>
             )}

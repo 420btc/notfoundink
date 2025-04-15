@@ -1,0 +1,19 @@
+/* Estilos para la animación suave del precio de Solana */
+.price-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.price-value {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.price-update {
+  animation: fadeInOut 1s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
