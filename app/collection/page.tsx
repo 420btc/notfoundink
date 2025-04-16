@@ -21,6 +21,7 @@ const nfts = [
   { id: 9, image: "/images/figure.png", title: "Figura", price: 1.9 },
   { id: 10, image: "/images/dog.png", title: "Perrito ✨", price: 1.5 },
   { id: 11, image: "/images/skater-easy.png", title: "Hago que parezca fácil ✨", price: 2.2 },
+  { id: 12, image: "/images/bichoraro.jpg", title: "Bicho Raro", price: 2.8 },
 ]
 
 export default function CollectionPage() {
@@ -60,7 +61,7 @@ export default function CollectionPage() {
               <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
               <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0 overflow-hidden w-full h-full flex flex-col">
                 <div className="relative overflow-hidden aspect-square">
-                  <LupaMagnifier src={nft.image || "/placeholder.svg"} alt={nft.title} className="object-contain rounded-xl" />
+                  <LupaMagnifier src={nft.image || "/placeholder.svg"} alt={nft.title} className="object-contain rounded-lg w-full h-full" />
                   {nft.title.includes("✨") && (
                     <span className="absolute top-2 right-2 text-lg animate-float-fast">✨</span>
                   )}
