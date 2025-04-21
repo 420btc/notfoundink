@@ -22,6 +22,7 @@ const nfts = [
   { id: 10, image: "/images/dog.png", title: "Perrito ✨", price: 1.5 },
   { id: 11, image: "/images/skater-easy.png", title: "Hago que parezca fácil ✨", price: 2.2 },
   { id: 12, image: "/images/bichoraro.jpg", title: "Bicho Raro", price: 2.8 },
+  { id: 13, image: "/images/floress.jpg", title: "Flores Vibrantes ✨", price: 2.5 },
 ]
 
 export default function CollectionPage() {
