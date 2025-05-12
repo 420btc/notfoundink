@@ -44,7 +44,7 @@ export const LupaMagnifier: React.FC<LupaMagnifierProps> = ({
       <img
         src={src}
         alt={alt}
-        className="object-contain w-full h-full rounded-xl"
+        className="object-cover w-full h-full rounded-lg"
         draggable={false}
         style={{ pointerEvents: "none", userSelect: "none" }}
       />

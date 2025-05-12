@@ -60,6 +60,14 @@ const MARKETPLACE_NFTS = [
     seller: "5tYu3...1jHg",
     rarity: "Common",
   },
+  {
+    id: "nft7",
+    name: "Bicho Raro",
+    image: "/images/bichoraro.jpg",
+    price: 2.2,
+    seller: "8bCh0...r4Ro",
+    rarity: "Rare",
+  },
 ]
 
 export function NFTMarketplace() {
