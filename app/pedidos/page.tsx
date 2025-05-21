@@ -155,11 +155,11 @@ export default function PedidosPage() {
           })()}
         </div>
         <p className="text-center text-muted-foreground mb-8">
-          Completa el formulario para pedir un dibujo único hecho por Ana María. ¡Describe tu idea y nos pondremos en contacto contigo!
+          Completa el formulario para pedir un dibujo único hecho por Anamari. ¡Describe tu idea y nos pondremos en contacto contigo!
         </p>
         {enviado ? (
           <div className="text-center text-green-600 font-bold text-xl py-12">
-            ¡Tu pedido ha sido enviado!<br />Ana María se pondrá en contacto contigo pronto.
+            ¡Tu pedido ha sido enviado!<br />Anamari se pondrá en contacto contigo pronto.
           </div>
         ) : (
           <form className="space-y-6" onSubmit={handleSubmit}>

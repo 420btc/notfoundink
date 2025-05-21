@@ -38,7 +38,7 @@ export default function InactivityModal() {
           <h2 className="font-cartoon text-2xl md:text-3xl text-white drop-shadow-glow">Eh, ¡tú! Sí, tú...</h2>
           <p className="text-lg text-white font-semibold leading-snug">
             ¿Te quedaste pensando?<br/>
-            <span className="text-nfi-yellow">Pues ve a <Link href='/pedidos' className='underline hover:text-nfi-pink'>Pedidos</Link> y pide un dibujo a Ana María</span> <br/>
+            <span className="text-nfi-yellow">Pues ve a <Link href='/pedidos' className='underline hover:text-nfi-pink'>Pedidos</Link> y pide un dibujo a Anamari</span> <br/>
             ¡Flipa con su arte!
           </p>
           <Button onClick={handleClose} className="mx-auto mt-4 bg-nfi-pink text-white font-bold rounded-full px-8 py-2 text-base shadow-lg hover:bg-nfi-yellow hover:text-nfi-blue transition-all">
