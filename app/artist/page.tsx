@@ -28,13 +28,13 @@ export default function ArtistPage() {
         <div className="absolute -z-10 inset-0 bg-cartoon-pattern opacity-10"></div>
         <div className="order-2 md:order-1 p-6">
   <h2 className="font-cartoon text-3xl mb-4">
-    Ana María De Carvalho <span className="text-sm">✨</span>
+    Ana María D.C.G <span className="text-sm">✨</span>
   </h2>
   {(() => {
     const [firstDone, setFirstDone] = useState(false);
     return <>
       <TypewriterText
-        text="Ana María De Carvalho es una ilustradora con una visión artística distintiva, capaz de crear obras que destacan por su originalidad y carácter propio. Su trabajo invita a explorar nuevas perspectivas a través de la creatividad, el color y el humor, logrando piezas que conectan con el público de manera auténtica y contemporánea."
+        text="Ana María D.C.G es una ilustradora con una visión artística distintiva, capaz de crear obras que destacan por su originalidad y carácter propio. Su trabajo invita a explorar nuevas perspectivas a través de la creatividad, el color y el humor, logrando piezas que conectan con el público de manera auténtica y contemporánea."
         speed={18}
         className="block text-lg mb-4"
         onDone={() => setFirstDone(true)}
