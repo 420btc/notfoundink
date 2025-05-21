@@ -4,20 +4,27 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 
 export function IntroScreen() {
-  const [show, setShow] = useState(true)
+  // Verificar si ya se mostró la intro anteriormente
+  const [show, setShow] = useState(() => {
+    // Solo se ejecuta en el cliente
+    if (typeof window === 'undefined') return true;
+    return !localStorage.getItem("introShown");
+  });
 
   useEffect(() => {
-    // Ocultar la pantalla de intro después de 3 segundos
-    const timer = setTimeout(() => {
-      setShow(false)
-    }, 3000)
+    // Si se está mostrando la intro, configurar el temporizador para ocultarla
+    if (show) {
+      const timer = setTimeout(() => {
+        setShow(false);
+      }, 2000);
 
-    // Guardar en localStorage que ya se mostró la intro para no mostrarla de nuevo en la misma sesión
-    if (!localStorage.getItem("introShown")) {
-      localStorage.setItem("introShown", "true")
+      // Marcar como vista en localStorage
+      localStorage.setItem("introShown", "true");
+      
+      return () => clearTimeout(timer);
     }
-
-    return () => clearTimeout(timer)
+    
+    return () => {}; // No hay que limpiar nada si no se está mostrando
   }, [])
 
   return (
@@ -25,7 +32,7 @@ export function IntroScreen() {
       {show && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden animate-fadeOut"
-          style={{ animationDelay: '2.5s', animationDuration: '0.5s', animationFillMode: 'forwards' }}
+          style={{ animationDelay: '1.0s', animationDuration: '0.5s', animationFillMode: 'forwards' }}
         >
           {/* GIF animado como fondo */}
           <div className="absolute inset-0 overflow-hidden">
@@ -92,7 +99,7 @@ export function IntroScreen() {
             {/* Indicador de carga */}
             <div 
               className="mt-8 flex justify-center animate-fadeIn"
-              style={{ animationDelay: '1.2s', animationDuration: '0.5s' }}
+              style={{ animationDelay: '1.0s', animationDuration: '0.2s' }}
             >
               <div className="w-32 h-1 bg-gray-700 rounded-full overflow-hidden">
                 <div 
