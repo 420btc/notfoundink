@@ -1,12 +1,14 @@
+'use client';
+
 import Image from "next/image"
 import { LupaMagnifier } from '@/components/LupaMagnifier'
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Search, Filter } from "lucide-react"
+import { Search, Filter, ArrowUpDown } from "lucide-react"
 import TypewriterOnView from "@/components/TypewriterOnView";
-
+import { useState, useMemo } from "react";
 
 // Datos de ejemplo para la colección
 const nfts = [
@@ -27,9 +29,24 @@ const nfts = [
   { id: 15, image: "/images/lisa1.jpg", title: "Lisa 1", price: 2.1 },
   { id: 16, image: "/images/toitas2.jpg", title: "Toitas 2", price: 2.4 },
   { id: 17, image: "/images/lisa2.jpg", title: "Lisa 2 ✨", price: 2.6 },
+  { id: 18, image: "/images/Nuevo (2).jpg", title: "Nuevo 2", price: 2.5 },
+  { id: 19, image: "/images/Nuevo (3).jpg", title: "Nuevo 3 ✨", price: 2.8 },
+  { id: 20, image: "/images/Nuevo (4).jpg", title: "Nuevo 4", price: 2.6 },
+  { id: 21, image: "/images/Nuevo (5).jpg", title: "Nuevo 5 ✨", price: 2.9 },
+  { id: 22, image: "/images/Nuevo (6).jpg", title: "Nuevo 6", price: 2.7 },
+  { id: 23, image: "/images/Nuevo (7).jpg", title: "Nuevo 7 ✨", price: 3.0 },
+  { id: 24, image: "/images/Nuevo (8).jpg", title: "Nuevo 8", price: 2.8 },
 ]
 
 export default function CollectionPage() {
+  const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
+  
+  const sortedNfts = useMemo(() => {
+    return [...nfts].sort((a, b) => {
+      return sortOrder === 'newest' ? b.id - a.id : a.id - b.id;
+    });
+  }, [sortOrder]);
+
   return (
     <div className="container py-10 bg-gradient-to-b from-nfi-purple/5 to-background">
       <div className="relative mb-6">
@@ -52,15 +69,25 @@ export default function CollectionPage() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input placeholder="Buscar por nombre..." className="pl-10" />
         </div>
-        <Button variant="outline" className="gap-2">
-          <Filter className="h-4 w-4" />
-          Filtrar
-        </Button>
+        <div className="flex gap-2">
+          <Button 
+            variant="outline" 
+            className="gap-2"
+            onClick={() => setSortOrder(prev => prev === 'newest' ? 'oldest' : 'newest')}
+          >
+            <ArrowUpDown className="h-4 w-4" />
+            {sortOrder === 'newest' ? 'Más recientes' : 'Más antiguos'}
+          </Button>
+          <Button variant="outline" className="gap-2">
+            <Filter className="h-4 w-4" />
+            Filtrar
+          </Button>
+        </div>
       </div>
 
       {/* Grid de NFTs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-        {nfts.map((nft) => (
+        {sortedNfts.map((nft) => (
           <Link href={`/nft/${nft.id}`} key={nft.id} className="block transform transition-all duration-300 hover:scale-105">
             <div className="relative group w-full">
               <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
