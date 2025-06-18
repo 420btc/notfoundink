@@ -71,7 +71,7 @@ export default function CollectionPage() {
         </div>
         <div className="flex gap-2">
           <Button 
-            className="gap-2 bg-gradient-to-r from-nfi-yellow to-nfi-purple hover:from-nfi-purple hover:to-nfi-yellow text-white transition-all duration-300"
+            className="gap-2 bg-nfi-pink text-white font-bold hover:bg-nfi-yellow hover:text-nfi-blue transition-all duration-300"
             onClick={() => setSortOrder(prev => prev === 'newest' ? 'oldest' : 'newest')}
           >
             <ArrowUpDown className="h-4 w-4" />
