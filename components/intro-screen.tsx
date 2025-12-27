@@ -4,31 +4,28 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 
 export function IntroScreen() {
-  // Verificar si ya se mostró la intro anteriormente
-  const [show, setShow] = useState(() => {
-    // Solo se ejecuta en el cliente
-    if (typeof window === 'undefined') return true;
-    return !localStorage.getItem("introShown");
-  });
+  // Inicializar en false para evitar parpadeo en usuarios recurrentes y mismatch de SSR
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    // Si se está mostrando la intro, configurar el temporizador para ocultarla
-    if (show) {
+    // Verificar localStorage solo en el cliente
+    const hasSeenIntro = localStorage.getItem("introShown");
+
+    if (!hasSeenIntro) {
+      setShow(true);
+      
       const timer = setTimeout(() => {
         setShow(false);
+        // Marcar como vista en localStorage
+        try {
+          localStorage.setItem("introShown", "true");
+        } catch (error) {
+          console.error("Error saving to localStorage:", error);
+        }
       }, 2000);
-
-      // Marcar como vista en localStorage
-      try {
-        localStorage.setItem("introShown", "true");
-      } catch (error) {
-        console.error("Error saving to localStorage:", error);
-      }
       
       return () => clearTimeout(timer);
     }
-    
-    return () => {}; // No hay que limpiar nada si no se está mostrando
   }, [])
 
   return (
