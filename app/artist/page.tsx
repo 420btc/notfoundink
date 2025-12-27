@@ -41,7 +41,7 @@ export default function ArtistPage() {
       />
       {firstDone && (
         <TypewriterText
-          text="Su trabajo se caracteriza por líneas limpias, mensajes profundos y un sentido del humor que conecta con audiencias de todas las edades. 'Not Found Ink' es su primera colección de NFTs, donde plasma su visión artística en 100 piezas únicas."
+          text="Su trabajo se caracteriza por líneas limpias, mensajes profundos y un sentido del humor que conecta con audiencias de todas las edades. 'Not Found Ink' es su primera colección de obras digitales, donde plasma su visión artística en 100 piezas únicas."
           speed={18}
           className="block text-lg mb-6"
         />
@@ -91,7 +91,11 @@ export default function ArtistPage() {
     setExploded(true);
     setClickCount((prev) => prev + 1);
     setTimeout(() => {
-      localStorage.setItem("portfolioVisited", "true");
+      try {
+        localStorage.setItem("portfolioVisited", "true");
+      } catch (e) {
+        console.error("Error updating localStorage", e);
+      }
       window.location.href = "/portfolio";
     }, 480); // Espera la animación
   };

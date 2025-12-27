@@ -4,15 +4,14 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Share2, Heart } from "lucide-react"
 
-// Datos de ejemplo para los NFTs
-const nftsData = {
+// Datos de ejemplo para las obras
+const artworksData = {
   "1": {
     id: 1,
     title: "Trust Me ✨",
     description:
       "Dos personajes compartiendo un momento mágico de confianza mutua, representando la amistad y la complicidad.",
     image: "/images/trust-me.png",
-    price: 1.5,
     owner: "Ana María",
     created: "2025-03-15",
   },
@@ -22,7 +21,6 @@ const nftsData = {
     description:
       "Un personaje elegante que nos recuerda que a veces lo que dice mamá es lo que importa, con un toque de humor.",
     image: "/images/mom-says.png",
-    price: 1.2,
     owner: "Ana María",
     created: "2025-03-16",
   },
@@ -32,7 +30,6 @@ const nftsData = {
     description:
       "Una reinterpretación de Bart Simpson con un mensaje profundo sobre la importancia de recordar nuestra historia.",
     image: "/images/bart-history.png",
-    price: 1.8,
     owner: "Ana María",
     created: "2025-03-17",
   },
@@ -42,7 +39,6 @@ const nftsData = {
     description:
       "Una representación delicada de la belleza y la transformación, simbolizada por mariposas que rodean al personaje principal.",
     image: "/images/butterflies.png",
-    price: 1.3,
     owner: "Ana María",
     created: "2025-03-18",
   },
@@ -52,7 +48,6 @@ const nftsData = {
     description:
       "Una interpretación de Shin Chan que explora el tema del amor y la amistad con el estilo característico de Ana María.",
     image: "/images/shin-chan.png",
-    price: 1.6,
     owner: "Ana María",
     created: "2025-03-19",
   },
@@ -62,7 +57,6 @@ const nftsData = {
     description:
       "Un homenaje a Homer Simpson frente a la computadora, recordando que nunca es tarde para comenzar algo nuevo.",
     image: "/images/homer-computer.png",
-    price: 1.4,
     owner: "Ana María",
     created: "2025-03-20",
   },
@@ -72,7 +66,6 @@ const nftsData = {
     description:
       "Una calavera estilizada que combina elementos de la cultura pop con un mensaje sobre la fugacidad de la vida.",
     image: "/images/skull.png",
-    price: 2.0,
     owner: "Ana María",
     created: "2025-03-21",
   },
@@ -82,7 +75,6 @@ const nftsData = {
     description:
       "Lisa Simpson nos invita a apagar la televisión y explorar el mundo real, con un mensaje sobre la desconexión digital.",
     image: "/images/lisa-tv.png",
-    price: 1.7,
     owner: "Ana María",
     created: "2025-03-22",
   },
@@ -92,7 +84,6 @@ const nftsData = {
     description:
       "Una silueta enigmática que invita al espectador a completar la historia con su propia interpretación.",
     image: "/images/figure.png",
-    price: 1.9,
     owner: "Ana María",
     created: "2025-03-23",
   },
@@ -102,7 +93,6 @@ const nftsData = {
     description:
       "Un adorable perro con el estilo característico de Ana María, simbolizando la lealtad y la amistad incondicional.",
     image: "/images/dog.png",
-    price: 1.5,
     owner: "Ana María",
     created: "2025-03-24",
   },
@@ -112,22 +102,21 @@ const nftsData = {
     description:
       "Un personaje confiado montando skateboard con estilo, recordándonos que la verdadera maestría hace que lo difícil parezca sencillo.",
     image: "/images/skater-easy.png",
-    price: 2.2,
     owner: "Ana María",
     created: "2025-04-01",
   },
 }
 
-export default function NFTDetailPage({ params }: { params: { id: string } }) {
-  const nft = nftsData[params.id as keyof typeof nftsData]
+export default function ArtworkDetailPage({ params }: { params: { id: string } }) {
+  const artwork = artworksData[params.id as keyof typeof artworksData]
 
-  if (!nft) {
+  if (!artwork) {
     return (
       <div className="container py-20 text-center">
-        <h1 className="text-3xl font-bold mb-4">NFT no encontrado</h1>
-        <p className="mb-8">El NFT que estás buscando no existe o ha sido eliminado.</p>
+        <h1 className="text-3xl font-bold mb-4">Obra no encontrada</h1>
+        <p className="mb-8">La obra que estás buscando no existe o ha sido eliminada.</p>
         <Button asChild>
-          <Link href="/collection">Volver a la colección</Link>
+          <Link href="/collection">Volver a la galería</Link>
         </Button>
       </div>
     )
@@ -140,25 +129,25 @@ export default function NFTDetailPage({ params }: { params: { id: string } }) {
         className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8"
       >
         <ArrowLeft className="h-4 w-4" />
-        Volver a la colección
+        Volver a la galería
       </Link>
 
       <div className="grid md:grid-cols-2 gap-10">
-        {/* Imagen del NFT */}
+        {/* Imagen de la Obra */}
         <div className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
           <div className="relative aspect-square overflow-hidden rounded-lg shadow-lg bg-white/90 dark:bg-gray-900/90">
-            <Image src={nft.image || "/placeholder.svg"} alt={nft.title} fill className="object-contain" />
-            {nft.title.includes("✨") && (
+            <Image src={artwork.image || "/placeholder.svg"} alt={artwork.title} fill className="object-contain" />
+            {artwork.title.includes("✨") && (
               <span className="absolute top-4 right-4 text-2xl animate-float-medium">✨</span>
             )}
           </div>
         </div>
 
-        {/* Detalles del NFT */}
+        {/* Detalles de la Obra */}
         <div>
           <div className="flex justify-between items-start">
-            <h1 className="font-cartoon text-3xl md:text-4xl mb-2">{nft.title}</h1>
+            <h1 className="font-cartoon text-3xl md:text-4xl mb-2">{artwork.title}</h1>
             <div className="flex gap-2">
               <Button variant="ghost" size="icon">
                 <Heart className="h-5 w-5" />
@@ -169,12 +158,10 @@ export default function NFTDetailPage({ params }: { params: { id: string } }) {
             </div>
           </div>
 
-          <p className="text-2xl font-bold mb-6">{nft.price} SOL</p>
-
-          <div className="space-y-6">
+          <div className="space-y-6 mt-6">
             <div>
               <h2 className="text-lg font-semibold mb-2">Descripción</h2>
-              <p className="text-muted-foreground">{nft.description}</p>
+              <p className="text-muted-foreground">{artwork.description}</p>
             </div>
 
             <div>
@@ -183,38 +170,20 @@ export default function NFTDetailPage({ params }: { params: { id: string } }) {
                 <div>
                   <p className="text-sm text-muted-foreground">Creador</p>
                   <p className="font-medium">
-                    {nft.owner} <span className="text-xs">✨</span>
+                    {artwork.owner} <span className="text-xs">✨</span>
                   </p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Fecha de creación</p>
-                  <p className="font-medium">{nft.created}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">ID del Token</p>
-                  <p className="font-medium">#{nft.id}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Blockchain</p>
-                  <p className="font-medium">Solana</p>
+                  <p className="font-medium">{artwork.created}</p>
                 </div>
               </div>
-            </div>
-
-            <div className="relative group w-full">
-              <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <Button
-                className="w-full relative bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue hover:from-nfi-blue hover:via-nfi-pink hover:to-nfi-yellow transition-all duration-500"
-                size="lg"
-              >
-                Comprar NFT <span className="ml-1">✨</span>
-              </Button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* NFTs relacionados */}
+      {/* Obras relacionadas */}
       <div className="mt-16">
         <div className="relative mb-6">
           <span className="absolute -top-6 -left-6 text-xl animate-float-slow">✨</span>
@@ -223,13 +192,13 @@ export default function NFTDetailPage({ params }: { params: { id: string } }) {
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {Object.values(nftsData)
-            .filter((item) => item.id !== nft.id)
+          {Object.values(artworksData)
+            .filter((item) => item.id !== artwork.id)
             .slice(0, 4)
-            .map((relatedNft) => (
+            .map((relatedArtwork) => (
               <Link
-                href={`/nft/${relatedNft.id}`}
-                key={relatedNft.id}
+                href={`/collection/${relatedArtwork.id}`}
+                key={relatedArtwork.id}
                 className="transform transition-all duration-300 hover:scale-105"
               >
                 <div className="relative group">
@@ -237,19 +206,18 @@ export default function NFTDetailPage({ params }: { params: { id: string } }) {
                   <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0 overflow-hidden">
                     <div className="aspect-square relative overflow-hidden">
                       <Image
-                        src={relatedNft.image || "/placeholder.svg"}
-                        alt={relatedNft.title}
+                        src={relatedArtwork.image || "/placeholder.svg"}
+                        alt={relatedArtwork.title}
                         fill
                         className="object-cover"
                       />
-                      {relatedNft.title.includes("✨") && (
+                      {relatedArtwork.title.includes("✨") && (
                         <span className="absolute top-2 right-2 text-lg animate-float-fast">✨</span>
                       )}
                     </div>
                     <CardContent className="p-4">
                       <div className="flex justify-between items-center">
-                        <h3 className="font-cartoon text-base md:text-lg">{relatedNft.title}</h3>
-                        <p className="text-sm font-medium">{relatedNft.price} SOL</p>
+                        <h3 className="font-cartoon text-base md:text-lg">{relatedArtwork.title}</h3>
                       </div>
                     </CardContent>
                   </Card>

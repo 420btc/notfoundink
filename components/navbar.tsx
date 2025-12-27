@@ -4,7 +4,6 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { ConnectWallet } from "@/components/connect-wallet"
 import { Menu, X } from "lucide-react"
 
 export function Navbar() {
@@ -14,7 +13,6 @@ export function Navbar() {
   const routes = [
     { href: "/", label: "Inicio" },
     { href: "/collection", label: "Colección" },
-    { href: "/mint", label: "Mint" },
     { href: "/artist", label: "Artista" },
     { href: "/pedidos", label: "Pedidos" },
   ]
@@ -29,7 +27,7 @@ export function Navbar() {
               <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
               <h2 className="font-cartoon text-2xl md:text-3xl mb-4 md:mb-0 relative">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue animate-shine px-2 pb-2 inline-block bg-[length:200%_100%] mr-1">
-                  NFTs Destacados
+                  Obras Destacadas
                 </span>
                 <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue"></div>
               </h2>
@@ -47,7 +45,7 @@ export function Navbar() {
               { id: 3, image: "/images/shin-chan.png", title: "Corazón ✨" },
             ].map((nft) => (
               <Link
-                href={`/nft/${nft.id}`}
+                href={`/collection/${nft.id}`}
                 key={nft.id}
                 className="transform transition-all duration-300 hover:scale-105"
               >
@@ -90,7 +88,6 @@ export function Navbar() {
               {route.label}
             </Link>
           ))}
-          <ConnectWallet />
         </nav>
         <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -112,7 +109,6 @@ export function Navbar() {
                 {route.label}
               </Link>
             ))}
-            <ConnectWallet />
           </nav>
         </div>
       )}

@@ -71,7 +71,7 @@ export default function UploadPage() {
 
       toast({
         title: "¡Subida exitosa!",
-        description: `NFT "${title}" ha sido subido correctamente.`,
+        description: `Obra "${title}" ha sido subida correctamente.`,
       })
 
       // Resetear el formulario
@@ -94,10 +94,9 @@ export default function UploadPage() {
 
   return (
     <div className="container py-10">
-      <h1 className="font-cartoon text-4xl md:text-5xl mb-6">Subir Nuevo NFT</h1>
+      <h1 className="font-cartoon text-4xl md:text-5xl mb-6">Subir Nueva Obra</h1>
       <p className="text-lg mb-8">
-        Sube una nueva ilustración para la colección "Not Found Ink". La imagen se almacenará en Vercel Blob y estará
-        disponible para ser minteada como NFT.
+        Sube una nueva ilustración para la colección "Not Found Ink". La imagen se almacenará en Vercel Blob.
       </p>
 
       <Card className="max-w-2xl mx-auto">

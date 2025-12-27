@@ -9,8 +9,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { FooterLogo } from "@/components/footer-logo"
-import { WalletContextProvider } from "@/components/wallet-provider-adapter"
-import { WalletModalProvider } from "@/hooks/use-wallet-modal"
 import { IntroScreen } from "@/components/intro-screen"
 import InactivityModal from "@/components/InactivityModal";
 
@@ -18,8 +16,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const bangers = Bangers({ weight: "400", subsets: ["latin"], variable: "--font-bangers" })
 
 export const metadata: Metadata = {
-  title: "Not Found Ink | NFT Collection by Ana María",
-  description: "Colección de 100 NFTs únicos con estilo Simpson-Futurama-Shin Chan con toques japoneses",
+  title: "Not Found Ink | Arte por Ana María",
+  description: "Colección de obras únicas con estilo Simpson-Futurama-Shin Chan con toques japoneses",
     generator: 'v0.dev'
 }
 
@@ -34,20 +32,16 @@ export default function RootLayout({
         <link rel="icon" type="image/png" href="/favicon.png" sizes="64x64" />
       </head>
       <body className={`${inter.variable} ${bangers.variable}`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <WalletContextProvider>
-            <WalletModalProvider>
-              <div className="flex min-h-screen flex-col">
-                <Navbar />
-                <main className="flex-1">{children}</main>
-                
-                {/* Componente FooterLogo que solo se muestra en la página principal */}
-                <FooterLogo />
-                
-                <Footer />
-              </div>
-            </WalletModalProvider>
-          </WalletContextProvider>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} forcedTheme="light" disableTransitionOnChange>
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            
+            {/* Componente FooterLogo que solo se muestra en la página principal */}
+            <FooterLogo />
+            
+            <Footer />
+          </div>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

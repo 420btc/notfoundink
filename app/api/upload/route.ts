@@ -17,7 +17,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     const timestamp = Date.now()
     const fileName = title.toLowerCase().replace(/\s+/g, "-")
     const fileExtension = file.name.split(".").pop()
-    const uniqueFileName = `nfts/${fileName}-${timestamp}.${fileExtension}`
+    const uniqueFileName = `artworks/${fileName}-${timestamp}.${fileExtension}`
 
     // Subir el archivo a Vercel Blob
     const blob = await put(uniqueFileName, file, {

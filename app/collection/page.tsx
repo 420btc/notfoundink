@@ -52,11 +52,11 @@ export default function CollectionPage() {
       <div className="relative mb-6">
         <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
         <h1 className="font-cartoon text-4xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
-          Colección NFT
+          Galería de Arte
         </h1>
       </div>
       <TypewriterOnView
-  text={"Explora la colección completa de 100 NFTs únicos creados por Ana María. Cada obra es irrepetible y ha sido concebida para transmitir una identidad propia, fusionando creatividad, humor y un enfoque artístico contemporáneo."}
+  text={"Explora la colección completa de 100 obras únicas creadas por Ana María. Cada obra es irrepetible y ha sido concebida para transmitir una identidad propia, fusionando creatividad, humor y un enfoque artístico contemporáneo."}
   className="text-lg mb-8 max-w-3xl"
   as="p"
 >
@@ -87,7 +87,7 @@ export default function CollectionPage() {
       {/* Grid de NFTs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
         {sortedNfts.map((nft) => (
-          <Link href={`/nft/${nft.id}`} key={nft.id} className="block transform transition-all duration-300 hover:scale-105">
+          <Link href={`/collection/${nft.id}`} key={nft.id} className="block transform transition-all duration-300 hover:scale-105">
             <div className="relative group w-full">
               <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
               <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0 overflow-hidden w-full h-full flex flex-col">

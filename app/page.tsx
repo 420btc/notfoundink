@@ -42,7 +42,7 @@ export default function Home() {
           <div className="container mx-auto mt-6 sm:mt-8 md:mt-10 px-4 sm:px-6">
             <div className="text-xl md:text-2xl max-w-2xl mx-auto text-center mb-8">
               <p className="mb-3">
-                Una <span className="text-nfi-yellow">serie</span> de 100 NFTs exclusivos con el distintivo estilo de Ana María, combinando <a href="https://www.instagram.com/thesimpsons/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-pink hover:underline">Los Simpson</a>, <a href="https://www.instagram.com/futuramaonhulu/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-blue hover:underline">Futurama</a> y <a href="https://www.instagram.com/shinchan_es_oficial/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-purple hover:underline">Shin Chan</a> ✨
+                Una <span className="text-nfi-yellow">serie</span> de 100 obras exclusivas con el distintivo estilo de Ana María, combinando <a href="https://www.instagram.com/thesimpsons/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-pink hover:underline">Los Simpson</a>, <a href="https://www.instagram.com/futuramaonhulu/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-blue hover:underline">Futurama</a> y <a href="https://www.instagram.com/shinchan_es_oficial/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-purple hover:underline">Shin Chan</a> ✨
               </p>
               <ClientTypewriterSection />
             </div>
@@ -56,24 +56,7 @@ export default function Home() {
                     size="lg"
                     className="relative font-medium text-lg px-8 py-6 bg-gradient-to-r from-nfi-yellow to-nfi-pink hover:from-nfi-pink hover:to-nfi-yellow transition-all duration-500 shadow-md"
                   >
-                    <Link href="/collection">Ver Colección</Link>
-                  </Button>
-                </div>
-
-                <div className="relative group transform transition-transform hover:scale-105">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-nfi-blue via-nfi-purple to-nfi-pink rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-                  <Button
-                    asChild
-                    size="lg"
-                    className="relative font-medium text-lg px-8 py-6 bg-gradient-to-r from-nfi-blue via-nfi-purple to-nfi-pink hover:from-nfi-pink hover:via-nfi-purple hover:to-nfi-blue transition-all duration-500 shadow-lg shadow-nfi-pink/20"
-                  >
-                    <Link href="/mint" className="flex items-center gap-2">
-                      Mint NFT
-                      <span className="relative w-5 h-5">
-                        <span className="absolute inset-0 animate-ping opacity-75 text-xs">✨</span>
-                        <span className="relative text-xs">✨</span>
-                      </span>
-                    </Link>
+                    <Link href="/collection">Ver Galería</Link>
                   </Button>
                 </div>
               </div>

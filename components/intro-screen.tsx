@@ -19,7 +19,11 @@ export function IntroScreen() {
       }, 2000);
 
       // Marcar como vista en localStorage
-      localStorage.setItem("introShown", "true");
+      try {
+        localStorage.setItem("introShown", "true");
+      } catch (error) {
+        console.error("Error saving to localStorage:", error);
+      }
       
       return () => clearTimeout(timer);
     }
@@ -92,7 +96,7 @@ export function IntroScreen() {
                 className="text-center text-white/80 mt-2 text-sm md:text-base animate-fadeIn"
                 style={{ animationDelay: '1s', animationDuration: '0.5s' }}
               >
-                Colección exclusiva de NFTs en Solana
+                Colección exclusiva de Arte Digital
               </p>
             </div>
             
