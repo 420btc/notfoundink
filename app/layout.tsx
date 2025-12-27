@@ -17,7 +17,7 @@ const bangers = Bangers({ weight: "400", subsets: ["latin"], variable: "--font-b
 
 export const metadata: Metadata = {
   title: "Not Found Ink | Arte por Ana María",
-  description: "Colección de obras únicas con estilo Simpson-Futurama-Shin Chan con toques japoneses",
+  description: "Colección de obras digitales únicas que reinterpretan la cultura pop con un estilo vibrante y contemporáneo.",
     generator: 'v0.dev'
 }
 

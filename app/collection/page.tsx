@@ -12,30 +12,30 @@ import { useState, useMemo } from "react";
 
 // Datos de ejemplo para la colección
 const nfts = [
-  { id: 1, image: "/images/trust-me.png", title: "Trust Me ✨", price: 1.5 },
-  { id: 2, image: "/images/mom-says.png", title: "But Mom Says", price: 1.2 },
-  { id: 3, image: "/images/bart-history.png", title: "Su historia...", price: 1.8 },
-  { id: 4, image: "/images/butterflies.png", title: "Mariposas ✨", price: 1.3 },
-  { id: 5, image: "/images/shin-chan.png", title: "Corazón", price: 1.6 },
-  { id: 6, image: "/images/homer-computer.png", title: "Empieza Ahora", price: 1.4 },
-  { id: 7, image: "/images/skull.png", title: "Skull ✨", price: 2.0 },
-  { id: 8, image: "/images/lisa-tv.png", title: "TV Off", price: 1.7 },
-  { id: 9, image: "/images/figure.png", title: "Figura", price: 1.9 },
-  { id: 10, image: "/images/dog.png", title: "Perrito ✨", price: 1.5 },
-  { id: 11, image: "/images/skater-easy.png", title: "Hago que parezca fácil ✨", price: 2.2 },
-  { id: 12, image: "/images/bichoraro.jpg", title: "Bicho Raro", price: 2.8 },
-  { id: 13, image: "/images/floress.jpg", title: "Flores Vibrantes ✨", price: 2.5 },
-  { id: 14, image: "/images/toitas.jpg", title: "El Pasado...✨", price: 2.3 },
-  { id: 15, image: "/images/lisa1.jpg", title: "Lisa 1", price: 2.1 },
-  { id: 16, image: "/images/toitas2.jpg", title: "Tan frio...", price: 2.4 },
-  { id: 17, image: "/images/lisa2.jpg", title: "Lisa 2 ✨", price: 2.6 },
-  { id: 18, image: "/images/Nuevo (1).jpg", title: "Asuntos del Corazón", price: 2.5 },
-  { id: 19, image: "/images/Nuevo (3).jpg", title: "¿Gesto de amor?✨", price: 2.8 },
-  { id: 20, image: "/images/Nuevo (4).jpg", title: "Aferrarse", price: 2.6 },
-  { id: 21, image: "/images/Nuevo (5).jpg", title: "Libertad ✨", price: 2.9 },
-  { id: 22, image: "/images/Nuevo (6).jpg", title: "Crisis Previa", price: 2.7 },
-  { id: 23, image: "/images/Nuevo (7).jpg", title: "Asuntos✨", price: 3.0 },
-  { id: 24, image: "/images/Nuevo (8).jpg", title: "Gesto de Amor ✨", price: 2.8 },
+  { id: 1, image: "/images/trust-me.png", title: "Trust Me ✨" },
+  { id: 2, image: "/images/mom-says.png", title: "But Mom Says" },
+  { id: 3, image: "/images/bart-history.png", title: "Su historia..." },
+  { id: 4, image: "/images/butterflies.png", title: "Mariposas ✨" },
+  { id: 5, image: "/images/shin-chan.png", title: "Corazón" },
+  { id: 6, image: "/images/homer-computer.png", title: "Empieza Ahora" },
+  { id: 7, image: "/images/skull.png", title: "Skull ✨" },
+  { id: 8, image: "/images/lisa-tv.png", title: "TV Off" },
+  { id: 9, image: "/images/figure.png", title: "Figura" },
+  { id: 10, image: "/images/dog.png", title: "Perrito ✨" },
+  { id: 11, image: "/images/skater-easy.png", title: "Hago que parezca fácil ✨" },
+  { id: 12, image: "/images/bichoraro.jpg", title: "Bicho Raro" },
+  { id: 13, image: "/images/floress.jpg", title: "Flores Vibrantes ✨" },
+  { id: 14, image: "/images/toitas.jpg", title: "El Pasado...✨" },
+  { id: 15, image: "/images/lisa1.jpg", title: "Lisa 1" },
+  { id: 16, image: "/images/toitas2.jpg", title: "Tan frio..." },
+  { id: 17, image: "/images/lisa2.jpg", title: "Lisa 2 ✨" },
+  { id: 18, image: "/images/Nuevo (1).jpg", title: "Asuntos del Corazón" },
+  { id: 19, image: "/images/Nuevo (3).jpg", title: "¿Gesto de amor?✨" },
+  { id: 20, image: "/images/Nuevo (4).jpg", title: "Aferrarse" },
+  { id: 21, image: "/images/Nuevo (5).jpg", title: "Libertad ✨" },
+  { id: 22, image: "/images/Nuevo (6).jpg", title: "Crisis Previa" },
+  { id: 23, image: "/images/Nuevo (7).jpg", title: "Asuntos✨" },
+  { id: 24, image: "/images/Nuevo (8).jpg", title: "Gesto de Amor ✨" },
 ]
 
 export default function CollectionPage() {
@@ -56,7 +56,7 @@ export default function CollectionPage() {
         </h1>
       </div>
       <TypewriterOnView
-  text={"Explora la colección completa de 100 obras únicas creadas por Ana María. Cada obra es irrepetible y ha sido concebida para transmitir una identidad propia, fusionando creatividad, humor y un enfoque artístico contemporáneo."}
+  text={"Explora la colección completa de 100 obras únicas creadas por Ana María. Cada pieza es irrepetible y ha sido concebida para transmitir una identidad propia, fusionando nostalgia, creatividad y un enfoque artístico contemporáneo."}
   className="text-lg mb-8 max-w-3xl"
   as="p"
 >
@@ -100,7 +100,7 @@ export default function CollectionPage() {
                 <CardContent className="p-4 bg-white dark:bg-gray-900">
                   <div className="flex justify-between items-center h-full">
                     <h3 className="font-cartoon text-base md:text-lg">{nft.title}</h3>
-                    <p className="text-sm font-medium">{nft.price} SOL</p>
+                    <p className="text-sm font-bold text-nfi-pink">{nft.id}/100</p>
                   </div>
                 </CardContent>
               </Card>

@@ -246,40 +246,40 @@ export default function ArtistPage() {
       <InspiracionCarrusel
         items={[
           {
-            nombre: "Los Simpson",
-            info: "La icónica serie animada creada por Matt Groening ha sido una gran influencia en el estilo de Ana María, especialmente en la forma de los personajes y el uso del color.",
+            nombre: "Animación Clásica",
+            info: "Las series icónicas de los 90 han sido una gran influencia en el estilo de Ana María, especialmente en la forma de los personajes y el uso del color.",
             imagen: "/images/bart-smoking.jpeg",
-            alt: "Inspiración Los Simpson",
+            alt: "Inspiración Animación Clásica",
           },
           {
-            nombre: "Futurama ✨",
-            info: "Otra creación de Matt Groening que ha influido en el trabajo de Ana María, aportando elementos futuristas y un sentido del humor más adulto a sus ilustraciones.",
+            nombre: "Ciencia Ficción",
+            info: "Elementos futuristas y un sentido del humor inteligente y adulto se entrelazan en las ilustraciones, aportando una capa de profundidad narrativa.",
             imagen: "/images/bender-sketch.jpeg",
-            alt: "Inspiración Futurama",
+            alt: "Inspiración Ciencia Ficción",
           },
           {
-            nombre: "Shin Chan",
-            info: "El popular anime japonés aporta irreverencia y un toque de cultura japonesa a las ilustraciones de Ana María, creando una fusión única de estilos occidentales y orientales.",
+            nombre: "Anime Japonés",
+            info: "La irreverencia y el estilo visual del anime clásico aportan un toque oriental único, creando una fusión cultural vibrante.",
             imagen: "/images/shin-chan-heart.jpeg",
-            alt: "Inspiración Shin Chan",
+            alt: "Inspiración Anime",
           },
           {
-            nombre: "Pokémon",
-            info: "La franquicia de Pokémon, creada por Satoshi Tajiri, es un fenómeno mundial que mezcla aventura, criaturas coleccionables y valores de amistad. Su universo colorido y personajes icónicos han inspirado a generaciones.",
+            nombre: "Cultura Pop",
+            info: "Iconos globales de la cultura pop, desde criaturas coleccionables hasta héroes de la infancia, son reinterpretados con una nueva mirada.",
             imagen: "/images/piakchu.jpg",
-            alt: "Inspiración Pokémon",
+            alt: "Inspiración Cultura Pop",
           },
           {
-            nombre: "Supernenas",
-            info: "Las Supernenas (The Powerpuff Girls) son una serie animada estadounidense creada por Craig McCracken. Sus protagonistas, tres niñas con superpoderes, combinan ternura y acción, y han dejado huella en la cultura pop.",
+            nombre: "Estilo Cartoon",
+            info: "La estética 'cartoon' americana se mezcla con influencias modernas para crear personajes llenos de expresividad y dinamismo.",
             imagen: "/images/supernenas.png",
-            alt: "Inspiración Supernenas",
+            alt: "Inspiración Estilo Cartoon",
           },
           {
-            nombre: "Mabel Pines",
-            info: "Mabel Pines es uno de los personajes principales de Gravity Falls. Su personalidad optimista, creativa y extravagante la han convertido en un icono entrañable de la animación contemporánea.",
+            nombre: "Humor y Carisma",
+            info: "Personajes optimistas y extravagantes de la animación contemporánea inspiran la personalidad única que emana de cada obra.",
             imagen: "/images/mabelpines.jpg",
-            alt: "Inspiración Mabel Pines",
+            alt: "Inspiración Humor",
           },
         ]}
       />

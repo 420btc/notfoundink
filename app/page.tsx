@@ -41,8 +41,8 @@ export default function Home() {
           </div>
           <div className="container mx-auto mt-6 sm:mt-8 md:mt-10 px-4 sm:px-6">
             <div className="text-xl md:text-2xl max-w-2xl mx-auto text-center mb-8">
-              <p className="mb-3">
-                Una <span className="text-nfi-yellow">serie</span> de 100 obras exclusivas con el distintivo estilo de Ana María, combinando <a href="https://www.instagram.com/thesimpsons/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-pink hover:underline">Los Simpson</a>, <a href="https://www.instagram.com/futuramaonhulu/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-blue hover:underline">Futurama</a> y <a href="https://www.instagram.com/shinchan_es_oficial/?hl=es" target="_blank" rel="noopener noreferrer" className="text-nfi-purple hover:underline">Shin Chan</a> ✨
+              <p className="mb-3 leading-relaxed">
+                Sumérgete en un universo visual donde la nostalgia de la animación se encuentra con el arte digital contemporáneo. Esta colección exclusiva de 100 obras, creada por la visión única de Ana María, reinterpreta iconos culturales a través de un lente vibrante y lleno de humor. Cada pieza es una fusión magistral de líneas limpias, colores audaces y una narrativa visual que captura la esencia de la cultura pop, transformando lo familiar en algo completamente nuevo y extraordinario ✨
               </p>
               <ClientTypewriterSection />
             </div>

@@ -10,16 +10,15 @@ Visita el sitio para explorar la colección completa y mintear tus NFTs favorito
 
 ## 🎨 Descripción
 
-"Not Found Ink" es una colección única de 100 NFTs creados por la talentosa ilustradora Ana María, que fusiona el estilo icónico de Los Simpson y Futurama con la irreverencia de Shin Chan y elementos de la cultura japonesa. Cada pieza es única y está disponible exclusivamente en la blockchain de Solana, utilizando un sistema de candy machine para garantizar una distribución justa.
+"Not Found Ink" es una colección única de 100 obras digitales creadas por la talentosa ilustradora Ana María. Cada pieza reinterpreta iconos de la cultura pop y la animación clásica a través de un lente vibrante y contemporáneo, fusionando nostalgia, humor y una estética visual inconfundible. Es una exploración artística que transforma lo familiar en algo completamente nuevo.
 
 ## ✨ Características
 
-- **Diseño Único**: Cada NFT combina estilos de Los Simpson, Futurama y Shin Chan con toques japoneses
+- **Diseño Único**: Cada obra combina estilos de animación clásica con toques contemporáneos
 - **Experiencia Web Inmersiva**: Interfaz atractiva con animaciones y efectos visuales
-- **Integración con Solana**: Sistema de mint basado en la blockchain de Solana
+- **Galería Digital**: Visualización de alta calidad de la colección completa
 - **Responsive Design**: Experiencia optimizada para todos los dispositivos (móvil, tablet y escritorio)
 - **Visualización en 3 Columnas**: Diseño especial para dispositivos móviles que mantiene 3 columnas
-- **Rotación de NFTs**: Previsualización dinámica de NFTs en la página de mint
 
 ## 🚀 Tecnologías Utilizadas
 

@@ -147,7 +147,10 @@ export default function ArtworkDetailPage({ params }: { params: { id: string } }
         {/* Detalles de la Obra */}
         <div>
           <div className="flex justify-between items-start">
-            <h1 className="font-cartoon text-3xl md:text-4xl mb-2">{artwork.title}</h1>
+            <div>
+              <h1 className="font-cartoon text-3xl md:text-4xl mb-2">{artwork.title}</h1>
+              <p className="text-xl font-bold text-nfi-pink">#{artwork.id}/100</p>
+            </div>
             <div className="flex gap-2">
               <Button variant="ghost" size="icon">
                 <Heart className="h-5 w-5" />
