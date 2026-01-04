@@ -42,7 +42,7 @@ export default function Home() {
           <div className="container mx-auto mt-6 sm:mt-8 md:mt-10 px-4 sm:px-6">
             <div className="text-xl md:text-2xl max-w-2xl mx-auto text-center mb-8">
               <p className="mb-3 leading-relaxed">
-                Sumérgete en un universo visual donde la nostalgia de la animación se encuentra con el arte digital contemporáneo. Esta colección exclusiva de 100 obras, creada por la visión única de Ana María, reinterpreta iconos culturales a través de un lente vibrante y lleno de humor. Cada pieza es una fusión magistral de líneas limpias, colores audaces y una narrativa visual que captura la esencia de la cultura pop, transformando lo familiar en algo completamente nuevo y extraordinario ✨
+                Una colección exclusiva de 100 obras digitales creadas por Ana María. Fusionando nostalgia y arte contemporáneo, cada pieza reinterpreta iconos de la cultura pop con un estilo vibrante y único. ✨
               </p>
               <ClientTypewriterSection />
             </div>
@@ -196,83 +196,6 @@ export default function Home() {
       <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0 rounded-lg p-6 mb-8">
         {/* Contenido existente de MintPage */}
       </div>
-
-      {/* How to Mint */}
-      <section className="py-10 sm:py-16 md:py-20 bg-gradient-to-b from-nfi-purple/5 to-background/80 relative overflow-hidden">
-        <div className="container relative z-10">
-          <div className="relative text-center mb-6 sm:mb-8 md:mb-12">
-            <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-2xl animate-float-slow">✨</span>
-            <h2 className="font-cartoon text-3xl md:text-4xl">Cómo Conseguir tu NFT</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow to-nfi-yellow/50 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0">
-                <CardContent className="p-4">
-                  <div className="rounded-full w-10 h-10 bg-nfi-yellow flex items-center justify-center mb-3">
-                    <span className="font-cartoon text-xl">1</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">Conecta tu Wallet</h3>
-                  <p className="text-muted-foreground h-[60px]">
-                    Conecta tu wallet de Solana para interactuar con la colección.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-nfi-pink to-nfi-pink/50 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0">
-                <CardContent className="p-4">
-                  <div className="rounded-full w-10 h-10 bg-nfi-pink flex items-center justify-center mb-3">
-                    <span className="font-cartoon text-xl">2</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">
-                    Elige tu NFT <span className="text-sm">✨</span>
-                  </h3>
-                  <p className="text-muted-foreground h-[60px]">
-                    Explora la colección y elige el NFT que más te guste.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-nfi-blue to-nfi-blue/50 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <Card className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-0">
-                <CardContent className="p-4">
-                  <div className="rounded-full w-10 h-10 bg-nfi-blue flex items-center justify-center mb-3">
-                    <span className="font-cartoon text-xl">3</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">Compra y Mint</h3>
-                  <p className="text-muted-foreground h-[60px]">
-                    Utiliza nuestra rampa crypto para comprar SOL y mintea tu NFT.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-          <div className="mt-12 text-center">
-            <div className="relative inline-block group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-nfi-blue via-nfi-purple to-nfi-pink rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-              <Button
-                asChild
-                size="lg"
-                className="relative px-8 py-6 text-lg gap-2 bg-gradient-to-r from-nfi-blue via-nfi-purple to-nfi-pink hover:from-nfi-pink hover:via-nfi-purple hover:to-nfi-blue transition-all duration-500 shadow-lg shadow-nfi-pink/20"
-              >
-                <Link href="/mint" className="flex items-center gap-2">
-                  Mint Ahora
-                  <Sparkles className="h-5 w-5" />
-                  <span className="relative w-5 h-5">
-                    <span className="absolute inset-0 animate-ping opacity-75 text-xs">✨</span>
-                    <span className="relative text-xs">✨</span>
-                  </span>
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Videos Section */}
       <section className="py-20 bg-gradient-to-b from-background/80 to-nfi-purple/10 relative overflow-hidden">
