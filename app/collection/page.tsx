@@ -10,9 +10,11 @@ import { Search, Filter, ArrowUpDown } from "lucide-react"
 import TypewriterOnView from "@/components/TypewriterOnView";
 import { useState, useMemo } from "react";
 import { artworksArray } from "@/lib/data";
+import { LayoutGrid, Grid2X2 } from "lucide-react"
 
 export default function CollectionPage() {
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
+  const [columns, setColumns] = useState<1 | 2>(2);
   
   const sortedNfts = useMemo(() => {
     return [...artworksArray].sort((a, b) => {
@@ -29,7 +31,7 @@ export default function CollectionPage() {
         </h1>
       </div>
       <TypewriterOnView
-  text={"Explora la colección completa de 100 obras únicas creadas por Ana María. Cada pieza es irrepetible y ha sido concebida para transmitir una identidad propia, fusionando nostalgia, creatividad y un enfoque artístico contemporáneo."}
+  text={"Explora la colección completa de 100 obras únicas creadas por Ana María."}
   className="text-lg mb-8 max-w-3xl"
   as="p"
 >
@@ -50,15 +52,21 @@ export default function CollectionPage() {
             <ArrowUpDown className="h-4 w-4" />
             {sortOrder === 'newest' ? 'Más recientes' : 'Más antiguos'}
           </Button>
-          <Button variant="outline" className="gap-2">
-            <Filter className="h-4 w-4" />
-            Filtrar
+          
+          {/* Botón de cambio de vista para móvil */}
+          <Button 
+            variant="outline" 
+            size="icon" 
+            className="md:hidden"
+            onClick={() => setColumns(prev => prev === 1 ? 2 : 1)}
+          >
+            {columns === 1 ? <Grid2X2 className="h-4 w-4" /> : <LayoutGrid className="h-4 w-4" />}
           </Button>
         </div>
       </div>
 
       {/* Grid de NFTs */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
+      <div className={`grid ${columns === 1 ? 'grid-cols-1' : 'grid-cols-2'} sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8`}>
         {sortedNfts.map((nft) => (
           <Link href={`/collection/${nft.id}`} key={nft.id} className="block transform transition-all duration-300 hover:scale-105">
             <div className="relative group w-full">
