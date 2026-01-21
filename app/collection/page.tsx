@@ -36,6 +36,19 @@ const nfts = [
   { id: 22, image: "/images/Nuevo (6).jpg", title: "Crisis Previa" },
   { id: 23, image: "/images/Nuevo (7).jpg", title: "Asuntos✨" },
   { id: 24, image: "/images/Nuevo (8).jpg", title: "Gesto de Amor ✨" },
+  { id: 25, image: "/images/Nuevox (1).jpeg", title: "Nueva Perspectiva" },
+  { id: 26, image: "/images/Nuevox (2).jpeg", title: "Horizontes" },
+  { id: 27, image: "/images/Nuevox (3).jpeg", title: "Reflejos Urbanos" },
+  { id: 28, image: "/images/Nuevox (4).jpeg", title: "Instante Fugaz" },
+  { id: 29, image: "/images/Nuevox (5).jpeg", title: "Memorias" },
+  { id: 30, image: "/images/Nuevox (6).jpeg", title: "Ecos del Ayer" },
+  { id: 31, image: "/images/Nuevox (7).jpeg", title: "Sueños Lúcidos" },
+  { id: 32, image: "/images/Nuevox (8).jpeg", title: "Fragmentos" },
+  { id: 33, image: "/images/Nuevox (9).jpeg", title: "Silencios" },
+  { id: 34, image: "/images/Nuevox (10).jpeg", title: "Mirada Interior" },
+  { id: 35, image: "/images/Nuevox (11).jpeg", title: "Caminos Cruzados" },
+  { id: 36, image: "/images/Nuevox (12).jpeg", title: "Destellos" },
+  { id: 37, image: "/images/Nuevox (13).jpeg", title: "Esencia Pura ✨" },
 ]
 
 export default function CollectionPage() {

@@ -79,16 +79,18 @@ export default function Home() {
           </div>
           <Carousel 
             items={[
-              { src: "/images/profesclase.png", title: "Profesor de Clase", category: "Educación" },
-              { src: "/images/buenoluis.png", title: "Bueno Luis", category: "Amistad" },
-              { src: "/images/parejita.png", title: "Parejita", category: "Amor" },
-              { src: "/images/mihermano.png", title: "Mi Hermano", category: "Familia" },
-              { src: "/images/sandrita.png", title: "Sandrita", category: "Retrato" },
-              { src: "/images/claracuev.png", title: "Clara Cuev", category: "Personaje" },
-              { src: "/images/Screenshot (44).png", title: "You Got This Girl", category: "Motivacional" },
-              { src: "/images/Screenshot (45).png", title: "Nada Se Pierde", category: "Reflexión" },
-              { src: "/images/Screenshot (46).png", title: "No Time For Negativity", category: "Positivismo" },
-              { src: "/images/Screenshot (47).png", title: "Here Comes The Sun", category: "Inspiración" },
+              { src: "/images/Nuevox (1).jpeg", title: "Nueva Perspectiva", category: "Arte" },
+              { src: "/images/Nuevox (2).jpeg", title: "Horizontes", category: "Color" },
+              { src: "/images/Nuevox (3).jpeg", title: "Reflejos Urbanos", category: "Urbano" },
+              { src: "/images/Nuevox (4).jpeg", title: "Instante Fugaz", category: "Momento" },
+              { src: "/images/Nuevox (5).jpeg", title: "Memorias", category: "Recuerdo" },
+              { src: "/images/Nuevox (6).jpeg", title: "Ecos del Ayer", category: "Nostalgia" },
+              { src: "/images/Nuevox (7).jpeg", title: "Sueños Lúcidos", category: "Onírico" },
+              { src: "/images/Nuevox (8).jpeg", title: "Fragmentos", category: "Abstracto" },
+              { src: "/images/Nuevox (9).jpeg", title: "Silencios", category: "Calma" },
+              { src: "/images/Nuevox (10).jpeg", title: "Mirada Interior", category: "Retrato" },
+              { src: "/images/Nuevox (11).jpeg", title: "Caminos Cruzados", category: "Vida" },
+              { src: "/images/Nuevox (12).jpeg", title: "Destellos", category: "Luz" },
             ]}
             itemsPerView={4}
           />
@@ -105,10 +107,10 @@ export default function Home() {
                   Sobre la Colección
                 </h2>
               </div>
-              <TypewriterOnView text={'"Not Found Ink" es una colección única de 100 NFTs creados por la talentosa ilustradora Ana María, que fusiona el estilo icónico de Los Simpson y Futurama con la irreverencia de Shin Chan y elementos de la cultura japonesa.'} className="text-lg mb-4" as="p">
+              <TypewriterOnView text={'"Not Found Ink" es una colección única de 100 obras digitales creadas por la talentosa ilustradora Ana María, que fusiona el estilo icónico de Los Simpson y Futurama con la irreverencia de Shin Chan y elementos de la cultura japonesa.'} className="text-lg mb-4" as="p">
   <span className="text-nfi-pink text-sm">✨</span>
 </TypewriterOnView>
-<TypewriterOnView text={'Cada pieza es única y está disponible exclusivamente en la blockchain de Solana, utilizando un sistema de candy machine para garantizar una distribución justa.'} className="text-lg mb-6" as="p" />
+<TypewriterOnView text={'Cada pieza es única y está disponible exclusivamente en nuestra galería digital, garantizando una experiencia artística auténtica y vibrante.'} className="text-lg mb-6" as="p" />
               <div className="relative inline-block group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-nfi-blue via-nfi-purple to-nfi-pink rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                 <Button
@@ -123,10 +125,10 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { src: "/images/mom-says.png", alt: "NFT Example 1" },
-                { src: "/images/lisa-tv.png", alt: "NFT Example 2" },
-                { src: "/images/butterflies.png", alt: "NFT Example 3" },
-                { src: "/images/skull.png", alt: "NFT Example 4" },
+                { src: "/images/Nuevox (1).jpeg", alt: "Obra 1" },
+                { src: "/images/Nuevox (2).jpeg", alt: "Obra 2" },
+                { src: "/images/Nuevox (3).jpeg", alt: "Obra 3" },
+                { src: "/images/Nuevox (4).jpeg", alt: "Obra 4" },
               ].map((img, index) => (
                 <div key={index} className="relative group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
@@ -154,7 +156,7 @@ export default function Home() {
             <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
             <h2 className="font-cartoon text-4xl md:text-6xl mb-4 md:mb-0 relative">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue animate-shine px-2 pb-2 inline-block bg-[length:200%_100%] mr-1">
-                NFTs Destacados
+                Portfolio
               </span>
               <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue"></div>
             </h2>
@@ -167,12 +169,12 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
-            { id: 1, image: "/images/trust-me.png", title: "Trust Me ✨" },
-            { id: 11, image: "/images/skater-easy.png", title: "Hago que parezca fácil ✨" },
-            { id: 3, image: "/images/shin-chan.png", title: "Corazón ✨" },
+            { id: 37, image: "/images/Nuevox (13).jpeg", title: "Esencia Pura ✨" },
+            { id: 25, image: "/images/Nuevox (1).jpeg", title: "Nueva Perspectiva ✨" },
+            { id: 26, image: "/images/Nuevox (2).jpeg", title: "Horizontes ✨" },
           ].map((nft) => (
             <Link
-              href={`/nft/${nft.id}`}
+              href={`/collection/${nft.id}`}
               key={nft.id}
               className="transform transition-all duration-300 hover:scale-105"
             >

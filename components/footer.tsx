@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link"
-import { Twitter, Instagram, Github } from "lucide-react"
+import { Instagram, Github } from "lucide-react"
 import { usePathname } from "next/navigation"
 
 export function Footer() {
@@ -41,15 +41,6 @@ export function Footer() {
   </div>
 )}
           <div className="flex items-center gap-4">
-            <Link
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#1DA1F2] text-white hover:bg-[#1A8CD8] transition-all rounded-md h-10 w-10 flex items-center justify-center shadow-md"
-            >
-              <Twitter className="h-5 w-5" />
-              <span className="sr-only">Twitter</span>
-            </Link>
             <Link
               href="https://www.instagram.com/notfoundink/"
               target="_blank"

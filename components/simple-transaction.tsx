@@ -1,25 +1,41 @@
 "use client"
 
 import { useState } from 'react'
-import { useWallet } from '@solana/wallet-adapter-react'
 import { Button } from '@/components/ui/button'
-import { Loader2, Sparkles } from 'lucide-react'
+import { Loader2, Sparkles, Wallet } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
 import Image from 'next/image'
 import { getNFTCollection } from '@/lib/simple-solana'
 
 export function SimpleTransaction() {
-  const wallet = useWallet()
+  // Simulación de wallet local para evitar dependencias pesadas en modo demo
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
+  
+  const wallet = {
+    connected: isWalletConnected,
+    publicKey: isWalletConnected ? { toBase58: () => "DemoWalletAddress123456789" } : null,
+    connect: () => setIsWalletConnected(true),
+    disconnect: () => setIsWalletConnected(false)
+  };
+
   const { toast } = useToast()
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [selectedNFT, setSelectedNFT] = useState<string | null>(null)
 
+  const handleConnect = () => {
+    wallet.connect();
+    toast({
+      title: "Wallet Conectada (Demo)",
+      description: "Has conectado tu wallet simulada correctamente.",
+    });
+  };
+
   const handleMint = async () => {
     if (!wallet.publicKey) {
       toast({
         title: 'Wallet no conectada',
-        description: 'Por favor conecta tu wallet para mintear un NFT',
+        description: 'Por favor conecta tu wallet para adquirir una obra',
         variant: 'destructive',
       })
       return
@@ -44,14 +60,14 @@ export function SimpleTransaction() {
       setSuccess(true)
       
       toast({
-        title: '¡NFT minteado con éxito!',
-        description: 'Has minteado un NFT por 0.20 SOL (simulado)',
+        title: '¡Obra adquirida con éxito!',
+        description: 'Has adquirido una obra por 0.20 SOL (simulado)',
       })
     } catch (error) {
       console.error('Error en la simulación:', error)
       toast({
         title: 'Error',
-        description: 'Hubo un error al simular el minteo',
+        description: 'Hubo un error al simular la compra',
         variant: 'destructive',
       })
     } finally {
@@ -86,7 +102,7 @@ export function SimpleTransaction() {
           ) : (
             <>
               <Sparkles className="mr-2 h-4 w-4 animate-bounce-slow" />
-              Mintear por 0.20 SOL (Demo)
+              Adquirir por 0.20 SOL (Demo)
             </>
           )}
         </Button>
@@ -95,31 +111,41 @@ export function SimpleTransaction() {
           onClick={resetDemo}
           className="w-full h-12 bg-green-500 hover:bg-green-600 transition-colors"
         >
-          Mintear otro NFT
+          Adquirir otra obra
         </Button>
       )}
       
       {!wallet.connected && (
-        <p className="text-sm text-center text-muted-foreground mt-2">
-          Conecta tu wallet para mintear este NFT
-        </p>
+        <div className="flex flex-col gap-2 mt-2">
+          <Button 
+            onClick={handleConnect}
+            variant="outline"
+            className="w-full border-nfi-pink text-nfi-pink hover:bg-nfi-pink/10"
+          >
+            <Wallet className="mr-2 h-4 w-4" />
+            Conectar Wallet (Demo)
+          </Button>
+          <p className="text-sm text-center text-muted-foreground">
+            Conecta tu wallet para adquirir esta obra
+          </p>
+        </div>
       )}
       
       {success && selectedNFT && (
         <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
           <p className="text-green-600 dark:text-green-400 font-medium mb-2">
-            ¡NFT minteado con éxito!
+            ¡Obra adquirida con éxito!
           </p>
           <div className="flex flex-col items-center my-3">
             <div className="relative w-32 h-32 mb-2 border-2 border-green-500 rounded-lg overflow-hidden">
               <Image 
                 src={selectedNFT} 
-                alt="Tu NFT" 
+                alt="Tu Obra" 
                 fill 
                 className="object-contain"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 flex items-end justify-center p-2">
-                <p className="text-xs text-white font-medium">Tu nuevo NFT</p>
+                <p className="text-xs text-white font-medium">Tu nueva obra</p>
               </div>
             </div>
             <p className="text-sm font-medium text-center mb-2">
@@ -134,7 +160,7 @@ export function SimpleTransaction() {
       
       <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
         <p className="text-sm text-yellow-600 dark:text-yellow-400">
-          <strong>Modo demostración:</strong> Esta versión simula el minteo sin realizar transacciones reales en la blockchain.
+          <strong>Modo demostración:</strong> Esta versión simula la compra sin realizar transacciones reales en la blockchain.
         </p>
       </div>
     </div>

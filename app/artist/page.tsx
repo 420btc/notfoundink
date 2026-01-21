@@ -423,7 +423,7 @@ export default function ArtistPage() {
                     sparkle
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
-                    <p className="text-white font-cartoon text-lg">Workshop NFT</p>
+                    <p className="text-white font-cartoon text-lg">Taller Creativo</p>
                     <p className="text-white/70 text-sm">Taller creativo</p>
                   </div>
                   <span className="absolute top-2 right-2 text-lg animate-float-fast">✨</span>
@@ -444,7 +444,7 @@ export default function ArtistPage() {
             </h2>
           </div>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Explora las 100 piezas únicas creadas por Ana María De Carvalho y encuentra la que mejor conecte contigo. Cada NFT
+            Explora las 100 piezas únicas creadas por Ana María De Carvalho y encuentra la que mejor conecte contigo. Cada obra
             cuenta una historia diferente.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -468,7 +468,7 @@ export default function ArtistPage() {
                 size="lg"
                 className="relative px-8 py-6 text-lg border-nfi-pink text-nfi-pink hover:bg-nfi-pink/20"
               >
-                <Link href="/mint">Mint NFT</Link>
+                <Link href="/mint">Obtener Obra</Link>
               </Button>
             </div>
           </div>
