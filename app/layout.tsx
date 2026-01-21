@@ -16,9 +16,41 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const bangers = Bangers({ weight: "400", subsets: ["latin"], variable: "--font-bangers" })
 
 export const metadata: Metadata = {
-  title: "Not Found Ink | Arte por Ana María",
-  description: "Colección de obras digitales únicas que reinterpretan la cultura pop con un estilo vibrante y contemporáneo.",
-    generator: 'v0.dev'
+  metadataBase: new URL('https://not-found-ink.vercel.app'),
+  title: {
+    default: "Not Found Ink | Arte Digital por Ana María",
+    template: "%s | Not Found Ink"
+  },
+  description: "Descubre la colección de obras digitales únicas de Ana María. Arte pop vibrante, reinterpretaciones de personajes icónicos y piezas con identidad propia.",
+  keywords: ["arte digital", "NFT", "arte pop", "Ana María", "ilustración", "diseño gráfico", "colección de arte", "Next.js"],
+  authors: [{ name: "Ana María" }],
+  creator: "Ana María",
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: "https://not-found-ink.vercel.app",
+    title: "Not Found Ink | Arte Digital por Ana María",
+    description: "Explora un universo de creatividad y color. Obras únicas que fusionan nostalgia y modernidad.",
+    siteName: "Not Found Ink",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Not Found Ink | Arte Digital por Ana María",
+    description: "Descubre la colección de obras digitales únicas de Ana María.",
+    creator: "@notfoundink", 
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({

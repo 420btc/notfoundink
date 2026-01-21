@@ -3,216 +3,41 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Share2, Heart } from "lucide-react"
+import { artworksData } from "@/lib/data"
 
-// Datos de ejemplo para las obras
-const artworksData = {
-  "1": {
-    id: 1,
-    title: "Trust Me ✨",
-    description:
-      "Dos personajes compartiendo un momento mágico de confianza mutua, representando la amistad y la complicidad.",
-    image: "/images/trust-me.png",
-    owner: "Ana María",
-    created: "2025-03-15",
-  },
-  "2": {
-    id: 2,
-    title: "But Mom Says",
-    description:
-      "Un personaje elegante que nos recuerda que a veces lo que dice mamá es lo que importa, con un toque de humor.",
-    image: "/images/mom-says.png",
-    owner: "Ana María",
-    created: "2025-03-16",
-  },
-  "3": {
-    id: 3,
-    title: "Historia",
-    description:
-      "Una reinterpretación de Bart Simpson con un mensaje profundo sobre la importancia de recordar nuestra historia.",
-    image: "/images/bart-history.png",
-    owner: "Ana María",
-    created: "2025-03-17",
-  },
-  "4": {
-    id: 4,
-    title: "Mariposas ✨",
-    description:
-      "Una representación delicada de la belleza y la transformación, simbolizada por mariposas que rodean al personaje principal.",
-    image: "/images/butterflies.png",
-    owner: "Ana María",
-    created: "2025-03-18",
-  },
-  "5": {
-    id: 5,
-    title: "Corazón",
-    description:
-      "Una interpretación de Shin Chan que explora el tema del amor y la amistad con el estilo característico de Ana María.",
-    image: "/images/shin-chan.png",
-    owner: "Ana María",
-    created: "2025-03-19",
-  },
-  "6": {
-    id: 6,
-    title: "Empieza Ahora",
-    description:
-      "Un homenaje a Homer Simpson frente a la computadora, recordando que nunca es tarde para comenzar algo nuevo.",
-    image: "/images/homer-computer.png",
-    owner: "Ana María",
-    created: "2025-03-20",
-  },
-  "7": {
-    id: 7,
-    title: "Skull ✨",
-    description:
-      "Una calavera estilizada que combina elementos de la cultura pop con un mensaje sobre la fugacidad de la vida.",
-    image: "/images/skull.png",
-    owner: "Ana María",
-    created: "2025-03-21",
-  },
-  "8": {
-    id: 8,
-    title: "TV Off",
-    description:
-      "Lisa Simpson nos invita a apagar la televisión y explorar el mundo real, con un mensaje sobre la desconexión digital.",
-    image: "/images/lisa-tv.png",
-    owner: "Ana María",
-    created: "2025-03-22",
-  },
-  "9": {
-    id: 9,
-    title: "Figura",
-    description:
-      "Una silueta enigmática que invita al espectador a completar la historia con su propia interpretación.",
-    image: "/images/figure.png",
-    owner: "Ana María",
-    created: "2025-03-23",
-  },
-  "10": {
-    id: 10,
-    title: "Perrito ✨",
-    description:
-      "Un adorable perro con el estilo característico de Ana María, simbolizando la lealtad y la amistad incondicional.",
-    image: "/images/dog.png",
-    owner: "Ana María",
-    created: "2025-03-24",
-  },
-  "11": {
-    id: 11,
-    title: "Hago que parezca fácil ✨",
-    description:
-      "Un personaje confiado montando skateboard con estilo, recordándonos que la verdadera maestría hace que lo difícil parezca sencillo.",
-    image: "/images/skater-easy.png",
-    owner: "Ana María",
-    created: "2025-04-01",
-  },
-  "25": {
-    id: 25,
-    title: "Nueva Perspectiva",
-    description: "Una obra vibrante que invita a mirar el mundo desde un ángulo diferente.",
-    image: "/images/Nuevox (1).jpeg",
-    owner: "Ana María",
-    created: "2025-04-02",
-  },
-  "26": {
-    id: 26,
-    title: "Horizontes",
-    description: "Exploración de nuevos horizontes artísticos con una paleta de colores audaz.",
-    image: "/images/Nuevox (2).jpeg",
-    owner: "Ana María",
-    created: "2025-04-03",
-  },
-  "27": {
-    id: 27,
-    title: "Reflejos Urbanos",
-    description: "Interpretación contemporánea de la vida urbana y sus múltiples reflejos.",
-    image: "/images/Nuevox (3).jpeg",
-    owner: "Ana María",
-    created: "2025-04-04",
-  },
-  "28": {
-    id: 28,
-    title: "Instante Fugaz",
-    description: "Capturando la belleza de un momento efímero con trazos dinámicos.",
-    image: "/images/Nuevox (4).jpeg",
-    owner: "Ana María",
-    created: "2025-04-05",
-  },
-  "29": {
-    id: 29,
-    title: "Memorias",
-    description: "Una evocación visual de recuerdos y nostalgia con un toque moderno.",
-    image: "/images/Nuevox (5).jpeg",
-    owner: "Ana María",
-    created: "2025-04-06",
-  },
-  "30": {
-    id: 30,
-    title: "Ecos del Ayer",
-    description: "Resonancias del pasado reinterpretadas en un lenguaje visual actual.",
-    image: "/images/Nuevox (6).jpeg",
-    owner: "Ana María",
-    created: "2025-04-07",
-  },
-  "31": {
-    id: 31,
-    title: "Sueños Lúcidos",
-    description: "Un viaje onírico a través de formas y colores que desafían la realidad.",
-    image: "/images/Nuevox (7).jpeg",
-    owner: "Ana María",
-    created: "2025-04-08",
-  },
-  "32": {
-    id: 32,
-    title: "Fragmentos",
-    description: "La belleza de lo incompleto y la reconstrucción de la identidad.",
-    image: "/images/Nuevox (8).jpeg",
-    owner: "Ana María",
-    created: "2025-04-09",
-  },
-  "33": {
-    id: 33,
-    title: "Silencios",
-    description: "El poder de lo que no se dice, expresado a través de la imagen.",
-    image: "/images/Nuevox (9).jpeg",
-    owner: "Ana María",
-    created: "2025-04-10",
-  },
-  "34": {
-    id: 34,
-    title: "Mirada Interior",
-    description: "Una introspección profunda visualizada con sensibilidad artística.",
-    image: "/images/Nuevox (10).jpeg",
-    owner: "Ana María",
-    created: "2025-04-11",
-  },
-  "35": {
-    id: 35,
-    title: "Caminos Cruzados",
-    description: "La intersección de destinos y posibilidades en una composición compleja.",
-    image: "/images/Nuevox (11).jpeg",
-    owner: "Ana María",
-    created: "2025-04-12",
-  },
-  "36": {
-    id: 36,
-    title: "Destellos",
-    description: "Pequeñas luces de esperanza y creatividad en medio del caos.",
-    image: "/images/Nuevox (12).jpeg",
-    owner: "Ana María",
-    created: "2025-04-13",
-  },
-  "37": {
-    id: 37,
-    title: "Esencia Pura ✨",
-    description: "La manifestación más auténtica del estilo y la visión de la artista.",
-    image: "/images/Nuevox (13).jpeg",
-    owner: "Ana María",
-    created: "2025-04-14",
-  },
+import { ShareButton } from "@/components/share-button"
+import type { Metadata } from "next"
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+  const artwork = artworksData[id as keyof typeof artworksData]
+
+  if (!artwork) {
+    return {
+      title: "Obra no encontrada | Not Found Ink",
+    }
+  }
+
+  return {
+    title: `${artwork.title} | Not Found Ink`,
+    description: artwork.description,
+    openGraph: {
+      title: `${artwork.title} - Arte por Ana María`,
+      description: artwork.description,
+      images: [artwork.image],
+    },
+  }
 }
 
-export default function ArtworkDetailPage({ params }: { params: { id: string } }) {
-  const artwork = artworksData[params.id as keyof typeof artworksData]
+export async function generateStaticParams() {
+  return Object.keys(artworksData).map((id) => ({
+    id: id,
+  }))
+}
+
+export default async function ArtworkDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const artwork = artworksData[id as keyof typeof artworksData]
 
   if (!artwork) {
     return (
@@ -236,20 +61,26 @@ export default function ArtworkDetailPage({ params }: { params: { id: string } }
         Volver a la galería
       </Link>
 
-      <div className="grid md:grid-cols-2 gap-10">
-        {/* Imagen de la Obra */}
-        <div className="relative group">
+      <div className="grid lg:grid-cols-5 gap-10 lg:gap-12">
+        {/* Imagen de la Obra - Ocupa más espacio (3 columnas en desktop) */}
+        <div className="lg:col-span-3 relative group flex flex-col">
           <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-          <div className="relative aspect-square overflow-hidden rounded-lg shadow-lg bg-white/90 dark:bg-gray-900/90">
-            <Image src={artwork.image || "/placeholder.svg"} alt={artwork.title} fill className="object-contain" />
+          <div className="relative w-full h-[50vh] sm:h-[60vh] lg:h-[80vh] overflow-hidden rounded-lg shadow-lg bg-white/90 dark:bg-gray-900/90">
+            <Image 
+              src={artwork.image || "/placeholder.svg"} 
+              alt={artwork.title} 
+              fill 
+              className="object-contain" 
+              priority 
+            />
             {artwork.title.includes("✨") && (
-              <span className="absolute top-4 right-4 text-2xl animate-float-medium">✨</span>
+              <span className="absolute top-4 right-4 text-3xl animate-float-medium">✨</span>
             )}
           </div>
         </div>
 
-        {/* Detalles de la Obra */}
-        <div>
+        {/* Detalles de la Obra - Ocupa menos espacio (2 columnas en desktop) */}
+        <div className="lg:col-span-2 flex flex-col justify-center">
           <div className="flex justify-between items-start">
             <div>
               <h1 className="font-cartoon text-3xl md:text-4xl mb-2">{artwork.title}</h1>
@@ -259,9 +90,7 @@ export default function ArtworkDetailPage({ params }: { params: { id: string } }
               <Button variant="ghost" size="icon">
                 <Heart className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon">
-                <Share2 className="h-5 w-5" />
-              </Button>
+              <ShareButton title={artwork.title} text={artwork.description} />
             </div>
           </div>
 
@@ -285,6 +114,15 @@ export default function ArtworkDetailPage({ params }: { params: { id: string } }
                   <p className="font-medium">{artwork.created}</p>
                 </div>
               </div>
+            </div>
+            
+            <div className="pt-4">
+                <Button className="w-full bg-gradient-to-r from-nfi-yellow to-nfi-pink hover:from-nfi-pink hover:to-nfi-yellow text-white font-bold py-6 text-lg shadow-lg transform transition-all hover:scale-105">
+                    Adquirir Obra ✨
+                </Button>
+                <p className="text-xs text-center text-muted-foreground mt-2">
+                    Pieza única verificada digitalmente.
+                </p>
             </div>
           </div>
         </div>
