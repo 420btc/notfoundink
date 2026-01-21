@@ -122,11 +122,6 @@ export default function ArtistPage() {
                                 {/* Overlay Gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
                                 
-                                {/* Floating Badge */}
-                                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg transform rotate-12">
-                                    <span className="text-2xl">👩‍🎨</span>
-                                </div>
-
                                 {/* Bottom Info */}
                                 <div className="absolute bottom-0 left-0 right-0 p-8">
                                     <p className="text-white font-cartoon text-3xl mb-1">La Artista</p>
