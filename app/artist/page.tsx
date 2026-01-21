@@ -364,8 +364,8 @@ export default function ArtistPage() {
                         <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg bg-white text-black hover:bg-gray-100 hover:scale-105 transition-all shadow-xl font-bold">
                             <Link href="/collection">Explorar Colección</Link>
                         </Button>
-                        <Button asChild size="lg" variant="outline" className="rounded-full px-10 h-16 text-lg border-white/30 text-white hover:bg-white/10 hover:text-white backdrop-blur-sm">
-                            <Link href="/mint">Saber Más</Link>
+                        <Button asChild size="lg" variant="outline" className="rounded-full px-10 h-16 text-lg border-white/40 text-white bg-white/10 hover:bg-white/20 hover:text-white backdrop-blur-sm">
+                            <Link href="/pedidos">Saber Más</Link>
                         </Button>
                     </div>
                 </div>
