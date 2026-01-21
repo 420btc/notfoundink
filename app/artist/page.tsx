@@ -272,7 +272,7 @@ export default function ArtistPage() {
                 
                 <div className="flex gap-8 overflow-x-auto pb-12 px-4 md:px-12 snap-x container no-scrollbar" style={{ scrollPaddingLeft: '2rem' }}>
                     {/* Video Card 1 */}
-                    <div className="min-w-[320px] md:min-w-[500px] snap-center shrink-0">
+                    <div className="w-[320px] md:w-[500px] snap-center shrink-0">
                          <div className="aspect-video relative rounded-3xl overflow-hidden shadow-2xl border-[6px] border-black bg-black group">
                             <VideoPlayer 
                                 src="/videos/feria1.mp4" 
@@ -297,7 +297,7 @@ export default function ArtistPage() {
                          </div>
                     </div>
                      {/* Video Card 2 */}
-                    <div className="min-w-[320px] md:min-w-[500px] snap-center shrink-0">
+                    <div className="w-[320px] md:w-[500px] snap-center shrink-0">
                          <div className="aspect-video relative rounded-3xl overflow-hidden shadow-2xl border-[6px] border-black bg-black group">
                             <VideoPlayer 
                                 src="/videos/feria2.mp4" 
@@ -322,7 +322,7 @@ export default function ArtistPage() {
                          </div>
                     </div>
                     {/* Image Card */}
-                    <div className="min-w-[320px] md:min-w-[500px] snap-center shrink-0">
+                    <div className="w-[320px] md:w-[500px] snap-center shrink-0">
                          <div className="aspect-video relative rounded-3xl overflow-hidden shadow-2xl border-[6px] border-black group cursor-pointer">
                              <Image src="/images/feria5.jpg" alt="Expo" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                               <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
