@@ -7,12 +7,17 @@ import { Badge } from "@/components/ui/badge"
 import "../../styles/animate-vibrate.css";
 import "../../styles/animate-explode.css";
 import "../../styles/animate-rotate-slow.css";
-import { Instagram, ExternalLink, Palette, Brush, Sparkles, Star, Zap, MapPin } from "lucide-react"
+import { Instagram, ExternalLink, Palette, Brush, Sparkles, Star, Zap, MapPin, ArrowRightLeft } from "lucide-react"
 import { VideoPlayer } from "@/components/video-player"
 import React, { useRef, useState, useEffect } from "react"
 import TypewriterText from "@/components/TypewriterText"
 
 export default function ArtistPage() {
+  const [isMainImageFront, setIsMainImageFront] = useState(true);
+
+  const toggleImages = () => {
+    setIsMainImageFront(!isMainImageFront);
+  };
   
   return (
      <div className="min-h-screen bg-background overflow-x-hidden">
@@ -72,26 +77,61 @@ export default function ArtistPage() {
                 {/* Image Content - Right (5 cols) */}
                 <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center relative">
                      <div className="relative w-72 h-72 md:w-[450px] md:h-[500px]">
-                        {/* Decorative elements behind */}
-                        <div className="absolute top-10 -right-10 w-full h-full border-2 border-nfi-blue/30 rounded-[2.5rem] rotate-12 -z-10"></div>
-                        <div className="absolute -bottom-5 -left-5 w-full h-full bg-nfi-yellow rounded-[2.5rem] -rotate-6 -z-10 opacity-20"></div>
+                        
+                        {/* Carousel Toggle Button */}
+                        <Button 
+                            size="icon" 
+                            className="absolute -top-4 -right-4 z-50 rounded-full w-14 h-14 shadow-xl bg-white text-black hover:bg-nfi-yellow hover:scale-110 transition-all duration-300 border-4 border-white"
+                            onClick={toggleImages}
+                        >
+                            <ArrowRightLeft className="w-6 h-6" />
+                        </Button>
+
+                        {/* Second Image (Ana Mari Real) */}
+                        <div 
+                            className={`absolute w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl transition-all duration-700 ease-in-out ${
+                                !isMainImageFront 
+                                ? "z-20 top-0 left-0 rotate-3 scale-100" 
+                                : "z-10 -bottom-10 -left-10 -rotate-6 brightness-50"
+                            }`}
+                        >
+                             <Image src="/images/anamari.png" alt="Ana Mari Real" fill className="object-cover" />
+                             
+                             {/* Content visible when this image is front */}
+                             <div className={`transition-opacity duration-300 ${!isMainImageFront ? 'opacity-100' : 'opacity-0'}`}>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
+                                <div className="absolute bottom-0 left-0 right-0 p-8">
+                                    <p className="text-white font-cartoon text-3xl mb-1">Ana María</p>
+                                    <p className="text-white/80 text-sm font-light tracking-wide">REAL LIFE</p>
+                                </div>
+                             </div>
+                        </div>
                         
                         {/* Main Image Container */}
-                        <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl bg-white rotate-3 hover:rotate-0 transition-all duration-700 ease-out group cursor-pointer">
-                            <Image src="/images/image (2).jpg" alt="Ana María" fill className="object-cover transition-transform duration-700 group-hover:scale-110" priority />
+                        <div 
+                            className={`absolute w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl bg-white transition-all duration-700 ease-in-out ${
+                                isMainImageFront 
+                                ? "z-20 top-0 left-0 rotate-3" 
+                                : "z-10 -bottom-10 -left-10 -rotate-6 brightness-50"
+                            }`}
+                        >
+                            <Image src="/images/image (2).jpg" alt="Ana María" fill className="object-cover transition-transform duration-700 hover:scale-110" priority />
                             
-                            {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
-                            
-                            {/* Floating Badge */}
-                            <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg transform rotate-12 group-hover:rotate-0 transition-all duration-500">
-                                <span className="text-2xl">👩‍🎨</span>
-                            </div>
+                            {/* Content visible when this image is front */}
+                            <div className={`transition-opacity duration-300 ${isMainImageFront ? 'opacity-100' : 'opacity-0'}`}>
+                                {/* Overlay Gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                                
+                                {/* Floating Badge */}
+                                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg transform rotate-12">
+                                    <span className="text-2xl">👩‍🎨</span>
+                                </div>
 
-                            {/* Bottom Info */}
-                            <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <p className="text-white font-cartoon text-3xl mb-1">La Artista</p>
-                                <p className="text-white/80 text-sm font-light tracking-wide">MENTE CREATIVA</p>
+                                {/* Bottom Info */}
+                                <div className="absolute bottom-0 left-0 right-0 p-8">
+                                    <p className="text-white font-cartoon text-3xl mb-1">La Artista</p>
+                                    <p className="text-white/80 text-sm font-light tracking-wide">MENTE CREATIVA</p>
+                                </div>
                             </div>
                         </div>
                      </div>

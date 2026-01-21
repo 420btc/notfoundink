@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <IntroScreen />
-      <div className="flex flex-col bg-gradient-to-b from-nfi-purple/5 to-background">
+      <div className="flex flex-col bg-white">
         {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="container-fluid p-0 relative z-10">
@@ -50,7 +50,6 @@ export default function Home() {
             <div className="flex flex-col items-center mt-12 mb-16">
               <div className="inline-flex flex-col sm:flex-row gap-4 sm:gap-8 p-4 bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl">
                 <div className="relative group transform transition-transform hover:scale-105">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                   <Button
                     asChild
                     size="lg"
@@ -67,11 +66,7 @@ export default function Home() {
 
       {/* About the Collection */}
       <section className="py-16 bg-white relative overflow-hidden mb-16 rounded-xl">
-        <div className="absolute inset-0 rounded-xl p-[3px] bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-yellow animate-border-shine">
-          <div className="absolute inset-0 rounded-[calc(0.75rem-1px)] bg-white"></div>
-        </div>
-        <div className="absolute -z-10 inset-0 bg-cartoon-pattern opacity-5"></div>
-        <div className="absolute -z-10 inset-0 bg-gradient-to-br from-nfi-yellow/5 to-nfi-pink/5 rounded-xl"></div>
+        <div className="absolute inset-0 bg-white"></div>
         <div className="container relative z-10">
           <div className="relative text-center mb-10">
             <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-3xl animate-float-medium">✨</span>
@@ -97,7 +92,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-nfi-purple/5 to-background/80 relative overflow-hidden">
+      <section className="py-20 bg-white relative overflow-hidden">
         <div className="container relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
             <div>
@@ -112,7 +107,6 @@ export default function Home() {
 </TypewriterOnView>
 <TypewriterOnView text={'Cada pieza es única y está disponible exclusivamente en nuestra galería digital, garantizando una experiencia artística auténtica y vibrante.'} className="text-lg mb-6" as="p" />
               <div className="relative inline-block group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-nfi-blue via-nfi-purple to-nfi-pink rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                 <Button
                   asChild
                   className="relative gap-2 bg-gradient-to-r from-nfi-blue via-nfi-purple to-nfi-pink hover:from-nfi-pink hover:via-nfi-purple hover:to-nfi-blue transition-all duration-500"
@@ -131,7 +125,6 @@ export default function Home() {
                 { src: "/images/Nuevox (4).jpeg", alt: "Obra 4" },
               ].map((img, index) => (
                 <div key={index} className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                   <div className="relative rounded-lg overflow-hidden">
                     <Image
                       src={img.src || "/placeholder.svg"}
@@ -179,7 +172,6 @@ export default function Home() {
               className="transform transition-all duration-300 hover:scale-105"
             >
               <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
                 <div className="relative bg-white/90 dark:bg-gray-900/90 rounded-lg overflow-hidden">
                   <div className="aspect-square relative overflow-hidden">
                     <Image src={nft.image || "/placeholder.svg"} alt={nft.title} fill className="object-cover" />
@@ -200,7 +192,7 @@ export default function Home() {
       </div>
 
       {/* Videos Section */}
-      <section className="py-20 bg-gradient-to-b from-background/80 to-nfi-purple/10 relative overflow-hidden">
+      <section className="py-20 bg-white relative overflow-hidden">
         <div className="container relative z-10">
           <div className="relative text-center mb-12">
             <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-3xl animate-float-medium">

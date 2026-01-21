@@ -44,9 +44,7 @@ export function VideoPlayer({
   return (
     <>
       <div className="relative group h-full cursor-pointer" onClick={() => setOpen(true)}>
-        <div
-          className={`absolute -inset-1 bg-gradient-to-r from-${gradientFrom} to-${gradientTo} rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200`}
-        ></div>
+        {/* Glow removido para versión clean */}
         <div className="relative bg-white/90 dark:bg-gray-900/90 rounded-lg overflow-hidden h-full">
           <video
             ref={videoRef}

@@ -23,7 +23,7 @@ export default function CollectionPage() {
   }, [sortOrder]);
 
   return (
-    <div className="container py-10 bg-gradient-to-b from-nfi-purple/5 to-background">
+    <div className="container py-10 bg-white">
       <div className="relative mb-6">
         <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
         <h1 className="font-cartoon text-4xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
