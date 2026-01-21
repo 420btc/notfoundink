@@ -60,7 +60,7 @@ export function Carousel({ items, itemsPerView = 4 }: CarouselProps) {
   }, [currentIndex])
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden py-10 px-4 sm:py-12 sm:px-12">
       <div
         ref={carouselRef}
         className="relative"
@@ -75,8 +75,8 @@ export function Carousel({ items, itemsPerView = 4 }: CarouselProps) {
           }}
         >
           {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-            <div key={slideIndex} className="min-w-full flex-shrink-0">
-              <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:grid-cols-4">
+            <div key={slideIndex} className="min-w-full flex-shrink-0 px-4">
+              <div className="grid grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:grid-cols-4">
                 {items
                   .slice(
                     slideIndex * itemsPerView,

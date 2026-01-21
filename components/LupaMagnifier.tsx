@@ -61,7 +61,7 @@ export const LupaMagnifier: React.FC<LupaMagnifierProps> = ({
             zIndex: 10,
             border: "4px solid #ec407a99",
             boxShadow: "0 0 0 2px #fff, 0 0 16px 4px #ec407a55",
-            backgroundImage: `url(${src})`,
+            backgroundImage: `url("${src}")`,
             backgroundRepeat: "no-repeat",
             backgroundSize: `${containerRef.current.offsetWidth * zoomLevel}px ${containerRef.current.offsetHeight * zoomLevel}px`,
             backgroundPosition: `-${mouse.bgX}px -${mouse.bgY}px`,
