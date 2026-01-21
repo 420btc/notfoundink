@@ -117,21 +117,24 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-8 sm:gap-12 place-items-center">
               {[
-                { src: "/images/Nuevox (1).jpeg", alt: "Obra 1" },
-                { src: "/images/Nuevox (2).jpeg", alt: "Obra 2" },
-                { src: "/images/Nuevox (3).jpeg", alt: "Obra 3" },
-                { src: "/images/Nuevox (4).jpeg", alt: "Obra 4" },
+                { src: "/images/Nuevox (11).jpeg", alt: "Obra 11" },
+                { src: "/images/Nuevox (12).jpeg", alt: "Obra 12" },
+                { src: "/images/Nuevox (13).jpeg", alt: "Obra 13" },
+                { src: "/images/Nuevox (10).jpeg", alt: "Obra 10" },
               ].map((img, index) => (
-                <div key={index} className="relative group">
-                  <div className="relative rounded-lg overflow-hidden">
+                <div key={index} className="relative group w-full max-w-[250px]">
+                  {/* Glow Effect */}
+                  <div className="absolute -inset-3 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue opacity-40 blur-xl -z-10 rounded-xl transition-opacity duration-500 group-hover:opacity-70"></div>
+                  
+                  <div className="relative rounded-xl overflow-hidden shadow-2xl">
                     <Image
                       src={img.src || "/placeholder.svg"}
                       alt={img.alt}
                       width={300}
                       height={300}
-                      className="rounded-lg shadow-md"
+                      className="w-full h-auto object-cover aspect-square transform transition-transform duration-500 group-hover:scale-105"
                     />
                     {index === 1 && <span className="absolute top-2 right-2 text-xl animate-float-fast">✨</span>}
                   </div>
