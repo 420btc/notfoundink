@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 
 export function Footer() {
   const pathname = usePathname();
-  const showPoscass = pathname === "/pedidos";
+  const showPoscass = pathname === "/" || pathname === "/pedidos";
   return (
     <footer className="w-full border-t bg-background py-6">
       <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
@@ -18,28 +18,6 @@ export function Footer() {
           <p className="text-sm text-muted-foreground mt-1">© 2025 Ana María. Todos los derechos reservados.</p>
         </div>
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
-          {showPoscass && (
-  <div className="w-full flex justify-center md:justify-center my-6 md:my-0 gap-4 mx-auto">
-    <div className="relative w-56 h-32 md:w-72 md:h-40 bg-white rounded-lg overflow-hidden border border-nfi-pink/10 shadow aspect-[9/5] flex items-center justify-center">
-      <img
-        src="/images/fujifilm2.png"
-        alt="Fujifilm"
-        className="object-contain w-full h-full"
-        style={{ display: 'block' }}
-        loading="lazy"
-      />
-    </div>
-    <div className="relative w-56 h-32 md:w-72 md:h-40 bg-white rounded-lg overflow-hidden border border-nfi-pink/10 shadow aspect-[9/5] flex items-center justify-center">
-      <img
-        src="/images/poscass.JPG"
-        alt="Poscass"
-        className="object-contain w-full h-full"
-        style={{ display: 'block' }}
-        loading="lazy"
-      />
-    </div>
-  </div>
-)}
           <div className="flex items-center gap-4">
             <Link
               href="https://www.instagram.com/notfoundink/"

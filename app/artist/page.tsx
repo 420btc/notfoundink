@@ -3,483 +3,334 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import "../../styles/animate-vibrate.css";
 import "../../styles/animate-explode.css";
 import "../../styles/animate-rotate-slow.css";
-import { Twitter, Instagram, ExternalLink } from "lucide-react"
-import { Carousel } from "@/components/carousel"
-import { InspiracionCarrusel, inspiracionesExtra } from "@/components/InspiracionCarrusel"
+import { Instagram, ExternalLink, Palette, Brush, Sparkles, Star, Zap, MapPin } from "lucide-react"
 import { VideoPlayer } from "@/components/video-player"
-
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import TypewriterText from "@/components/TypewriterText"
 
 export default function ArtistPage() {
+  
   return (
-    <div className="container py-10 bg-gradient-to-b from-nfi-purple/5 to-background">
-      <div className="relative mb-6">
-        <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
-        <h1 className="font-cartoon text-4xl md:text-5xl">La Artista</h1>
-      </div>
-
-
-      <div className="grid md:grid-cols-2 gap-10 items-center mb-16 relative">
-        <div className="absolute -z-10 inset-0 bg-gradient-to-br from-nfi-yellow/10 to-nfi-pink/10 rounded-xl"></div>
-        <div className="absolute -z-10 inset-0 bg-cartoon-pattern opacity-10"></div>
-        <div className="order-2 md:order-1 p-6">
-  <h2 className="font-cartoon text-3xl mb-4">
-    Ana María D.C.G <span className="text-sm">✨</span>
-  </h2>
-  {(() => {
-    const [firstDone, setFirstDone] = useState(false);
-    return <>
-      <TypewriterText
-        text="Ana María D.C.G es una ilustradora con una visión artística distintiva, capaz de crear obras que destacan por su originalidad y carácter propio. Su trabajo invita a explorar nuevas perspectivas a través de la creatividad, el color y el humor, logrando piezas que conectan con el público de manera auténtica y contemporánea."
-        speed={18}
-        className="block text-lg mb-4"
-        onDone={() => setFirstDone(true)}
-      />
-      {firstDone && (
-        <TypewriterText
-          text="Su trabajo se caracteriza por líneas limpias, mensajes profundos y un sentido del humor que conecta con audiencias de todas las edades. 'Not Found Ink' es su primera colección de obras digitales, donde plasma su visión artística en 100 piezas únicas."
-          speed={18}
-          className="block text-lg mb-6"
-        />
-      )}
-    </>
-  })()}
-
-          <div className="flex gap-4">
-            {/* Twitter: azul */}
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#1DA1F2] text-white hover:bg-[#1A8CD8] transition-all rounded-md h-10 w-10 flex items-center justify-center shadow-md"
-            >
-              <Twitter className="h-5 w-5" />
-              <span className="sr-only">Twitter</span>
-            </a>
-            {/* Instagram: degradado amarillo-rosa */}
-            <a
-              href="https://www.instagram.com/notfoundink/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gradient-to-r from-nfi-yellow to-nfi-pink text-white hover:from-nfi-pink hover:to-nfi-yellow transition-all rounded-md h-10 w-10 flex items-center justify-center shadow-md"
-            >
-              <Instagram className="h-5 w-5 animate-rotate-slow" />
-              <span className="sr-only">Instagram</span>
-            </a>
-            {/* Portfolio: igual que conectar wallet */}
-            {/* Botón Portfolio con animación de vibración/explosión controlada por localStorage */}
-{(() => {
-  const [exploded, setExploded] = React.useState(false);
-  const [visited, setVisited] = React.useState(false);
-  const [clickCount, setClickCount] = React.useState(0);
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-    if (typeof window !== "undefined") {
-      setVisited(localStorage.getItem("portfolioVisited") === "true");
-    }
-  }, []);
-
-  const handleClick = (e: React.MouseEvent) => {
-    if (visited) return; // Si ya visitó, navega normal
-    e.preventDefault();
-    setExploded(true);
-    setClickCount((prev) => prev + 1);
-    setTimeout(() => {
-      try {
-        localStorage.setItem("portfolioVisited", "true");
-      } catch (e) {
-        console.error("Error updating localStorage", e);
-      }
-      window.location.href = "/portfolio";
-    }, 480); // Espera la animación
-  };
-
-  // Nueva lógica: vibración normal la primera vez, vibración lenta después, pero siempre vibrando
-  let vibrationClass = '';
-  if (!exploded) {
-    vibrationClass = visited ? 'animate-vibrate-slow' : 'animate-vibrate';
-  } else {
-    vibrationClass = 'animate-explode';
-  }
-
-  if (!mounted) return null; // Evita el hydration mismatch
-
-  return (
-    <a
-      href="/portfolio"
-      onClick={handleClick}
-      className={`bg-gradient-to-r from-nfi-yellow to-nfi-pink text-white hover:from-nfi-pink hover:to-nfi-yellow transition-all rounded-md h-10 w-28 flex items-center justify-center shadow-md font-bold text-sm gap-2 ${vibrationClass}`}
-      style={{ pointerEvents: exploded ? "none" : undefined }}
-    >
-      <ExternalLink className="h-4 w-4" />
-      Portfolio
-    </a>
-  );
-})()}
-
-          </div>
-        </div>
-        <div className="order-1 md:order-2 flex justify-center p-6">
-  {/* Bloque de foto de perfil con efecto lupa */}
-  {/* Bloque de foto de perfil con efecto lupa */}
-  {(() => {
-  const [zoom, setZoom] = useState(false);
-  const [offset, setOffset] = useState({ x: 50, y: 50 });
-  const [profile, setProfile] = useState<"main" | "anamari">("main");
-  const imgContainerRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!zoom || !imgContainerRef.current) return;
-    const rect = imgContainerRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setOffset({ x, y });
-  };
-
-  const photoSrc = profile === "main" ? "/images/image (2).jpg" : "/images/anamari.png";
-  const photoAlt = profile === "main" ? "Ana María" : "Ana María (alternativa)";
-
-  return (
-  <div className="relative flex flex-col items-center justify-center mt-8 md:mt-0">
-    <div
-      ref={imgContainerRef}
-      className={`relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden animate-float shadow-xl shadow-nfi-pink/30 cursor-zoom-in`}
-      onMouseEnter={() => setZoom(true)}
-      onMouseLeave={() => setZoom(false)}
-      onMouseMove={handleMouseMove}
-    >
-      <div className="absolute inset-0 rounded-full p-[4px] bg-gradient-to-tr from-nfi-yellow via-nfi-pink to-nfi-blue"></div>
-      <div className="absolute inset-0 rounded-full ring-2 ring-nfi-yellow/40 ring-offset-2"></div>
-      <div className="absolute inset-0 shine-effect"></div>
-      <Image
-        src={photoSrc}
-        alt={photoAlt}
-        fill
-        className={`object-cover transition-transform duration-200 ${zoom ? 'scale-150' : 'scale-100'}`}
-        style={
-          zoom
-            ? { objectPosition: `${offset.x}% ${offset.y}%` }
-            : profile === "main"
-              ? { objectPosition: "50% 35%" } // 15% HACIA ARRIBA
-              : {}
-        }
-      />
-      {zoom && (
-        <div className="absolute inset-0 border-4 border-nfi-yellow/70 rounded-full pointer-events-none animate-pulse"></div>
-      )}
-      <span className="absolute top-4 right-4 text-2xl animate-float-fast">✨</span>
-    </div>
-    {/* Botón para alternar la foto, centrado debajo */}
-    <button
-      type="button"
-      aria-label="Cambiar foto de perfil"
-      className="flex items-center justify-center w-5 h-5 md:w-8 md:h-8 rounded-full bg-gradient-to-tr from-nfi-yellow to-nfi-pink shadow-lg border-2 border-white hover:scale-110 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-nfi-pink/60 mt-3"
-      onClick={() => setProfile(profile === "main" ? "anamari" : "main")}
-    >
-      {profile === "main" ? (
-      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white">
-        {/* Flecha a la derecha ( > ) */}
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-      </svg>
-    ) : (
-      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white">
-        {/* Flecha a la izquierda ( < ) */}
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-      </svg>
-    )}
-    </button>
-  </div>
-);
-})()}
-</div>
-      </div>
-
-      {/* Sección: Obras Destacadas */}
-      <section className="py-16 bg-white relative overflow-hidden mb-16 rounded-xl">
-        <div className="absolute inset-0 rounded-xl p-[3px] bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-yellow animate-border-shine">
-          <div className="absolute inset-0 rounded-[calc(0.75rem-1px)] bg-white"></div>
-        </div>
-        <div className="absolute -z-10 inset-0 bg-cartoon-pattern opacity-5"></div>
-        <div className="absolute -z-10 inset-0 bg-gradient-to-br from-nfi-yellow/5 to-nfi-pink/5 rounded-xl"></div>
-        <div className="container relative z-10">
-          <div className="relative text-center mb-10">
-            <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-3xl animate-float-medium">
-              ✨
-            </span>
-            <h2 className="font-cartoon text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
-              Obras Destacadas
-            </h2>
-          </div>
-          <Carousel 
-            items={[
-              { src: "/images/profesclase.png", title: "Profesor de Clase", category: "Educación" },
-              { src: "/images/buenoluis.png", title: "Bueno Luis", category: "Amistad" },
-              { src: "/images/parejita.png", title: "Parejita", category: "Amor" },
-              { src: "/images/mihermano.png", title: "Mi Hermano", category: "Familia" },
-              { src: "/images/sandrita.png", title: "Sandrita", category: "Retrato" },
-              { src: "/images/claracuev.png", title: "Clara Cuev", category: "Personaje" },
-              { src: "/images/Screenshot (44).png", title: "You Got This Girl", category: "Motivacional" },
-              { src: "/images/Screenshot (45).png", title: "Nada Se Pierde", category: "Reflexión" },
-              { src: "/images/Screenshot (46).png", title: "No Time For Negativity", category: "Positivismo" },
-              { src: "/images/Screenshot (47).png", title: "Here Comes The Sun", category: "Inspiración" },
-            ]}
-            itemsPerView={4}
-          />
-        </div>
-      </section>
-
-
-      <div className="relative text-center mb-6 mt-16">
-        <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-2xl animate-float-medium">✨</span>
-        <h2 className="font-cartoon text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
-          Inspiración
-        </h2>
-      </div>
-
-      {/* Carrusel de inspiración único con todas las tarjetas */}
-      <InspiracionCarrusel
-        items={[
-          {
-            nombre: "Animación Clásica",
-            info: "Las series icónicas de los 90 han sido una gran influencia en el estilo de Ana María, especialmente en la forma de los personajes y el uso del color.",
-            imagen: "/images/bart-smoking.jpeg",
-            alt: "Inspiración Animación Clásica",
-          },
-          {
-            nombre: "Ciencia Ficción",
-            info: "Elementos futuristas y un sentido del humor inteligente y adulto se entrelazan en las ilustraciones, aportando una capa de profundidad narrativa.",
-            imagen: "/images/bender-sketch.jpeg",
-            alt: "Inspiración Ciencia Ficción",
-          },
-          {
-            nombre: "Anime Japonés",
-            info: "La irreverencia y el estilo visual del anime clásico aportan un toque oriental único, creando una fusión cultural vibrante.",
-            imagen: "/images/shin-chan-heart.jpeg",
-            alt: "Inspiración Anime",
-          },
-          {
-            nombre: "Cultura Pop",
-            info: "Iconos globales de la cultura pop, desde criaturas coleccionables hasta héroes de la infancia, son reinterpretados con una nueva mirada.",
-            imagen: "/images/piakchu.jpg",
-            alt: "Inspiración Cultura Pop",
-          },
-          {
-            nombre: "Estilo Cartoon",
-            info: "La estética 'cartoon' americana se mezcla con influencias modernas para crear personajes llenos de expresividad y dinamismo.",
-            imagen: "/images/supernenas.png",
-            alt: "Inspiración Estilo Cartoon",
-          },
-          {
-            nombre: "Humor y Carisma",
-            info: "Personajes optimistas y extravagantes de la animación contemporánea inspiran la personalidad única que emana de cada obra.",
-            imagen: "/images/mabelpines.jpg",
-            alt: "Inspiración Humor",
-          },
-        ]}
-      />
-
-
-      <section className="py-16 bg-gradient-to-b from-background/80 to-nfi-purple/10 relative overflow-hidden mb-16 rounded-xl">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-nfi-purple/10 via-transparent to-transparent"></div>
-        <div className="container relative z-10">
-          <div className="relative text-center mb-10">
-            <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-3xl animate-float-medium">
-              ✨
-            </span>
-            <h2 className="font-cartoon text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
-              Galería de Arte
-            </h2>
-          </div>
-          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:grid-cols-4">
-            {[
-              { src: "/images/trust-me.png", title: "Trust Me ✨" },
-              { src: "/images/mom-says.png", title: "But Mom Says" },
-              { src: "/images/bart-history.png", title: "Historia" },
-              { src: "/images/butterflies.png", title: "Mariposas ✨" },
-              { src: "/images/shin-chan.png", title: "Corazón" },
-              { src: "/images/homer-computer.png", title: "Empieza Ahora ✨" },
-              { src: "/images/skull.png", title: "Skull" },
-              { src: "/images/lisa-tv.png", title: "TV Off" },
-            ].map((item, index) => (
-              <div key={index} className="relative group transform transition-all duration-300 hover:scale-105">
-                <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-                <div className="relative bg-white/90 dark:bg-gray-900/90 rounded-lg overflow-hidden">
-                  <div className="aspect-square relative overflow-hidden">
-                    <Image src={item.src || "/placeholder.svg"} alt={item.title} fill className="object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                      <p className="text-white font-cartoon text-lg">{item.title}</p>
+     <div className="min-h-screen bg-background overflow-x-hidden">
+        {/* Modern Hero Section */}
+        <section className="relative min-h-[85vh] flex items-center justify-center pt-24 pb-12 overflow-hidden">
+            {/* Background elements */}
+             <div className="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-l from-nfi-purple/5 to-transparent -z-10" />
+             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-nfi-yellow/10 rounded-full blur-[100px] -z-10" />
+             <div className="absolute top-20 right-20 w-64 h-64 bg-nfi-pink/10 rounded-full blur-[80px] -z-10" />
+            
+            <div className="container grid lg:grid-cols-12 gap-12 items-center relative z-10">
+                {/* Text Content - Left (7 cols) */}
+                <div className="lg:col-span-7 space-y-8 text-center lg:text-left order-2 lg:order-1">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-nfi-pink/30 bg-nfi-pink/5 text-nfi-pink text-sm font-medium animate-fade-in backdrop-blur-sm">
+                        <Sparkles className="w-4 h-4" />
+                        <span>Illustrator & Digital Artist</span>
                     </div>
-                    {(index === 0 || index === 3 || index === 5 || index === 7) && (
-                      <span className="absolute top-2 right-2 text-lg animate-float-fast">✨</span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                    
+                    <h1 className="font-cartoon text-6xl sm:text-7xl md:text-8xl leading-[1.1] tracking-tight py-2 px-1">
+                        Ana María <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue relative inline-block px-4 pb-2">
+                            De Carvalho
+                            <svg className="absolute w-full h-3 -bottom-1 left-0 text-nfi-yellow opacity-60 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
+                            </svg>
+                        </span>
+                    </h1>
+                    
+                    <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                        Creando mundos donde la <span className="font-bold text-foreground">nostalgia de los 90</span> se encuentra con el caos moderno. 
+                        Una fusión vibrante de líneas limpias, colores explosivos y personajes inolvidables.
+                    </p>
+                    
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <Link href="/portfolio" className="flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-black text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 font-bold text-lg group">
+                            <Palette className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                            Ver Portfolio
+                        </Link>
+                        <a href="https://www.instagram.com/notfoundink/" target="_blank" className="flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 text-gray-800 font-medium group">
+                            <Instagram className="w-5 h-5 text-nfi-pink group-hover:scale-110 transition-transform" />
+                            Instagram
+                        </a>
+                    </div>
 
-      {/* Expo Eventos */}
-      <section className="py-10 bg-gradient-to-b from-nfi-blue/5 to-nfi-pink/5 relative overflow-hidden mb-12 rounded-xl">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-nfi-blue/10 via-transparent to-transparent"></div>
-        <div className="container relative z-10">
-          <div className="relative text-center mb-6">
-            <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-2xl animate-float-medium">
-              ✨
-            </span>
-            <h2 className="font-cartoon text-2xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
-              Expo Eventos
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {/* Video 1 */}
-            <div className="relative group transform transition-all duration-300 hover:scale-105">
-              <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-              <div className="relative bg-black/80 rounded-lg overflow-hidden">
-                <div className="aspect-[9/16] relative overflow-hidden">
-                  <VideoPlayer
-                    src="/videos/feria1.mp4"
-                    poster="/images/placeholder.svg"
-                    id="video-feria1"
-                    gradientFrom="#FDD835"
-                    gradientTo="#EC407A"
-                    buttonColor="#EC407A"
-                    buttonTextColor="#FFFFFF"
-                    sparkle
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
-                    <p className="text-white font-cartoon text-lg">Feria de Arte 2024</p>
-                    <p className="text-white/70 text-sm">Exposición en Madrid</p>
-                  </div>
-                  <span className="absolute top-2 right-2 text-lg animate-float-fast">✨</span>
+                    <div className="pt-8 flex items-center justify-center lg:justify-start gap-8 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-2">
+                            <MapPin className="w-4 h-4 text-nfi-blue" />
+                            Málaga, España
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Brush className="w-4 h-4 text-nfi-yellow" />
+                            +100 Obras Únicas
+                        </div>
+                    </div>
                 </div>
-              </div>
+
+                {/* Image Content - Right (5 cols) */}
+                <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center relative">
+                     <div className="relative w-72 h-72 md:w-[450px] md:h-[500px]">
+                        {/* Decorative elements behind */}
+                        <div className="absolute top-10 -right-10 w-full h-full border-2 border-nfi-blue/30 rounded-[2.5rem] rotate-12 -z-10"></div>
+                        <div className="absolute -bottom-5 -left-5 w-full h-full bg-nfi-yellow rounded-[2.5rem] -rotate-6 -z-10 opacity-20"></div>
+                        
+                        {/* Main Image Container */}
+                        <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl bg-white rotate-3 hover:rotate-0 transition-all duration-700 ease-out group cursor-pointer">
+                            <Image src="/images/image (2).jpg" alt="Ana María" fill className="object-cover transition-transform duration-700 group-hover:scale-110" priority />
+                            
+                            {/* Overlay Gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+                            
+                            {/* Floating Badge */}
+                            <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg transform rotate-12 group-hover:rotate-0 transition-all duration-500">
+                                <span className="text-2xl">👩‍🎨</span>
+                            </div>
+
+                            {/* Bottom Info */}
+                            <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <p className="text-white font-cartoon text-3xl mb-1">La Artista</p>
+                                <p className="text-white/80 text-sm font-light tracking-wide">MENTE CREATIVA</p>
+                            </div>
+                        </div>
+                     </div>
+                </div>
             </div>
+        </section>
 
-            {/* Video 2 */}
-            <div className="relative group transform transition-all duration-300 hover:scale-105">
-              <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-              <div className="relative bg-black/80 rounded-lg overflow-hidden">
-                <div className="aspect-[9/16] relative overflow-hidden">
-                  <VideoPlayer
-                    src="/videos/feria2.mp4"
-                    poster="/images/placeholder.svg"
-                    id="video-feria2"
-                    gradientFrom="#FDD835"
-                    gradientTo="#EC407A"
-                    buttonColor="#EC407A"
-                    buttonTextColor="#FFFFFF"
-                    sparkle
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
-                    <p className="text-white font-cartoon text-lg">Encuentro con Fans</p>
-                    <p className="text-white/70 text-sm">Firma de autógrafos</p>
-                  </div>
-                  <span className="absolute top-2 right-2 text-lg animate-float-fast">✨</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Imagen */}
-            <div className="relative group transform transition-all duration-300 hover:scale-105">
-              <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-              <div className="relative bg-black/80 rounded-lg overflow-hidden">
-                <div className="aspect-[9/16] relative overflow-hidden">
-                  <Image 
-                    src="/images/feria5.jpg" 
-                    alt="Galería Central" 
-                    fill 
-                    className="object-cover" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
-                    <p className="text-white font-cartoon text-lg">Galería Central</p>
-                    <p className="text-white/70 text-sm">Exposición permanente</p>
-                  </div>
-                  <span className="absolute top-2 right-2 text-lg animate-float-fast">✨</span>
-                </div>
-              </div>
+        {/* Timeline / Bio Section - "El Viaje" */}
+        <section className="py-24 container relative">
+            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-nfi-pink/20 to-transparent -z-10"></div>
+            
+            <div className="text-center mb-16">
+                <span className="text-nfi-blue font-bold tracking-widest text-sm uppercase mb-2 block">Trayectoria</span>
+                <h2 className="font-cartoon text-4xl md:text-5xl">El Viaje Creativo</h2>
             </div>
 
-            {/* Video 3 */}
-            <div className="relative group transform transition-all duration-300 hover:scale-105">
-              <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-              <div className="relative bg-black/80 rounded-lg overflow-hidden">
-                <div className="aspect-[9/16] relative overflow-hidden">
-                  <VideoPlayer
-                    src="/videos/feria3.mp4"
-                    poster="/images/placeholder.svg"
-                    id="video-feria3"
-                    gradientFrom="#FDD835"
-                    gradientTo="#EC407A"
-                    buttonColor="#EC407A"
-                    buttonTextColor="#FFFFFF"
-                    sparkle
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
-                    <p className="text-white font-cartoon text-lg">Taller Creativo</p>
-                    <p className="text-white/70 text-sm">Taller creativo</p>
-                  </div>
-                  <span className="absolute top-2 right-2 text-lg animate-float-fast">✨</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            <div className="max-w-5xl mx-auto">
+                <div className="grid md:grid-cols-3 gap-8 items-end">
+                    {/* Card 1 - Smallest */}
+                    <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-2 relative group overflow-hidden h-[280px] flex flex-col justify-between">
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-nfi-yellow/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                        <div className="w-12 h-12 bg-nfi-yellow rounded-2xl flex items-center justify-center mb-4 text-2xl shadow-md rotate-3 group-hover:rotate-12 transition-transform">🖌️</div>
+                        <div>
+                            <div className="flex items-baseline justify-between mb-2">
+                                <h3 className="font-bold text-lg">Los Inicios</h3>
+                                <span className="font-cartoon text-nfi-yellow text-xl">2018</span>
+                            </div>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                Primeros bocetos y experimentación. La búsqueda de una voz propia.
+                            </p>
+                        </div>
+                    </div>
 
-      <div className="text-center py-16 bg-gradient-to-b from-background to-nfi-purple/10 relative overflow-hidden rounded-xl">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-nfi-purple/10 via-transparent to-transparent"></div>
-        <div className="container relative z-10">
-          <div className="relative mb-6">
-            <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-3xl animate-float-slow">✨</span>
-            <h2 className="font-cartoon text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
-              Descubre la Colección
-            </h2>
-          </div>
-          <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Explora las 100 piezas únicas creadas por Ana María De Carvalho y encuentra la que mejor conecte contigo. Cada obra
-            cuenta una historia diferente.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <div className="relative inline-block group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow to-nfi-pink rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <Button
-                asChild
-                size="lg"
-                className="relative px-8 py-6 text-lg bg-gradient-to-r from-nfi-yellow to-nfi-pink hover:from-nfi-pink hover:to-nfi-yellow transition-all duration-500"
-              >
-                <Link href="/collection">
-                  Ver Colección <span className="ml-1">✨</span>
-                </Link>
-              </Button>
+                    {/* Card 2 - Medium */}
+                    <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-2 relative group overflow-hidden h-[340px] flex flex-col justify-between">
+                         <div className="absolute top-0 right-0 w-24 h-24 bg-nfi-pink/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                        <div className="w-14 h-14 bg-nfi-pink rounded-2xl flex items-center justify-center mb-6 text-3xl shadow-md -rotate-3 group-hover:-rotate-12 transition-transform">💻</div>
+                        <div>
+                            <div className="flex items-baseline justify-between mb-4">
+                                <h3 className="font-bold text-xl">Era Digital</h3>
+                                <span className="font-cartoon text-nfi-pink text-2xl">2020</span>
+                            </div>
+                            <p className="text-muted-foreground leading-relaxed">
+                                Transición al arte digital. El descubrimiento del iPad y Procreate abrió un universo de posibilidades.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Card 3 - Largest */}
+                    <div className="bg-white p-10 rounded-3xl shadow-xl border border-nfi-blue/20 hover:shadow-2xl transition-all hover:-translate-y-2 relative group overflow-hidden h-[400px] flex flex-col justify-between transform md:-translate-y-8">
+                         <div className="absolute top-0 right-0 w-32 h-32 bg-nfi-blue/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                        <div className="w-16 h-16 bg-nfi-blue rounded-2xl flex items-center justify-center mb-8 text-4xl shadow-md rotate-6 group-hover:rotate-0 transition-transform">🚀</div>
+                        <div>
+                            <div className="flex items-baseline justify-between mb-4">
+                                <h3 className="font-bold text-2xl">Not Found Ink</h3>
+                                <span className="font-cartoon text-nfi-blue text-3xl">2023</span>
+                            </div>
+                            <p className="text-muted-foreground text-lg leading-relaxed">
+                                Nace la marca. Una fusión de identidad, caos y color. Lanzamiento de la primera colección oficial de 100 obras.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="relative inline-block group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="relative px-8 py-6 text-lg border-nfi-pink text-nfi-pink hover:bg-nfi-pink/20"
-              >
-                <Link href="/mint">Obtener Obra</Link>
-              </Button>
+        </section>
+
+        {/* Bento Grid Inspiration */}
+        <section className="py-24 bg-secondary/30">
+             <div className="container">
+                <div className="text-center mb-12">
+                    <span className="text-nfi-pink font-bold tracking-widest text-sm uppercase mb-2 block">Moodboard</span>
+                    <h2 className="font-cartoon text-4xl md:text-5xl mb-4">Fuentes de Inspiración</h2>
+                    <p className="text-muted-foreground max-w-2xl mx-auto">Un collage de influencias que dan forma a mi universo creativo.</p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
+                    {/* Large Item - Simpson */}
+                    <div className="col-span-1 md:col-span-2 row-span-2 relative rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer h-[300px] md:h-auto">
+                        <Image src="/images/bart-smoking.jpeg" alt="Simpsons" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-8">
+                            <div>
+                                <span className="bg-nfi-yellow text-black text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">CLÁSICO</span>
+                                <h3 className="text-white font-cartoon text-3xl">Estética 90s</h3>
+                                <p className="text-white/80 text-sm mt-1 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 duration-300">Líneas gruesas y colores planos</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Tall Item - Futurama */}
+                    <div className="col-span-1 md:col-span-1 row-span-2 relative rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer h-[300px] md:h-auto">
+                         <Image src="/images/bender-sketch.jpeg" alt="Futurama" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
+                            <div>
+                                <span className="bg-nfi-blue text-white text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">SCIFI</span>
+                                <h3 className="text-white font-bold text-xl">Humor Ácido</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Small Item 1 - Anime */}
+                    <div className="col-span-1 md:col-span-1 row-span-1 relative rounded-[2rem] overflow-hidden group shadow-lg cursor-pointer h-[200px] md:h-auto">
+                         <Image src="/images/shin-chan-heart.jpeg" alt="Anime" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                            <h3 className="text-white font-cartoon text-2xl drop-shadow-lg">Anime</h3>
+                        </div>
+                    </div>
+
+                    {/* Small Item 2 - Text */}
+                    <div className="col-span-1 md:col-span-1 row-span-1 relative rounded-[2rem] overflow-hidden group shadow-lg bg-gradient-to-br from-nfi-pink to-nfi-purple flex items-center justify-center p-6 text-center h-[200px] md:h-auto">
+                        <div className="relative z-10">
+                            <span className="text-5xl mb-2 block animate-bounce-slow">✨</span>
+                            <h3 className="font-cartoon text-white text-xl">Pop Culture</h3>
+                        </div>
+                        {/* Decorative circles */}
+                        <div className="absolute top-0 right-0 w-20 h-20 bg-white/20 rounded-full -mr-10 -mt-10"></div>
+                        <div className="absolute bottom-0 left-0 w-16 h-16 bg-white/10 rounded-full -ml-8 -mb-8"></div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        {/* Expo Gallery (Horizontal Scroll - Film Strip) */}
+        <section className="py-24 overflow-hidden">
+            <div className="container mb-12 flex flex-col md:flex-row justify-between items-end gap-4">
+                <div>
+                    <span className="text-nfi-yellow font-bold tracking-widest text-sm uppercase mb-2 block">Comunidad</span>
+                    <h2 className="font-cartoon text-4xl md:text-5xl">Expo & Eventos</h2>
+                </div>
+                <div className="flex gap-2">
+                    <div className="h-2 w-20 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-full"></div>
+                </div>
             </div>
-          </div>
-          
-          <div className="mt-12 text-center">
-            <p className="text-sm text-muted-foreground">
-              <span className="font-semibold">Ana María De Carvalho</span> &copy; 2025. Todos los derechos reservados.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+            
+            {/* Film strip effect */}
+            <div className="relative">
+                <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
+                
+                <div className="flex gap-8 overflow-x-auto pb-12 px-4 md:px-12 snap-x container no-scrollbar" style={{ scrollPaddingLeft: '2rem' }}>
+                    {/* Video Card 1 */}
+                    <div className="min-w-[320px] md:min-w-[500px] snap-center shrink-0">
+                         <div className="aspect-video relative rounded-3xl overflow-hidden shadow-2xl border-[6px] border-black bg-black group">
+                            <VideoPlayer 
+                                src="/videos/feria1.mp4" 
+                                poster="/images/placeholder.svg" 
+                                id="v1" 
+                                sparkle 
+                                gradientFrom="#FDD835"
+                                gradientTo="#EC407A"
+                                buttonColor="#EC407A"
+                                buttonTextColor="#FFFFFF"
+                            />
+                            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur text-black text-xs font-bold px-3 py-1 rounded-full z-20">2024</div>
+                         </div>
+                         <div className="mt-6 flex justify-between items-start px-2">
+                            <div>
+                                <h3 className="font-cartoon text-2xl">Feria de Arte</h3>
+                                <p className="text-muted-foreground text-sm">Exposición Principal • Madrid</p>
+                            </div>
+                            <Button size="icon" variant="ghost" className="rounded-full hover:bg-nfi-yellow/20 text-nfi-yellow">
+                                <ExternalLink className="w-5 h-5" />
+                            </Button>
+                         </div>
+                    </div>
+                     {/* Video Card 2 */}
+                    <div className="min-w-[320px] md:min-w-[500px] snap-center shrink-0">
+                         <div className="aspect-video relative rounded-3xl overflow-hidden shadow-2xl border-[6px] border-black bg-black group">
+                            <VideoPlayer 
+                                src="/videos/feria2.mp4" 
+                                poster="/images/placeholder.svg" 
+                                id="v2" 
+                                sparkle 
+                                gradientFrom="#FDD835"
+                                gradientTo="#EC407A"
+                                buttonColor="#EC407A"
+                                buttonTextColor="#FFFFFF"
+                            />
+                             <div className="absolute top-4 left-4 bg-white/90 backdrop-blur text-black text-xs font-bold px-3 py-1 rounded-full z-20">HIGHLIGHT</div>
+                         </div>
+                         <div className="mt-6 flex justify-between items-start px-2">
+                             <div>
+                                <h3 className="font-cartoon text-2xl">Encuentro con Fans</h3>
+                                <p className="text-muted-foreground text-sm">Firma de Autógrafos • Barcelona</p>
+                            </div>
+                            <Button size="icon" variant="ghost" className="rounded-full hover:bg-nfi-pink/20 text-nfi-pink">
+                                <ExternalLink className="w-5 h-5" />
+                            </Button>
+                         </div>
+                    </div>
+                    {/* Image Card */}
+                    <div className="min-w-[320px] md:min-w-[500px] snap-center shrink-0">
+                         <div className="aspect-video relative rounded-3xl overflow-hidden shadow-2xl border-[6px] border-black group cursor-pointer">
+                             <Image src="/images/feria5.jpg" alt="Expo" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                              <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur p-2 rounded-full">
+                                  <Instagram className="w-5 h-5" />
+                              </div>
+                         </div>
+                         <div className="mt-6 flex justify-between items-start px-2">
+                             <div>
+                                <h3 className="font-cartoon text-2xl">Galería Central</h3>
+                                <p className="text-muted-foreground text-sm">Instalación Permanente</p>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* CTA - Modern Glassmorphism */}
+        <section className="py-24 container text-center">
+            <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white rounded-[3rem] p-8 md:p-20 relative overflow-hidden shadow-2xl mx-auto max-w-5xl">
+                {/* Abstract Shapes */}
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-nfi-blue/30 rounded-full blur-[120px] -mr-20 -mt-20 pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-nfi-pink/30 rounded-full blur-[100px] -ml-20 -mb-20 pointer-events-none"></div>
+                
+                <div className="relative z-10 flex flex-col items-center">
+                    <Badge variant="outline" className="border-white/30 text-white mb-6 px-4 py-1 tracking-widest bg-white/5">COLECCIÓN 2025</Badge>
+                    
+                    <h2 className="font-cartoon text-5xl md:text-7xl mb-6 leading-tight py-4 px-2">
+                        ¿Listo para tener <br/>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow to-nfi-pink inline-block pb-2 px-1">tu propia obra?</span>
+                    </h2>
+                    
+                    <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light">
+                        Cada pieza es única e irrepetible. Únete a una comunidad exclusiva de coleccionistas y amantes del arte digital.
+                    </p>
+                    
+                    <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+                        <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg bg-white text-black hover:bg-gray-100 hover:scale-105 transition-all shadow-xl font-bold">
+                            <Link href="/collection">Explorar Colección</Link>
+                        </Button>
+                        <Button asChild size="lg" variant="outline" className="rounded-full px-10 h-16 text-lg border-white/30 text-white hover:bg-white/10 hover:text-white backdrop-blur-sm">
+                            <Link href="/mint">Saber Más</Link>
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        </section>
+     </div>
   )
 }
