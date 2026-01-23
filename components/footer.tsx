@@ -11,8 +11,30 @@ export function Footer() {
       <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex flex-col items-center md:items-start">
           <Link href="/" className="flex items-center gap-2">
-            <span className="font-cartoon text-2xl tracking-wider text-nfi-yellow">
-              Not Found <span className="text-nfi-pink">Ink</span>
+            <span className="font-cartoon text-2xl tracking-wider">
+              <span 
+                style={{
+                  color: '#FFD93D',
+                  textShadow: `
+                    1px 1px 0 #E91E63,
+                    2px 2px 0 #E91E63,
+                    3px 3px 0 #C2185B,
+                    4px 4px 0 #AD1457,
+                    5px 5px 8px rgba(0,0,0,0.4)
+                  `
+                }}
+              >Not Found</span>{" "}<span 
+                style={{
+                  color: '#E91E63',
+                  textShadow: `
+                    1px 1px 0 #FFD93D,
+                    2px 2px 0 #FFD93D,
+                    3px 3px 0 #FFC107,
+                    4px 4px 0 #FF9800,
+                    5px 5px 8px rgba(0,0,0,0.4)
+                  `
+                }}
+              >Ink</span>
             </span>
           </Link>
           <p className="text-sm text-muted-foreground mt-1">© 2025 Ana María. Todos los derechos reservados.</p>
