@@ -69,9 +69,6 @@ export default function RootLayout({
             <Navbar />
             <main className="flex-1">{children}</main>
             
-            {/* Componente FooterLogo que solo se muestra en la página principal */}
-            <FooterLogo />
-            
             <Footer />
           </div>
         </ThemeProvider>
