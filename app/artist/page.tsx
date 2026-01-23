@@ -398,6 +398,16 @@ export default function ArtistPage() {
         {/* CTA - Modern Glassmorphism */}
         <section className="py-24 container text-center">
             <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white rounded-[3rem] p-8 md:p-20 relative overflow-hidden shadow-2xl mx-auto max-w-5xl">
+                {/* Video Background */}
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover opacity-30"
+                >
+                    <source src="/videos/fondotarjeta.mp4" type="video/mp4" />
+                </video>
                 {/* Abstract Shapes */}
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-nfi-blue/30 rounded-full blur-[120px] -mr-20 -mt-20 pointer-events-none"></div>
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-nfi-pink/30 rounded-full blur-[100px] -ml-20 -mb-20 pointer-events-none"></div>

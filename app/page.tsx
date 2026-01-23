@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { VideoPlayer } from "@/components/video-player"
 import { Carousel } from "@/components/carousel"
@@ -290,6 +291,47 @@ export default function Home() {
               buttonTextColor="white"
               sparkle={true}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 container text-center">
+        <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white rounded-[3rem] p-8 md:p-20 relative overflow-hidden shadow-2xl mx-auto max-w-5xl">
+          {/* Video Background */}
+          <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover opacity-30"
+          >
+              <source src="/videos/fondotarjeta.mp4" type="video/mp4" />
+          </video>
+          {/* Abstract Shapes */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-nfi-blue/30 rounded-full blur-[120px] -mr-20 -mt-20 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-nfi-pink/30 rounded-full blur-[100px] -ml-20 -mb-20 pointer-events-none"></div>
+          
+          <div className="relative z-10 flex flex-col items-center">
+            <Badge variant="outline" className="border-white/30 text-white mb-6 px-4 py-1 tracking-widest bg-white/5">COLECCIÓN 2025</Badge>
+            
+            <h2 className="font-cartoon text-5xl md:text-7xl mb-6 leading-tight py-4 px-2">
+              ¿Listo para tener <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow to-nfi-pink inline-block pb-2 px-1">tu propia obra?</span>
+            </h2>
+            
+            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light">
+              Cada pieza es única e irrepetible. Únete a una comunidad exclusiva de coleccionistas y amantes del arte digital.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+                <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg bg-white text-black hover:bg-gray-100 hover:scale-105 transition-all shadow-xl font-bold">
+                  <Link href="/collection">Explorar Colección</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-10 h-16 text-lg border-white/40 text-white bg-white/10 hover:bg-white/20 hover:text-white backdrop-blur-sm">
+                  <Link href="/pedidos">Saber Más</Link>
+                </Button>
+              </div>
           </div>
         </div>
       </section>
