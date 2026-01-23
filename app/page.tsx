@@ -336,37 +336,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer with Shin Chan */}
-      <div className="container text-center mb-16 mt-10 pb-20">
-          <p 
-            className="text-lg font-cartoon"
-            style={{
-              color: '#FFD93D',
-              textShadow: `
-                1px 1px 0 #E91E63,
-                2px 2px 0 #E91E63,
-                3px 3px 0 #C2185B,
-                4px 4px 0 #AD1457,
-                5px 5px 10px rgba(0,0,0,0.3)
-              `
-            }}
-          >
-            ¡Gracias por Visitar<span 
-              style={{
-                color: '#E91E63',
-                textShadow: `
-                  1px 1px 0 #FFD93D,
-                  2px 2px 0 #FFD93D,
-                  3px 3px 0 #FFC107,
-                  4px 4px 0 #FF9800,
-                  5px 5px 10px rgba(0,0,0,0.3)
-                `,
-                marginLeft: '2rem'
-              }}
-            >Not Found Ink</span>!
-          </p>
-        </div>
-    </div>
+      </div>
     </>
   );
 }
