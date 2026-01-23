@@ -12,9 +12,12 @@ import { useState, useMemo } from "react";
 import { artworksArray } from "@/lib/data";
 import { LayoutGrid, Grid2X2 } from "lucide-react"
 
+const ITEMS_PER_PAGE = 15;
+
 export default function CollectionPage() {
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
   const [columns, setColumns] = useState<1 | 2>(2);
+  const [currentPage, setCurrentPage] = useState(1);
   
   const sortedNfts = useMemo(() => {
     return [...artworksArray].sort((a, b) => {
@@ -22,13 +25,35 @@ export default function CollectionPage() {
     });
   }, [sortOrder]);
 
+  const totalPages = Math.ceil(sortedNfts.length / ITEMS_PER_PAGE);
+  
+  const paginatedNfts = useMemo(() => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    return sortedNfts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  }, [sortedNfts, currentPage]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="container py-10 bg-white">
       <div className="relative mb-6">
         <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
-        <h1 className="font-cartoon text-4xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
-          Galería de Arte
-        </h1>
+        <h1 
+          className="font-cartoon text-4xl md:text-6xl"
+          style={{
+            color: '#FFD93D',
+            textShadow: `
+              1px 1px 0 #E91E63,
+              2px 2px 0 #E91E63,
+              3px 3px 0 #C2185B,
+              4px 4px 0 #AD1457,
+              5px 5px 10px rgba(0,0,0,0.3)
+            `
+          }}
+        >Galería de Arte</h1>
       </div>
       <TypewriterOnView
   text={"Explora la colección completa de 100 obras únicas creadas por Ana María."}
@@ -67,7 +92,7 @@ export default function CollectionPage() {
 
       {/* Grid de NFTs */}
       <div className={`grid ${columns === 1 ? 'grid-cols-1' : 'grid-cols-2'} sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8`}>
-        {sortedNfts.map((nft) => (
+        {paginatedNfts.map((nft) => (
           <Link href={`/collection/${nft.id}`} key={nft.id} className="block transform transition-all duration-300 hover:scale-105">
             <div className="relative group w-full">
               <div className="absolute -inset-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
@@ -92,24 +117,43 @@ export default function CollectionPage() {
 
       {/* Paginación */}
       <div className="flex justify-center mt-10">
-        <div className="flex gap-2">
-          <Button variant="outline" size="icon" disabled>
+        <div className="flex items-center gap-2">
+          <Button 
+            variant="outline" 
+            size="icon" 
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
+          >
             &lt;
           </Button>
-          <Button variant="default" size="icon">
-            1
-          </Button>
-          <Button variant="outline" size="icon">
-            2
-          </Button>
-          <Button variant="outline" size="icon">
-            3
-          </Button>
-          <Button variant="outline" size="icon">
+          
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <Button
+              key={page}
+              variant={currentPage === page ? "default" : "outline"}
+              size="icon"
+              onClick={() => handlePageChange(page)}
+              className={currentPage === page ? "bg-nfi-pink hover:bg-nfi-pink/80" : ""}
+            >
+              {page}
+            </Button>
+          ))}
+          
+          <Button 
+            variant="outline" 
+            size="icon" 
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(currentPage + 1)}
+          >
             &gt;
           </Button>
         </div>
       </div>
+
+      {/* Indicador de página */}
+      <p className="text-center text-sm text-muted-foreground mt-4">
+        Mostrando {((currentPage - 1) * ITEMS_PER_PAGE) + 1} - {Math.min(currentPage * ITEMS_PER_PAGE, sortedNfts.length)} de {sortedNfts.length} obras
+      </p>
     </div>
   )
 }

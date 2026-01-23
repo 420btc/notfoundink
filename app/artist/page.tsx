@@ -37,8 +37,31 @@ export default function ArtistPage() {
                     </div>
                     
                     <h1 className="font-cartoon text-6xl sm:text-7xl md:text-8xl leading-[1.1] tracking-tight py-2 px-1">
-                        Ana María <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue relative inline-block px-4 pb-2">
+                        <span
+                          style={{
+                            color: '#FFD93D',
+                            textShadow: `
+                              2px 2px 0 #E91E63,
+                              4px 4px 0 #E91E63,
+                              6px 6px 0 #C2185B,
+                              8px 8px 0 #AD1457,
+                              10px 10px 15px rgba(0,0,0,0.4)
+                            `
+                          }}
+                        >Ana María</span> <br />
+                        <span 
+                          className="relative inline-block px-4 pb-2"
+                          style={{
+                            color: '#E91E63',
+                            textShadow: `
+                              2px 2px 0 #FFD93D,
+                              4px 4px 0 #FFD93D,
+                              6px 6px 0 #FFC107,
+                              8px 8px 0 #FF9800,
+                              10px 10px 15px rgba(0,0,0,0.4)
+                            `
+                          }}
+                        >
                             De Carvalho
                             <svg className="absolute w-full h-3 -bottom-1 left-0 text-nfi-yellow opacity-60 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
                                 <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
@@ -140,7 +163,19 @@ export default function ArtistPage() {
             
             <div className="text-center mb-16">
                 <span className="text-nfi-blue font-bold tracking-widest text-sm uppercase mb-2 block">Trayectoria</span>
-                <h2 className="font-cartoon text-4xl md:text-5xl">El Viaje Creativo</h2>
+                <h2 
+                  className="font-cartoon text-4xl md:text-5xl"
+                  style={{
+                    color: '#FFD93D',
+                    textShadow: `
+                      1px 1px 0 #E91E63,
+                      2px 2px 0 #E91E63,
+                      3px 3px 0 #C2185B,
+                      4px 4px 0 #AD1457,
+                      5px 5px 10px rgba(0,0,0,0.3)
+                    `
+                  }}
+                >El Viaje Creativo</h2>
             </div>
 
             <div className="max-w-5xl mx-auto">
@@ -198,7 +233,19 @@ export default function ArtistPage() {
              <div className="container">
                 <div className="text-center mb-12">
                     <span className="text-nfi-pink font-bold tracking-widest text-sm uppercase mb-2 block">Moodboard</span>
-                    <h2 className="font-cartoon text-4xl md:text-5xl mb-4">Fuentes de Inspiración</h2>
+                    <h2 
+                      className="font-cartoon text-4xl md:text-5xl mb-4"
+                      style={{
+                        color: '#E91E63',
+                        textShadow: `
+                          1px 1px 0 #FFD93D,
+                          2px 2px 0 #FFD93D,
+                          3px 3px 0 #FFC107,
+                          4px 4px 0 #FF9800,
+                          5px 5px 10px rgba(0,0,0,0.3)
+                        `
+                      }}
+                    >Fuentes de Inspiración</h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto">Un collage de influencias que dan forma a mi universo creativo.</p>
                 </div>
                 
@@ -253,7 +300,19 @@ export default function ArtistPage() {
             <div className="container mb-12 flex flex-col md:flex-row justify-between items-end gap-4">
                 <div>
                     <span className="text-nfi-yellow font-bold tracking-widest text-sm uppercase mb-2 block">Comunidad</span>
-                    <h2 className="font-cartoon text-4xl md:text-5xl">Expo & Eventos</h2>
+                    <h2 
+                      className="font-cartoon text-4xl md:text-5xl"
+                      style={{
+                        color: '#FFD93D',
+                        textShadow: `
+                          1px 1px 0 #E91E63,
+                          2px 2px 0 #E91E63,
+                          3px 3px 0 #C2185B,
+                          4px 4px 0 #AD1457,
+                          5px 5px 10px rgba(0,0,0,0.3)
+                        `
+                      }}
+                    >Expo & Eventos</h2>
                 </div>
                 <div className="flex gap-2">
                     <div className="h-2 w-20 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue rounded-full"></div>

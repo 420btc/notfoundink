@@ -31,9 +31,33 @@ export default function Home() {
               <div className="bg-black/40 backdrop-blur-sm px-4 py-3 sm:px-10 sm:py-6 rounded-xl w-auto">
                 <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
                 <span className="absolute -top-4 -right-8 text-3xl animate-float-medium">✨</span>
-                <h1 className="font-cartoon text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-wide text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                  <span className="text-nfi-yellow font-bold">Not Found</span>{" "}
-                  <span className="text-nfi-pink font-bold">Ink</span>
+                <h1 className="font-cartoon text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-wide">
+                  <span 
+                    className="font-bold"
+                    style={{
+                      color: '#FFD93D',
+                      textShadow: `
+                        2px 2px 0 #E91E63,
+                        4px 4px 0 #E91E63,
+                        6px 6px 0 #C2185B,
+                        8px 8px 0 #AD1457,
+                        10px 10px 15px rgba(0,0,0,0.5)
+                      `
+                    }}
+                  >Not Found</span>{" "}
+                  <span 
+                    className="font-bold"
+                    style={{
+                      color: '#E91E63',
+                      textShadow: `
+                        2px 2px 0 #FFD93D,
+                        4px 4px 0 #FFD93D,
+                        6px 6px 0 #FFC107,
+                        8px 8px 0 #FF9800,
+                        10px 10px 15px rgba(0,0,0,0.5)
+                      `
+                    }}
+                  >Ink</span>
                 </h1>
                 <span className="absolute bottom-2 right-0 text-xl animate-float-fast">✨</span>
               </div>
@@ -70,7 +94,19 @@ export default function Home() {
         <div className="container relative z-10">
           <div className="relative text-center mb-10">
             <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-3xl animate-float-medium">✨</span>
-            <h2 className="font-cartoon text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">Obras Destacadas</h2>
+            <h2 
+              className="font-cartoon text-3xl md:text-5xl"
+              style={{
+                color: '#FFD93D',
+                textShadow: `
+                  1px 1px 0 #E91E63,
+                  2px 2px 0 #E91E63,
+                  3px 3px 0 #C2185B,
+                  4px 4px 0 #AD1457,
+                  5px 5px 10px rgba(0,0,0,0.3)
+                `
+              }}
+            >Obras Destacadas</h2>
           </div>
           <Carousel 
             items={[
@@ -98,9 +134,19 @@ export default function Home() {
             <div>
               <div className="relative">
                 <span className="absolute -top-6 -left-6 text-2xl animate-float-medium">✨</span>
-                <h2 className="font-cartoon text-3xl md:text-5xl mb-6 text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
-                  Sobre la Colección
-                </h2>
+                <h2 
+                  className="font-cartoon text-3xl md:text-5xl mb-6"
+                  style={{
+                    color: '#E91E63',
+                    textShadow: `
+                      1px 1px 0 #FFD93D,
+                      2px 2px 0 #FFD93D,
+                      3px 3px 0 #FFC107,
+                      4px 4px 0 #FF9800,
+                      5px 5px 10px rgba(0,0,0,0.3)
+                    `
+                  }}
+                >Sobre la Colección</h2>
               </div>
               <TypewriterOnView text={'"Not Found Ink" es una colección única de 100 obras digitales creadas por la talentosa ilustradora Ana María, que fusiona el estilo icónico de Los Simpson y Futurama con la irreverencia de Shin Chan y elementos de la cultura japonesa.'} className="text-lg mb-4" as="p">
   <span className="text-nfi-pink text-sm">✨</span>
@@ -151,9 +197,19 @@ export default function Home() {
           <div className="relative">
             <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
             <h2 className="font-cartoon text-4xl md:text-6xl mb-4 md:mb-0 relative">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue animate-shine px-2 pb-2 inline-block bg-[length:200%_100%] mr-1">
-                Portfolio
-              </span>
+              <span 
+                className="px-2 pb-2 inline-block mr-1"
+                style={{
+                  color: '#FFD93D',
+                  textShadow: `
+                    1px 1px 0 #E91E63,
+                    2px 2px 0 #E91E63,
+                    3px 3px 0 #C2185B,
+                    4px 4px 0 #AD1457,
+                    5px 5px 10px rgba(0,0,0,0.3)
+                  `
+                }}
+              >Portfolio</span>
               <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue"></div>
             </h2>
           </div>
@@ -201,9 +257,19 @@ export default function Home() {
             <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-3xl animate-float-medium">
               ✨
             </span>
-            <h2 className="font-cartoon text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
-              Explora Nuestro Universo
-            </h2>
+            <h2 
+              className="font-cartoon text-4xl md:text-5xl"
+              style={{
+                color: '#E91E63',
+                textShadow: `
+                  1px 1px 0 #FFD93D,
+                  2px 2px 0 #FFD93D,
+                  3px 3px 0 #FFC107,
+                  4px 4px 0 #FF9800,
+                  5px 5px 10px rgba(0,0,0,0.3)
+                `
+              }}
+            >Explora Nuestro Universo</h2>
           </div>
           <div className="grid grid-cols-2 gap-4 md:gap-10 h-[300px] md:h-[560px]">
             <VideoPlayer

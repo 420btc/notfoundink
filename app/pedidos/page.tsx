@@ -30,9 +30,19 @@ export default function PedidosPage() {
         />
       </div>
       <div className="bg-white/90 dark:bg-gray-900/90 rounded-xl shadow-xl max-w-lg w-full p-8 border border-nfi-purple/30">
-        <h1 className="text-3xl md:text-4xl font-cartoon text-center mb-6 bg-clip-text text-transparent bg-gradient-to-r from-nfi-yellow via-nfi-pink to-nfi-blue">
-          Solicita tu Dibujo Personalizado
-        </h1>
+        <h1 
+          className="text-3xl md:text-4xl font-cartoon text-center mb-6"
+          style={{
+            color: '#E91E63',
+            textShadow: `
+              1px 1px 0 #FFD93D,
+              2px 2px 0 #FFD93D,
+              3px 3px 0 #FFC107,
+              4px 4px 0 #FF9800,
+              5px 5px 10px rgba(0,0,0,0.3)
+            `
+          }}
+        >Solicita tu Dibujo Personalizado</h1>
         <div className="flex justify-center mb-6">
           {/* Imagen con lupa */}
           {(() => {
