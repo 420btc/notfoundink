@@ -72,17 +72,15 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col items-center mt-12 mb-16">
-              <div className="inline-flex flex-col sm:flex-row gap-4 sm:gap-8 p-4 bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl">
-                <div className="relative group transform transition-transform hover:scale-105">
+              <div className="relative group transform transition-transform hover:scale-105">
                   <Button
                     asChild
                     size="lg"
-                    className="relative font-medium text-lg px-8 py-6 bg-gradient-to-r from-nfi-yellow to-nfi-pink hover:from-nfi-pink hover:to-nfi-yellow transition-all duration-500 shadow-md"
+                    className="relative font-medium text-lg px-8 py-6 bg-gradient-to-r from-nfi-yellow to-nfi-pink hover:from-nfi-pink hover:to-nfi-yellow transition-all duration-500 shadow-lg hover:shadow-xl"
                   >
                     <Link href="/collection">Ver Galería</Link>
                   </Button>
                 </div>
-              </div>
             </div>
           </div>
         </div>
