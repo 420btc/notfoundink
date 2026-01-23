@@ -29,9 +29,9 @@ export default function Home() {
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <div className="bg-black/40 backdrop-blur-sm px-4 py-3 sm:px-10 sm:py-6 rounded-xl w-auto">
-                <span className="absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
-                <span className="absolute -top-4 -right-8 text-3xl animate-float-medium">✨</span>
-                <h1 className="font-cartoon text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-wide">
+                <span className="hidden sm:block absolute -top-6 -left-6 text-2xl animate-float-slow">✨</span>
+                <span className="hidden sm:block absolute -top-4 -right-8 text-3xl animate-float-medium">✨</span>
+                <h1 className="font-cartoon text-4xl xs:text-5xl sm:text-5xl md:text-7xl lg:text-8xl tracking-wide">
                   <span 
                     className="font-bold"
                     style={{
@@ -59,7 +59,7 @@ export default function Home() {
                     }}
                   >Ink</span>
                 </h1>
-                <span className="absolute bottom-2 right-0 text-xl animate-float-fast">✨</span>
+                <span className="hidden sm:block absolute bottom-2 right-0 text-xl animate-float-fast">✨</span>
               </div>
             </div>
           </div>
@@ -297,25 +297,11 @@ export default function Home() {
       </section>
 
       {/* Footer with Shin Chan */}
-      <div className="relative mt-10 pb-20">
-        <div className="absolute bottom-0 left-1/4 transform -translate-x-1/2 z-10">
-          <div className="relative w-32 md:w-40 h-auto">
-            <Image
-              src="/images/shin-chan-standing.jpeg"
-              alt="Shin Chan"
-              width={90}
-              height={120}
-              className="animate-float-slow"
-            />
-            <span className="absolute top-0 right-0 text-xl animate-float-fast">✨</span>
-          </div>
-        </div>
-        <div className="container text-center mb-16">
+      <div className="container text-center mb-16 mt-10 pb-20">
           <p className="text-lg font-cartoon text-nfi-pink">
             ¡Gracias por visitar Not Found Ink! <span className="text-sm">✨</span>
           </p>
         </div>
-      </div>
     </div>
     </>
   );

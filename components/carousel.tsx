@@ -75,8 +75,8 @@ export function Carousel({ items, itemsPerView = 4 }: CarouselProps) {
           }}
         >
           {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-            <div key={slideIndex} className="min-w-full flex-shrink-0 px-4">
-              <div className="grid grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:grid-cols-4">
+            <div key={slideIndex} className="min-w-full flex-shrink-0 px-2 sm:px-4">
+              <div className="grid grid-cols-2 gap-4 sm:gap-8 md:gap-10 lg:grid-cols-4">
                 {items
                   .slice(
                     slideIndex * itemsPerView,
@@ -120,17 +120,17 @@ export function Carousel({ items, itemsPerView = 4 }: CarouselProps) {
       {/* Navigation Buttons */}
       <button
         onClick={handlePrev}
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 z-10"
+        className="absolute left-1 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-1 z-10 sm:left-2 sm:p-2"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
       </button>
       <button
         onClick={handleNext}
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 z-10"
+        className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white rounded-full p-1 z-10 sm:right-2 sm:p-2"
         aria-label="Next slide"
       >
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
       </button>
 
       {/* Dots */}

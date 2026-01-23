@@ -73,7 +73,7 @@ export function Navbar() {
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <span 
-            className="font-cartoon text-3xl tracking-wider"
+            className="font-cartoon text-2xl sm:text-3xl tracking-wider"
             style={{
               color: '#FFD93D',
               textShadow: `
